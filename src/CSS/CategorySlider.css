@@ -1,0 +1,20 @@
+.slick-arrow {
+    border-radius: 0;
+    background: rgba(255, 255, 255, 0.6) !important;
+    color: black !important;
+    width: 30px !important;
+    height: 30px !important;
+    opacity: .7;
+    
+
+}
+.slick-prev{
+    left: 0 !important;
+    z-index: 1;
+    font-size: 1.5em;
+}
+.slick-next{
+    right: 0 !important;
+    z-index: 1;
+    font-size: 1.5em;
+}
