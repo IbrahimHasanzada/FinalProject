@@ -8,12 +8,16 @@ import Details from '../Pages/Details'
 import AboutUs from '../Pages/AboutUs'
 import Basket from '../Pages/Basket'
 import CheckOut from '../Pages/CheckOut'
+import SignUp from '../Pages/SignUp'
+import Login from '../Pages/Login'
 
 export const route = createBrowserRouter(
     createRoutesFromElements(
         <>
             <Route path="/" element={<MainLayout />}>
                 <Route index element={<Home />} />
+                <Route path='SignUp' element={<SignUp />} />
+                <Route path='Login' element={<Login />} />
                 <Route path="CategoryPage" element={<CategoryPage />} />
                 <Route path="CategoryPage/Brands" element={<Brands />} />
                 <Route path="CategoryPage/Brands/Details" element={<Details />} />

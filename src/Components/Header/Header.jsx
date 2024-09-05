@@ -9,16 +9,16 @@ import BasketSideBar from "./BasketSideBar";
 import { useDispatch, useSelector } from "react-redux";
 import { setBasket } from "../../Redux/BasketSlice";
 import UserLogin from "./UserLogin";
+import { setUser } from "../../Redux/UserLoginSlice";
 
 const Header = () => {
 
     const [flag, setFlag] = useState(false)
-    const [user, setUser] = useState(false)
     const { basket } = useSelector(state => state.basket)
+    const { user } = useSelector(state => state.user)
     const dispatch = useDispatch()
     function handleOpenSearch() { setFlag(true) }
     function handleOpenBasket() { dispatch(setBasket(true)) }
-    function handleOpenUser() { setUser(!user) }
 
     return (
         <header className='wrapper  sticky z-30 lg:z-40 right-0 left-0 top-0 font-["Montserrat",_sans-serif] bg-white  '>
@@ -47,10 +47,10 @@ const Header = () => {
                 </div>
                 <div className="relative flex gap-4 lg:w-[45%] justify-end">
                     <div className="">
-                        <button onClick={handleOpenUser} className="flex justify-center items-start">
+                        <button onClick={() => dispatch(setUser(true))} className="flex justify-center items-start">
                             <CiUser className="text-2xl lg:block hidden" />
                         </button>
-                        <div className="absolute right-0 hidden xl:block">
+                        <div className="absolute right-0 hidden lg:block">
                             {user ? <UserLogin /> : ''}
                         </div>
                     </div>
