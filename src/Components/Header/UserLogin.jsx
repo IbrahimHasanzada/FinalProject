@@ -10,8 +10,8 @@ import { setUser } from '../../Redux/UserLoginSlice';
 
 const UserLogin = ({ userLogin }) => {
     const [showPassword, setShowPassword] = useState(false);
-    const togglePasswordVisibility = () => {setShowPassword(!showPassword);}
-    const {user} = useSelector(state => state.user)
+    const togglePasswordVisibility = () => { setShowPassword(!showPassword); }
+    const { user } = useSelector(state => state.user)
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const validationSchema = Yup.object({
@@ -69,12 +69,15 @@ const UserLogin = ({ userLogin }) => {
                             </button>
                             <div className={`mt-5 pt-3 border-t w-full text-center flex ${userLogin ? 'flex-col text-2xl' : 'flex-row text-base'}`}>
                                 <span className={`inline-block font-["Cormorant_Garamond",_serif] ${userLogin ? 'pb-5' : ''}`}>Don't have an account?</span>
-                                <button className={`${userLogin ? 'w-full' : ''}`} onClick={() => dispatch(setUser(false))}>
+                                <div className={`${userLogin ? 'w-full' : ''}`}>
                                     {userLogin ?
-                                        <button onClick={() => navigate('/SignUp')}  className='uppercase text-sm text-white bg-black h-11 w-full  flex justify-center items-center 
+                                        <button onClick={() => navigate('/SignUp')} className='uppercase text-sm text-white bg-black h-11 w-full  flex justify-center items-center 
                                             rounded-md hover:bg-transparent hover:text-black hover:border border-black duration-200'>Create new account</button>
-                                        : <Link to='SignUp' className='underline ml-2 pt-3 font-["Cormorant_Garamond",_serif]'>Register</Link>}
-                                </button>
+                                        : <button onClick={() => dispatch(setUser())}>
+                                            <Link to='SignUp' className='underline ml-2 pt-3 font-["Cormorant_Garamond",_serif]'>Register</Link>
+                                        </button>
+                                    }
+                                </div>
                             </div>
                         </div>
                     </Form>

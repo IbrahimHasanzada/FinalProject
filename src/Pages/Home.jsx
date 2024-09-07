@@ -1,4 +1,3 @@
-import React from 'react'
 import DiscountProducts from '../Components/Home/DiscountProducts'
 import MainSection from '../Components/Home/MainSection'
 import HeadSection from '../Components/Home/HeadSection'

@@ -10,6 +10,7 @@ import Basket from '../Pages/Basket'
 import CheckOut from '../Pages/CheckOut'
 import SignUp from '../Pages/SignUp'
 import Login from '../Pages/Login'
+import WishList from '../Pages/WishList'
 
 export const route = createBrowserRouter(
     createRoutesFromElements(
@@ -24,6 +25,7 @@ export const route = createBrowserRouter(
                 <Route path="AboutUs" element={<AboutUs />} />
                 <Route path="Basket" element={<Basket />} />
                 <Route path="Basket/Checkout" element={<CheckOut />} />
+                <Route path="WishList" element={<WishList />} />
             </Route>
         </>
     )

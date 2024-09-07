@@ -4,12 +4,14 @@ import BlackButton from "../Components/BlackButton"
 import DetailsSlider from "../Components/Details.jsx/DetailsSlider"
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io'
 import { useState } from "react"
+import Breadcrumb from "../Components/BreadCrumbs"
 const Details = () => {
 
     const [showDescription, setShowDescription] = useState(true)
         
     return (
         <div className='wrapper mx-auto font-["Montserrat",_sans-serif]'>
+            <Breadcrumb />
             <section className='flex flex-col gap-5 md:gap-0  md:flex-row'>
                 <section className="w-full md:w-[416px] lg:w-[516px] xl:w-[566px]">
                         <DetailsSlider />

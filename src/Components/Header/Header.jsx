@@ -47,14 +47,16 @@ const Header = () => {
                 </div>
                 <div className="relative flex gap-4 lg:w-[45%] justify-end">
                     <div className="">
-                        <button onClick={() => dispatch(setUser(true))} className="flex justify-center items-start">
+                        <button onClick={() => dispatch(setUser())} className="flex justify-center items-start">
                             <CiUser className="text-2xl lg:block hidden" />
                         </button>
                         <div className="absolute right-0 hidden lg:block">
                             {user ? <UserLogin /> : ''}
                         </div>
                     </div>
-                    <CiHeart className="text-2xl" />
+                    <Link to='WishList'>
+                        <CiHeart className="text-2xl" />
+                    </Link>
                     <button className="flex justify-center items-start" onClick={handleOpenBasket}>
                         <PiBagSimple className="text-2xl" />
                     </button>

@@ -2,9 +2,11 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import CategorySlider from '.././Components/CategorySlider'
 import UnderlineButton from '../Components/UnderlineButton'
+import Breadcrumb from '../Components/BreadCrumbs'
 const CategoryPage = () => {
     return (
         <div className='wrapper font-["Montserrat",_sans-serif]'>
+            <Breadcrumb />
             <Link className='md:w-full  relative max-h-[654px] '>
                 <section className='w-full h-full md:block hidden  absolute inset-0 z-[2]  px-2 bg-[rgba(0,_0,_0,_0.2)] '>
                     <div className='absolute bottom-10 left-10 '>

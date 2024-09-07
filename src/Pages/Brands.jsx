@@ -3,6 +3,7 @@ import BrandsSideBar from '../Components/Brands/BrandsSideBar'
 import { Link } from 'react-router-dom'
 import { CiHeart } from 'react-icons/ci'
 import { IoFilterSharp } from "react-icons/io5";
+import Breadcrumb from '../Components/BreadCrumbs';
 const Brands = () => {
 
     const [filter, setFilter] = useState(false)
@@ -10,6 +11,7 @@ const Brands = () => {
     return (
         <div>
             <div className='wrapper mx-auto font-["Montserrat",_sans-serif]'>
+            <Breadcrumb />
                 <div className='w-full mt-8 mb-12 flex flex-col items-center text-center '>
                     <h1 className='text-5xl mb-7 font-["Cormorant_Garamond",_serif]'>Ayaqqabılar </h1>
                     <ul className='flex w-full items-center flex-wrap flex-row justify-center'>
