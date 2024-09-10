@@ -1,10 +1,10 @@
 import { FaWhatsapp, FaRegHeart } from "react-icons/fa"
-import Card from "../Components/Card"
-import BlackButton from "../Components/BlackButton"
-import DetailsSlider from "../Components/Details.jsx/DetailsSlider"
+import Card from "../../Components/Card"
+import BlackButton from "../../Components/BlackButton"
+import DetailsSlider from "../../Components/Details.jsx/DetailsSlider"
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io'
 import { useState } from "react"
-import Breadcrumb from "../Components/BreadCrumbs"
+import Breadcrumb from "../../Components/BreadCrumbs"
 const Details = () => {
 
     const [showDescription, setShowDescription] = useState(true)

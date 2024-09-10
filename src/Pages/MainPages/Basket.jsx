@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
-import BasketProducts from '../Components/Basket/BasketProducts'
-import OrderSummary from '../Components/Basket/OrderSummary'
+import { useState } from 'react'
+import BasketProducts from '../../Components/Basket/BasketProducts'
+import OrderSummary from '../../Components/Basket/OrderSummary'
 const Basket = () => {
     const [addToCard, setAddToCard] = useState(true)
     return (

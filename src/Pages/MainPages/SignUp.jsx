@@ -1,18 +1,17 @@
 import React, { useState } from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form, Field} from 'formik';
 import * as Yup from 'yup';
-import FormInput from '../Components/Checkout/FormInput';
+import FormInput from '../../Components/Checkout/FormInput';
 import { TbEye, TbEyeOff } from 'react-icons/tb';
-import UnderlineButton from '../Components/UnderlineButton';
-import BlackButton from '../Components/BlackButton';
+import BlackButton from '../../Components/BlackButton';
+import { useRegisterUserMutation } from '../../Store/EmporiumApi';
 
 const SignUp = () => {
     const [showPassword, setShowPassword] = useState(false);
-
+    const [registerUser, { data: getUserData }] = useRegisterUserMutation()
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
     };
-
     const validationSchema = Yup.object({
         first_name: Yup.string().required('First name is required'),
         last_name: Yup.string().required('Last name is required'),
@@ -22,6 +21,7 @@ const SignUp = () => {
             .matches(/^[0-9]{10,12}$/, 'Enter a valid mobile number'),
         date: Yup.date().required('Birthday is required'),
         gender: Yup.string().required('Gender is required'),
+        address: Yup.string().required('Address is required'),
         password: Yup.string()
             .required('Password is required')
             .min(6, 'Password must be at least 6 characters'),
@@ -44,12 +44,25 @@ const SignUp = () => {
                     mobile_number: '',
                     date: '',
                     gender: '',
+                    address: '',
                     password: '',
                     repeat_password: ''
                 }}
                 validationSchema={validationSchema}
                 onSubmit={(values) => {
                     console.log(values);
+                    registerUser({
+                        name: values.first_name,
+                        username: values.last_name,
+                        email: values.email,
+                        phone: values.mobile_number,
+                        address: values.address,
+                        dob: values.date.toISOString(),
+                        gender: values.gender,
+                        password: values.password
+                    })
+                    console.log(getUserData);
+                    
                 }}
             >
                 {() => (
@@ -74,19 +87,17 @@ const SignUp = () => {
                             <div className="w-full border  border-gray-300 rounded px-5">
                                 <Field as="select" name="gender" className="h-11 w-full" >
                                     <option value="">Select Gender</option>
-                                    <option value="male">Male</option>
+                                    <option value="male">MALE</option>
                                     <option value="female">Female</option>
                                 </Field>
                             </div>
                         </div>
+                        <div className='pt-5'>
+                            <FormInput type='text' name='address' label='Address' placeholder='Address' />
+                        </div>
                         <div className=' pt-5'>
                             <div className='relative'>
-                                <FormInput
-                                    type={showPassword ? 'text' : 'password'}
-                                    name='password'
-                                    label='Password'
-                                    placeholder='Password'
-                                />
+                                <FormInput type={showPassword ? 'text' : 'password'} name='password' label='Password' placeholder='Password' />
                                 <button
                                     type="button"
                                     className='absolute right-4 top-10'
@@ -97,12 +108,7 @@ const SignUp = () => {
                         </div>
                         <div className='pt-5'>
                             <div className='relative'>
-                                <FormInput
-                                    type={showPassword ? 'text' : 'password'}
-                                    name='repeat_password'
-                                    label='Repeat Password'
-                                    placeholder='Repeat Password'
-                                />
+                                <FormInput type={showPassword ? 'text' : 'password'} name='repeat_password' label='Repeat Password' placeholder='Repeat Password' />
                                 <button
                                     type="button"
                                     className='absolute right-4 top-10'

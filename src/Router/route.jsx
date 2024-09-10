@@ -1,20 +1,31 @@
-import React from 'react'
 import MainLayout from '../Layout/MainLayout'
-import CategoryPage from '../Pages/CategoryPage'
-import Brands from '../Pages/Brands'
-import Home from '../Pages/Home'
+import CategoryPage from '../Pages/MainPages/CategoryPage'
+import Brands from '../Pages/MainPages/Brands'
+import Home from '../Pages/MainPages/Home'
 import { createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom'
-import Details from '../Pages/Details'
-import AboutUs from '../Pages/AboutUs'
-import Basket from '../Pages/Basket'
-import CheckOut from '../Pages/CheckOut'
-import SignUp from '../Pages/SignUp'
-import Login from '../Pages/Login'
-import WishList from '../Pages/WishList'
-
+import Details from '../Pages/MainPages/Details'
+import AboutUs from '../Pages/MainPages/AboutUs'
+import Basket from '../Pages/MainPages/Basket'
+import CheckOut from '../Pages/MainPages/CheckOut'
+import SignUp from '../Pages/MainPages/SignUp'
+import Login from '../Pages/MainPages/Login'
+import WishList from '../Pages/MainPages/WishList'
+import Dashboard from '../Layout/Dashboard'
+import Auth from './Auth'
+import ProductCategory from '../Pages/Dashboard/ProductCategory'
+import Products from '../Pages/Dashboard/Products'
+import ProductBrands from '../Pages/Dashboard/ProductBrands'
 export const route = createBrowserRouter(
     createRoutesFromElements(
         <>
+            <Route path='/admin' element={
+                <Auth>
+                    <Dashboard />
+                </Auth>}>
+                <Route path='category' element={<ProductCategory />} />
+                <Route path='products' element={<Products />} />
+                <Route path='brands' element={<ProductBrands />} />
+            </Route>
             <Route path="/" element={<MainLayout />}>
                 <Route index element={<Home />} />
                 <Route path='SignUp' element={<SignUp />} />

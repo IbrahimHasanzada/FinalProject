@@ -1,8 +1,7 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
-import CategorySlider from '.././Components/CategorySlider'
-import UnderlineButton from '../Components/UnderlineButton'
-import Breadcrumb from '../Components/BreadCrumbs'
+import CategorySlider from '../../Components/CategorySlider'
+import UnderlineButton from '../../Components/UnderlineButton'
+import Breadcrumb from '../../Components/BreadCrumbs'
 const CategoryPage = () => {
     return (
         <div className='wrapper font-["Montserrat",_sans-serif]'>

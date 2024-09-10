@@ -2,7 +2,12 @@ import React from 'react'
 import MainCard from './MainCard'
 
 const MainSection = () => {
-    const images = ['kisi_1.jpg', 'kisi_1.jpg', 'kisi_1.jpg', 'kisi_1.jpg']
+    const categorySection = [
+        {img: 'kidsCategory.jpg', title: 'Kids'},
+        {img: 'beautyCategory.jpg', title: 'Beauty'},
+        {img: 'jewelleryCategory.jpg', title: 'Jewellery'},
+        {img: 'homeCategory.jpg', title: 'Home'}
+    ]
     return (
         <div>
             <div className='mt-10'>
@@ -13,8 +18,8 @@ const MainSection = () => {
                 </div>
             </div>
             <div className='grid grid-cols-1 md:grid-cols-2 gap-5  py-4 md:pt-10 '>
-                {images.map((img, i) => (
-                    <MainCard key={i} img={img} />
+                {categorySection.map((item, i) => (
+                    <MainCard key={i} item={item} />
                 ))}
             </div>
         </div>

@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import DeliveryForm from './DeliveryForm'
 import { FaWhatsapp } from 'react-icons/fa'
 import { useDispatch, useSelector } from 'react-redux'
-import { setDelivery } from '../../Redux/DeliverySlice'
-import { setDeliveryOrder } from '../../Redux/DeliveryOrderSlice'
+import { setDelivery } from '../../Store/DeliverySlice'
+import { setDeliveryOrder } from '../../Store/DeliveryOrderSlice'
 
 const Delivery = () => {
     const { delivery } = useSelector(state => state.delivery)

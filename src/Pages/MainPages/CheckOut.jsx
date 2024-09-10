@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import SecureCheckout from '../Components/Checkout/SecureCheckout'
-import Delivery from '../Components/Checkout/Delivery'
+import SecureCheckout from '../../Components/Checkout/SecureCheckout'
+import Delivery from '../../Components/Checkout/Delivery'
 import { useDispatch, useSelector } from 'react-redux'
-import DeliveryDetails from '../Components/Checkout/DeliveryDetails'
-import OrderSummary from '../Components/Basket/OrderSummary'
-import BasketProducts from '../Components/Basket/BasketProducts'
+import DeliveryDetails from '../../Components/Checkout/DeliveryDetails'
+import OrderSummary from '../../Components/Basket/OrderSummary'
+import BasketProducts from '../../Components/Basket/BasketProducts'
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io'
 
 const CheckOut = () => {

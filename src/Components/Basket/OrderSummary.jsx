@@ -2,7 +2,7 @@ import React from 'react'
 import BlackButton from '../BlackButton'
 import UnderlineButton from '../UnderlineButton'
 import { useDispatch, useSelector } from 'react-redux'
-import { setBasket } from '../../Redux/BasketSlice'
+import { setBasket } from '../../Store/BasketSlice'
 
 const OrderSummary = ({ addToCard, checkout }) => {
   const {basket} = useSelector(state => state.basket)

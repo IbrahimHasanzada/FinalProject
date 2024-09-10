@@ -3,8 +3,8 @@ import { IoIosSearch } from "react-icons/io";
 const OpenSearchBar = ({ flag, setFlag }) => {
 
     function handleCloseSearch() { setFlag(false) }
+    const categories = ['Qadın', 'Kişi', 'Uşaq', 'Gözəllik', 'Zinət əşyaları', 'Ev', 'Dizaynerlər']
     return (
-
         <section className={`
             top-14 lg:-top-full lg:left-0 lg:shadow-2xl w-full p-6 bg-white
             flex justify-center items-center flex-col duration-500 z-20 absolute lg:fixed
@@ -29,14 +29,11 @@ const OpenSearchBar = ({ flag, setFlag }) => {
                     <FaXmark className="cursor-pointer text-xl block lg:hidden " onClick={handleCloseSearch} />
                 </div>
                 <div className="max-w-[700px]">
-                <ul className='flex py-2 px-5   w-full overflow-scroll'>
+                <ul className='flex py-2 lg:px-5 w-full overflow-scroll'>
                     <li className="py-1 px-2 ml-[2px] mb-1 cursor-pointer rounded-[3px] hover:bg-[#e4e4e4] whitespace-nowrap">Hamısı</li>
-                    <li className="py-1 px-2 ml-[2px] mb-1 cursor-pointer rounded-[3px] hover:bg-[#e4e4e4] whitespace-nowrap">Qadın</li>
-                    <li className="py-1 px-2 ml-[2px] mb-1 cursor-pointer rounded-[3px] hover:bg-[#e4e4e4] whitespace-nowrap">Kişi</li>
-                    <li className="py-1 px-2 ml-[2px] mb-1 cursor-pointer rounded-[3px] hover:bg-[#e4e4e4] whitespace-nowrap">Uşaq</li>
-                    <li className="py-1 px-2 ml-[2px] mb-1 cursor-pointer rounded-[3px] hover:bg-[#e4e4e4] whitespace-nowrap">Gözəllik</li>
-                    <li className="py-1 px-2 ml-[2px] mb-1 cursor-pointer rounded-[3px] hover:bg-[#e4e4e4] whitespace-nowrap">Zinət əşyaları</li>
-                    <li className="py-1 px-2 ml-[2px] mb-1 cursor-pointer rounded-[3px] hover:bg-[#e4e4e4] whitespace-nowrap">Ev</li>
+                    {categories.map((item, i) => (
+                        <li key={i} className="py-1 px-2 ml-[2px] mb-1 cursor-pointer rounded-[3px] hover:bg-[#e4e4e4] whitespace-nowrap">{item}</li>
+                    ))}
                 </ul>
                 </div>
             </div>

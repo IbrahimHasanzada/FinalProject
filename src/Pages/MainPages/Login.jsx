@@ -1,5 +1,4 @@
-import React from 'react'
-import UserLogin from '../Components/Header/UserLogin'
+import UserLogin from '../../Components/Header/UserLogin'
 
 const SignIn = () => {
   const userLogin = true
@@ -9,7 +8,7 @@ const SignIn = () => {
         <div className='w-full md:w-[480px]'>
             <UserLogin userLogin={userLogin} />
         </div>
-    </div>
+    </div> 
   )
 }
 

@@ -1,6 +1,6 @@
 import { SlPencil } from "react-icons/sl";
 import { useDispatch, useSelector } from 'react-redux';
-import { setCheckout } from '../../Redux/CheckOutSlice';
+import { setCheckout } from '../../Store/CheckOutSlice';
 
 const DeliveryDetails = () => {
     const formReceiver = JSON.parse(localStorage.getItem('receiver'))

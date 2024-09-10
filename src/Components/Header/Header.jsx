@@ -7,9 +7,9 @@ import OpenSearchBar from "./OpenSearchBar";
 import { Link } from "react-router-dom";
 import BasketSideBar from "./BasketSideBar";
 import { useDispatch, useSelector } from "react-redux";
-import { setBasket } from "../../Redux/BasketSlice";
+import { setBasket } from "../../Store/BasketSlice";
 import UserLogin from "./UserLogin";
-import { setUser } from "../../Redux/UserLoginSlice";
+import { setUser } from "../../Store/UserLoginSlice";
 
 const Header = () => {
 
@@ -19,6 +19,7 @@ const Header = () => {
     const dispatch = useDispatch()
     function handleOpenSearch() { setFlag(true) }
     function handleOpenBasket() { dispatch(setBasket(true)) }
+    const categories = ['Qadın', 'Kişi', 'Uşaq', 'Gözəllik', 'Zinət əşyaları', 'Ev', 'Dizaynerlər']
 
     return (
         <header className='wrapper  sticky z-30 lg:z-40 right-0 left-0 top-0 font-["Montserrat",_sans-serif] bg-white  '>
@@ -30,15 +31,12 @@ const Header = () => {
                             <IoIosSearch className="text-3xl cursor-pointer" />
                         </button>
                     </div>
-                    <ul className="lg:flex hidden">
-                        <li className="py-1 px-2 ml-[2px] mb-1 cursor-pointer rounded-[3px] hover:bg-[#e4e4e4]">Qadın</li>
-                        <li className="py-1 px-2 ml-[2px] mb-1 cursor-pointer rounded-[3px] hover:bg-[#e4e4e4]">Kişi</li>
-                        <li className="py-1 px-2 ml-[2px] mb-1 cursor-pointer rounded-[3px] hover:bg-[#e4e4e4]">Uşaq</li>
-                        <li className="py-1 px-2 ml-[2px] mb-1 cursor-pointer rounded-[3px] hover:bg-[#e4e4e4]">Gözəllik</li>
-                        <li className="py-1 px-2 ml-[2px] mb-1 cursor-pointer rounded-[3px] hover:bg-[#e4e4e4]">Zinət əşyaları</li>
-                        <li className="py-1 px-2 ml-[2px] mb-1 cursor-pointer rounded-[3px] hover:bg-[#e4e4e4]">Ev</li>
-                        <li className="py-1 px-2 ml-[2px] mb-1 cursor-pointer rounded-[3px] hover:bg-[#e4e4e4]">Dizaynerlər</li>
+                    <ul className='hidden lg:flex w-full overflow-scroll'>
+                        {categories.map((item, i) => (
+                            <li key={i} className="py-1 px-2 ml-[2px] text-nowrap mb-1 cursor-pointer rounded-[3px] hover:bg-[#e4e4e4]">{item}</li>
+                        ))}
                     </ul>
+
                 </div>
                 <div className="w-[140px] h-[30px] lg:w-[165px] lg:h-[40px]">
                     <Link to="/">

@@ -2,7 +2,7 @@ import { FaXmark } from "react-icons/fa6";
 import BasketProducts from "../Basket/BasketProducts";
 import OrderSummary from "../Basket/OrderSummary";
 import { useDispatch, useSelector } from "react-redux";
-import { setBasket } from "../../Redux/BasketSlice";
+import { setBasket } from "../../Store/BasketSlice";
 
 const BasketSideBar = () => {
     const handleCloseBasket = () => { dispatch(setBasket(false)) }
