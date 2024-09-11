@@ -1,7 +1,7 @@
 import { Formik, Form } from 'formik';
 import React, { useState } from 'react'
 import * as Yup from 'yup'
-import FormInput from '../../Components/Checkout/FormInput';
+import FormInput from '../../Components/User/Checkout/FormInput';
 import { TbEye, TbEyeOff } from 'react-icons/tb';
 import { useLoginMutation } from '../../Store/EmporiumApi';
 import { toast, ToastContainer } from 'react-toastify';

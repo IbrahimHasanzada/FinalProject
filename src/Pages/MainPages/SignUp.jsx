@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Formik, Form, Field} from 'formik';
 import * as Yup from 'yup';
-import FormInput from '../../Components/Checkout/FormInput';
+import FormInput from '../../Components/User/Checkout/FormInput';
 import { TbEye, TbEyeOff } from 'react-icons/tb';
 import BlackButton from '../../Components/BlackButton';
 import { useRegisterUserMutation } from '../../Store/EmporiumApi';

@@ -4,7 +4,7 @@ import { TbBus } from "react-icons/tb";
 import { BsBox2 } from "react-icons/bs";
 import SliderSocial from './SliderSocial'
 import FooterAccordion from './FooterAccordion';
-import BlackButton from '../BlackButton';
+import BlackButton from '../../BlackButton';
 const Footer = () => {
 
 

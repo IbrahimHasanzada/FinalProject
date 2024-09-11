@@ -5,8 +5,8 @@ import FormInput from '../Checkout/FormInput';
 import { useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { setUser } from '../../Store/UserLoginSlice';
-import { useLoginMutation } from '../../Store/EmporiumApi';
+import { setUser } from '../../../Store/UserLoginSlice';
+import { useLoginMutation } from '../../../Store/EmporiumApi';
 import { Bounce, toast, ToastContainer } from 'react-toastify';
 
 const UserLogin = ({ userLogin }) => {

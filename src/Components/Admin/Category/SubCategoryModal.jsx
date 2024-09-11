@@ -2,26 +2,28 @@ import React, { useEffect, useState } from 'react';
 import { FaPlus } from "react-icons/fa6";
 import Modal from '../Modal';
 import FormAdmin from '../FormAdmin';
-import { useAddSubCategoryMutation } from '../../../Store/EmporiumApi';
+import { useAddSubCategoryMutation, useGetAllCategoryQuery } from '../../../Store/EmporiumApi';
 import { toast } from 'react-toastify';
-const SubcategoryModal = ({id}) => {
+import TableAdmin from '../TableAdmin';
+const SubcategoryModal = ({ id }) => {
     const [isModalOpen, setIsModalOpen] = useState(false)
     const toggleModal = () => setIsModalOpen(!isModalOpen)
     const [addSubCategory, { data: getSubData, isSuccess, isError }] = useAddSubCategoryMutation();
+    const { data: getData } = useGetAllCategoryQuery()
     const [subcategory, setSubCategory] = useState('')
     const [Id, setId] = useState('')
     const [slug, setSlug] = useState('')
     const handleSubmit = (e) => {
         e.preventDefault()
         if (subcategory && slug) {
-            addSubCategory({name: subcategory, slug: slug, categoryId: id})
+            addSubCategory({ name: subcategory, slug: slug, categoryId: id })
             setSubCategory('')
             setId('')
             setSlug('')
             setIsModalOpen(false);
             console.log(id, slug, subcategory);
-            
-        } else {toast.error('Fill all the fields!')}
+
+        } else { toast.error('Fill all the fields!') }
     }
     useEffect(() => {
         if (isSuccess) {
@@ -62,6 +64,7 @@ const SubcategoryModal = ({id}) => {
             <button onClick={toggleModal} className="flex items-center gap-2 text-white bg-[#5C67F7] font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="button">
                 <FaPlus />  Add Sub Category
             </button>
+
 
             <Modal isOpen={isModalOpen} toggleModal={toggleModal} title="Create New Subcategory">
                 <FormAdmin

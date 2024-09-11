@@ -7,9 +7,9 @@ import OpenSearchBar from "./OpenSearchBar";
 import { Link } from "react-router-dom";
 import BasketSideBar from "./BasketSideBar";
 import { useDispatch, useSelector } from "react-redux";
-import { setBasket } from "../../Store/BasketSlice";
+import { setBasket } from "../../../Store/BasketSlice";
 import UserLogin from "./UserLogin";
-import { setUser } from "../../Store/UserLoginSlice";
+import { setUser } from "../../../Store/UserLoginSlice";
 
 const Header = () => {
 

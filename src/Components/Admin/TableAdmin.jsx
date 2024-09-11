@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaRegTrashAlt } from 'react-icons/fa';
 
-const TableAdmin = ({ item, actions, update: UpdateComponent, SubCategory: SubCategory }) => {
+const TableAdmin = ({ item, actions, update: UpdateComponent,  ShowSubCategories }) => {
     return (
         <div className="w-full">
             <div className='flex justify-start items-center bg-[#374151] text-[#9CA3AF]'>
@@ -13,7 +13,8 @@ const TableAdmin = ({ item, actions, update: UpdateComponent, SubCategory: SubCa
                     <button onClick={() => actions(item.id)} className="flex items-center gap-2 text-white bg-red-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="button">
                         <FaRegTrashAlt /> Delete
                     </button>
-                    {SubCategory ?  <SubCategory id={item.id} /> : '' } 
+                    {/* {/* {SubCategory ?  <SubCategory  /> : '' }  */}
+                    {ShowSubCategories && <ShowSubCategories id={item.id} />} 
                 </div>
                 {/* <button onClick={() => setOpenSub(!openSub)} className="w-[5%] flex justify-center items-center h-full border p-3"><RxDoubleArrowDown /></button> */}
             </div>

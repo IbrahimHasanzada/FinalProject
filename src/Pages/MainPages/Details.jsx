@@ -1,7 +1,7 @@
 import { FaWhatsapp, FaRegHeart } from "react-icons/fa"
 import Card from "../../Components/Card"
 import BlackButton from "../../Components/BlackButton"
-import DetailsSlider from "../../Components/Details.jsx/DetailsSlider"
+import DetailsSlider from "../../Components/User/Details/DetailsSlider"
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io'
 import { useState } from "react"
 import Breadcrumb from "../../Components/BreadCrumbs"

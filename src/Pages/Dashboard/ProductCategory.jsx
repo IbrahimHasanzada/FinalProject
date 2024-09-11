@@ -1,12 +1,9 @@
-import { FaRegEdit, FaRegTrashAlt } from "react-icons/fa";
 import AddCategory from "../../Components/Admin/Category/AddCategory";
 import { useDelCategoryMutation, useGetAllCategoryQuery } from "../../Store/EmporiumApi";
-import { RxDoubleArrowDown } from "react-icons/rx";
 import { useEffect, useState } from "react";
-import SubcategoryModal from "../../Components/Admin/Category/SubCategoryModal";
 import UpdateCategory from "../../Components/Admin/Category/UpdateCategory";
+import ShowSubCategories from "../../Components/Admin/Category/ShowSubCategories";
 import { toast, ToastContainer } from "react-toastify";
-import Swal from 'sweetalert2';
 import TableAdmin from "../../Components/Admin/TableAdmin";
 const ProductCategory = () => {
     const [openSub, setOpenSub] = useState(false)
@@ -43,37 +40,8 @@ const ProductCategory = () => {
                     item={item}
                     actions={deleteCategoryByID}
                     update={UpdateCategory}
-                    SubCategory={SubcategoryModal}
-
+                    ShowSubCategories={ShowSubCategories}
                 />
-                // <div key={i} className="w-full">
-                //     <div className='flex justify-start items-center bg-[#374151] text-[#9CA3AF]'>
-                //         <span className='p-4 w-[20%]'>{item.name}</span>
-                //         <span className='p-4 w-[20%]'>{item.slug}</span>
-                //         <span className='p-4 w-[20%]'>{item.id}</span>
-                //         <div className='p-4 w-[33%] flex gap-2'>
-                //             <UpdateCategory id={item.id} />
-                //             <button onClick={() => deleteCategoryByID(item.id)} className="flex items-center gap-2 text-white bg-red-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="button">
-                //                 <FaRegTrashAlt />   Delete
-                //             </button>
-                //             
-                //         </div>
-                //         <button onClick={() => setOpenSub(!openSub)} className="w-[5%] flex justify-center items-center h-full border p-3"> <RxDoubleArrowDown /></button>
-                //     </div>
-                //     <div className={`flex justify-start items-center bg-transparent text-[#9CA3AF] duration-300 ${openSub ? 'block' : 'hidden'}`}>
-                //         <span className='p-4 w-[20%]'>{item.name}</span>
-                //         <span className='p-4 w-[20%]'>{item.slug}</span>
-                //         <span className='p-4 w-[20%]'>{item.id}</span>
-                //         <div className='p-4 w-[20%] flex gap-2 '>
-                //             <button className="flex items-center gap-2 text-white bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="button">
-                //                 <FaRegEdit />   Edit
-                //             </button>
-                //             <button className="flex items-center gap-2 text-white bg-red-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="button">
-                //                 <FaRegEdit />   Delete
-                //             </button>
-                //         </div>
-                //     </div>
-                // </div>
             ))}
         </div>
     );

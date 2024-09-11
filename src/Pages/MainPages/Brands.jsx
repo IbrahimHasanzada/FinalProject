@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import BrandsSideBar from '../../Components/Brands/BrandsSideBar'
+import BrandsSideBar from '../../Components/User/Brands/BrandsSideBar'
 import { Link } from 'react-router-dom'
 import { CiHeart } from 'react-icons/ci'
 import { IoFilterSharp } from "react-icons/io5";

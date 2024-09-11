@@ -1,8 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-
-// Retrieve the token from localStorage or another secure place
 const token = localStorage.getItem('token');
-
 export const emporiumApi = createApi({
     reducerPath: "emporiumApi",
     baseQuery: fetchBaseQuery({ baseUrl: 'https://ecommerse.davidhtml.xyz/' }),
@@ -63,6 +60,17 @@ export const emporiumApi = createApi({
             }),
             invalidatesTags: ['Category']
         }),
+        delSubCategory: builder.mutation({
+            query: ({ id }) => ({
+                url: `/categories/subcategory/delete/${id}`,
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+            }),
+            invalidatesTags: ['SubCategory'],
+        }),
         delBrands: builder.mutation({
             query: ({ id }) => ({
                 url: `/brands/delete/${id}`,
@@ -108,17 +116,17 @@ export const emporiumApi = createApi({
                 },
                 body: { name, slug, categoryId }
             }),
-            invalidatesTags: ({ categoryId }) => [{ type: 'SubCategory', id: categoryId }]
+            invalidatesTags: ['SubCategory'],
         }),
         updateSubCategory: builder.mutation({
-            query: ({ name, slug, id }) => ({
-                url: `/categories/subcategory/update/${id}`,
+            query: ({ name, slug, Id, categoryId }) => ({
+                url: `/categories/subcategory/update/${Id}`,
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`
                 },
-                body: { name, slug }
+                body: { name, slug, categoryId }
             }),
             invalidatesTags: ['SubCategory']
         }),
@@ -155,5 +163,6 @@ export const {
     useDelBrandsMutation,
     useUpdateSubCategoryMutation,
     useUpdateBrandsMutation,
-    useGetBrandsByIdQuery
+    useGetBrandsByIdQuery,
+    useDelSubCategoryMutation
 } = emporiumApi;
