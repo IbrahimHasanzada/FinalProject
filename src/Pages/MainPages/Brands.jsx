@@ -4,10 +4,14 @@ import { Link } from 'react-router-dom'
 import { CiHeart } from 'react-icons/ci'
 import { IoFilterSharp } from "react-icons/io5";
 import Breadcrumb from '../../Components/BreadCrumbs';
+import { useGetAllProductQuery } from '../../Store/EmporiumApi';
+import Card from '../../Components/Card';
 const Brands = () => {
 
     const [filter, setFilter] = useState(false)
-
+    const {data:getAllProduct} = useGetAllProductQuery()
+    console.log(getAllProduct);
+    
     return (
         <div>
             <div className='wrapper mx-auto font-["Montserrat",_sans-serif]'>
@@ -57,203 +61,10 @@ const Brands = () => {
 
                         {/* Card sections */}
 
-                        <div className='w-full grid grid-cols-2 sm:grid-cols-3  xl:grid-cols-3 2xl:grid-cols-4  gap-4 '>
-                            <div className='relative '>
-                                <div className='absolute top-1  w-full  flex justify-between '>
-                                    <span className=' bg-[#6D7A5E] px-4 ml-1 text-white rounded-sm'>Yeni</span>
-                                    <CiHeart className='text-2xl mr-1' />
-                                </div>
-                                <Link to="Details">
-                                    <img src="/img/papaq.jpeg" alt="p" />
-                                </Link>
-                                <div className='pt-[10px]'>
-                                    <p className="font-bold text-sm">Boss</p>
-                                    <p className='text-sm text-[#777]'>Zəncirbəndli bağlanma ilə uzunqol kardiqan</p>
-                                    <p className='py-[10px]'>395</p>
-                                </div>
-                            </div>
-                            <div className='relative '>
-                                <div className='absolute top-1  w-full  flex justify-between '>
-                                    <span className=' bg-[#6D7A5E] px-4 ml-1 text-white rounded-sm'>Yeni</span>
-                                    <CiHeart className='text-2xl mr-1' />
-                                </div>
-                                <Link>
-                                    <img src="/img/papaq.jpeg" alt="p" />
-                                </Link>
-                                <div className='pt-[10px]'>
-                                    <p className="font-bold text-sm">Boss</p>
-                                    <p className='text-sm text-[#777]'>Zəncirbəndli bağlanma ilə uzunqol kardiqan</p>
-                                    <p className='py-[10px]'>395</p>
-                                </div>
-                            </div>
-                            <div className='relative '>
-                                <div className='absolute top-1  w-full  flex justify-between '>
-                                    <span className=' bg-[#6D7A5E] px-4 ml-1 text-white rounded-sm'>Yeni</span>
-                                    <CiHeart className='text-2xl mr-1' />
-                                </div>
-                                <Link>
-                                    <img src="/img/papaq.jpeg" alt="p" />
-                                </Link>
-                                <div className='pt-[10px]'>
-                                    <p className="font-bold text-sm">Boss</p>
-                                    <p className='text-sm text-[#777]'>Zəncirbəndli bağlanma ilə uzunqol kardiqan</p>
-                                    <p className='py-[10px]'>395</p>
-                                </div>
-                            </div>
-                            <div className='relative '>
-                                <div className='absolute top-1  w-full  flex justify-between '>
-                                    <span className=' bg-[#6D7A5E] px-4 ml-1 text-white rounded-sm'>Yeni</span>
-                                    <CiHeart className='text-2xl mr-1' />
-                                </div>
-                                <Link>
-                                    <img src="/img/papaq.jpeg" alt="p" />
-                                </Link>
-                                <div className='pt-[10px]'>
-                                    <p className="font-bold text-sm">Boss</p>
-                                    <p className='text-sm text-[#777]'>Zəncirbəndli bağlanma ilə uzunqol kardiqan</p>
-                                    <p className='py-[10px]'>395</p>
-                                </div>
-                            </div>
-                            <div className='relative '>
-                                <div className='absolute top-1  w-full  flex justify-between '>
-                                    <span className=' bg-[#6D7A5E] px-4 ml-1 text-white rounded-sm'>Yeni</span>
-                                    <CiHeart className='text-2xl mr-1' />
-                                </div>
-                                <Link>
-                                    <img src="/img/papaq.jpeg" alt="p" />
-                                </Link>
-                                <div className='pt-[10px]'>
-                                    <p className="font-bold text-sm">Boss</p>
-                                    <p className='text-sm text-[#777]'>Zəncirbəndli bağlanma ilə uzunqol kardiqan</p>
-                                    <p className='py-[10px]'>395</p>
-                                </div>
-                            </div>
-                            <div className='relative '>
-                                <div className='absolute top-1  w-full  flex justify-between '>
-                                    <span className=' bg-[#6D7A5E] px-4 ml-1 text-white rounded-sm'>Yeni</span>
-                                    <CiHeart className='text-2xl mr-1' />
-                                </div>
-                                <Link>
-                                    <img src="/img/papaq.jpeg" alt="p" />
-                                </Link>
-                                <div className='pt-[10px]'>
-                                    <p className="font-bold text-sm">Boss</p>
-                                    <p className='text-sm text-[#777]'>Zəncirbəndli bağlanma ilə uzunqol kardiqan</p>
-                                    <p className='py-[10px]'>395</p>
-                                </div>
-                            </div>
-                            <div className='relative '>
-                                <div className='absolute top-1  w-full  flex justify-between '>
-                                    <span className=' bg-[#6D7A5E] px-4 ml-1 text-white rounded-sm'>Yeni</span>
-                                    <CiHeart className='text-2xl mr-1' />
-                                </div>
-                                <Link>
-                                    <img src="/img/papaq.jpeg" alt="p" />
-                                </Link>
-                                <div className='pt-[10px]'>
-                                    <p className="font-bold text-sm">Boss</p>
-                                    <p className='text-sm text-[#777]'>Zəncirbəndli bağlanma ilə uzunqol kardiqan</p>
-                                    <p className='py-[10px]'>395</p>
-                                </div>
-                            </div>
-                            <div className='relative '>
-                                <div className='absolute top-1  w-full  flex justify-between '>
-                                    <span className=' bg-[#6D7A5E] px-4 ml-1 text-white rounded-sm'>Yeni</span>
-                                    <CiHeart className='text-2xl mr-1' />
-                                </div>
-                                <Link>
-                                    <img src="/img/papaq.jpeg" alt="p" />
-                                </Link>
-                                <div className='pt-[10px]'>
-                                    <p className="font-bold text-sm">Boss</p>
-                                    <p className='text-sm text-[#777]'>Zəncirbəndli bağlanma ilə uzunqol kardiqan</p>
-                                    <p className='py-[10px]'>395</p>
-                                </div>
-                            </div>
-                            <div className='relative '>
-                                <div className='absolute top-1  w-full  flex justify-between '>
-                                    <span className=' bg-[#6D7A5E] px-4 ml-1 text-white rounded-sm'>Yeni</span>
-                                    <CiHeart className='text-2xl mr-1' />
-                                </div>
-                                <Link>
-                                    <img src="/img/papaq.jpeg" alt="p" />
-                                </Link>
-                                <div className='pt-[10px]'>
-                                    <p className="font-bold text-sm">Boss</p>
-                                    <p className='text-sm text-[#777]'>Zəncirbəndli bağlanma ilə uzunqol kardiqan</p>
-                                    <p className='py-[10px]'>395</p>
-                                </div>
-                            </div>
-                            <div className='relative '>
-                                <div className='absolute top-1  w-full  flex justify-between '>
-                                    <span className=' bg-[#6D7A5E] px-4 ml-1 text-white rounded-sm'>Yeni</span>
-                                    <CiHeart className='text-2xl mr-1' />
-                                </div>
-                                <Link>
-                                    <img src="/img/papaq.jpeg" alt="p" />
-                                </Link>
-                                <div className='pt-[10px]'>
-                                    <p className="font-bold text-sm">Boss</p>
-                                    <p className='text-sm text-[#777]'>Zəncirbəndli bağlanma ilə uzunqol kardiqan</p>
-                                    <p className='py-[10px]'>395</p>
-                                </div>
-                            </div>
-                            <div className='relative '>
-                                <div className='absolute top-1  w-full  flex justify-between '>
-                                    <span className=' bg-[#6D7A5E] px-4 ml-1 text-white rounded-sm'>Yeni</span>
-                                    <CiHeart className='text-2xl mr-1' />
-                                </div>
-                                <Link>
-                                    <img src="/img/papaq.jpeg" alt="p" />
-                                </Link>
-                                <div className='pt-[10px]'>
-                                    <p className="font-bold text-sm">Boss</p>
-                                    <p className='text-sm text-[#777]'>Zəncirbəndli bağlanma ilə uzunqol kardiqan</p>
-                                    <p className='py-[10px]'>395</p>
-                                </div>
-                            </div>
-                            <div className='relative '>
-                                <div className='absolute top-1  w-full  flex justify-between '>
-                                    <span className=' bg-[#6D7A5E] px-4 ml-1 text-white rounded-sm'>Yeni</span>
-                                    <CiHeart className='text-2xl mr-1' />
-                                </div>
-                                <Link>
-                                    <img src="/img/papaq.jpeg" alt="p" />
-                                </Link>
-                                <div className='pt-[10px]'>
-                                    <p className="font-bold text-sm">Boss</p>
-                                    <p className='text-sm text-[#777]'>Zəncirbəndli bağlanma ilə uzunqol kardiqan</p>
-                                    <p className='py-[10px]'>395</p>
-                                </div>
-                            </div>
-                            <div className='relative '>
-                                <div className='absolute top-1  w-full  flex justify-between '>
-                                    <span className=' bg-[#6D7A5E] px-4 ml-1 text-white rounded-sm'>Yeni</span>
-                                    <CiHeart className='text-2xl mr-1' />
-                                </div>
-                                <Link>
-                                    <img src="/img/papaq.jpeg" alt="p" />
-                                </Link>
-                                <div className='pt-[10px]'>
-                                    <p className="font-bold text-sm">Boss</p>
-                                    <p className='text-sm text-[#777]'>Zəncirbəndli bağlanma ilə uzunqol kardiqan</p>
-                                    <p className='py-[10px]'>395</p>
-                                </div>
-                            </div>
-                            <div className='relative '>
-                                <div className='absolute top-1  w-full  flex justify-between '>
-                                    <span className=' bg-[#6D7A5E] px-4 ml-1 text-white rounded-sm'>Yeni</span>
-                                    <CiHeart className='text-2xl mr-1' />
-                                </div>
-                                <Link>
-                                    <img src="/img/papaq.jpeg" alt="p" />
-                                </Link>
-                                <div className='pt-[10px]'>
-                                    <p className="font-bold text-sm">Boss</p>
-                                    <p className='text-sm text-[#777]'>Zəncirbəndli bağlanma ilə uzunqol kardiqan</p>
-                                    <p className='py-[10px]'>395</p>
-                                </div>
-                            </div>
+                        <div className='w-full grid grid-cols-2 sm:grid-cols-3  xl:grid-cols-3 gap-4 '>
+                            {getAllProduct?.data.map((item, i) => (
+                                <Card item={item} key={i} />
+                            ))}
                         </div>
                     </div>
                 </section>

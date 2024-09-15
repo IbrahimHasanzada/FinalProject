@@ -22,6 +22,8 @@ export const route = createBrowserRouter(
                 <Auth>
                     <Dashboard />
                 </Auth>}>
+                {/* Redirect to /admin/category when /admin is accessed */}
+                <Route index element={<ProductCategory />} />
                 <Route path='category' element={<ProductCategory />} />
                 <Route path='products' element={<Products />} />
                 <Route path='brands' element={<ProductBrands />} />

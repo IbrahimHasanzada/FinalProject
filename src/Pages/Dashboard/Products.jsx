@@ -1,9 +1,24 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import ProductModal from '../../Components/Admin/Product/ProductModal'
 import { FaRegEdit } from "react-icons/fa";
+import { useDelProductMutation, useGetAllProductQuery } from '../../Store/EmporiumApi';
+import TableAdmin from '../../Components/Admin/TableAdmin';
+import UpdateProduct from '../../Components/Admin/Product/UpdateProduct';
+import { toast, ToastContainer } from 'react-toastify';
 const Products = () => {
+    const { data: getProducts} = useGetAllProductQuery()
+    const [delProduct, {data: getDeletedProducts, isError, isSuccess}] = useDelProductMutation()
+    const [product, setProduct] = useState(true)
+        console.log(getProducts);
+        const deleteProduct = (id) =>  {delProduct({id})}
+        useEffect(() => {
+            if (isSuccess) {
+                toast.success('Product deleted successfully')
+            } else if (isError) { toast.error('Failed to delete Product') }
+        }, [isSuccess, isError])
     return (
         <div className="p-5 w-full bg-[#1F2937]">
+            <ToastContainer />
             <div className="mb-4 text-white font-medium">
                 <h1 className="text-3xl">All products</h1>
             </div>
@@ -16,28 +31,24 @@ const Products = () => {
             </div>
             <div className='w-full'>
                 <div className='w-full flex justify-start items-center text-start bg-[#374151] text-[#9CA3AF]'>
-                    <h2 className='p-4 w-[20%]'>Product Name</h2>
-                    <h2 className='p-4 w-[20%]'>Technology</h2>
-                    <h2 className='p-4 w-[20%]'>ID</h2>
-                    <h2 className='p-4 w-[20%]'>Price</h2>
-                    <h2 className='p-4 w-[20%]'>Edit</h2>
+                    <h2 className='p-4 w-[10%]'>Product ID</h2>
+                    <h2 className='p-4 w-[22%]'>Product</h2>
+                    <h2 className='p-4 w-[16%]'>Category</h2>
+                    <h2 className='p-4 w-[16%]'>Subcategory</h2>
+                    <h2 className='p-4 w-[16%]'>Price</h2>
+                    <h2 className='p-4 w-[33%]'>Edit</h2>
                 </div>
-                <div className='w-full flex justify-center items-center bg-[#374151] text-[#9CA3AF]'>
-                    <span className='p-4 w-[20%]'>Education Dashboard</span>
-                    <span className='p-4 w-[20%]'>Angular</span>
-                    <span className='p-4 w-[20%]'>#194556</span>
-                    <span className='p-4 w-[20%]'>$149</span>
-                    <div className='p-4 w-[20%] flex gap-2'>
-                        <button className="flex items-center gap-2 text-white bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="button">
-                            <FaRegEdit />   Edit 
-                        </button>
-                        <button className="flex items-center gap-2 text-white bg-red-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="button">
-                            <FaRegEdit />   Delete 
-                        </button>
-                    </div>
-                </div>
+                {getProducts?.data.map((item, i) => (
+                    <TableAdmin
+                        key={i}
+                        item={item}
+                        product={product}
+                        actions={deleteProduct}
+                        update={UpdateProduct}
+                    />
+                ))}
+                </div> 
             </div>
-        </div>
     )
 }
 

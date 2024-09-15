@@ -3,7 +3,7 @@ const token = localStorage.getItem('token');
 export const emporiumApi = createApi({
     reducerPath: "emporiumApi",
     baseQuery: fetchBaseQuery({ baseUrl: 'https://ecommerse.davidhtml.xyz/' }),
-    tagTypes: ['Category', 'SubCategory', 'Brands'],
+    tagTypes: ['Category', 'SubCategory', 'Brands', 'Product', "Image"],
     endpoints: (builder) => ({
         registerUser: builder.mutation({
             query: ({ name, username, phone, address, password, dob, gender, email }) => ({
@@ -60,6 +60,17 @@ export const emporiumApi = createApi({
             }),
             invalidatesTags: ['Category']
         }),
+        delProduct: builder.mutation({
+            query: ({ id }) => ({
+                url: `/products/delete/${id}`,
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+            }),
+            invalidatesTags: ['Product']
+        }),
         delSubCategory: builder.mutation({
             query: ({ id }) => ({
                 url: `/categories/subcategory/delete/${id}`,
@@ -70,6 +81,17 @@ export const emporiumApi = createApi({
                 },
             }),
             invalidatesTags: ['SubCategory'],
+        }),
+        delImage: builder.mutation({
+            query: ({ fileName }) => ({
+                url: `/img/delete/${fileName}`,
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+            }),
+            invalidatesTags: ['Image'],
         }),
         delBrands: builder.mutation({
             query: ({ id }) => ({
@@ -98,6 +120,10 @@ export const emporiumApi = createApi({
             query: () => `/categories/all`,
             providesTags: ['Category']
         }),
+        getAllProduct: builder.query({
+            query: () => `/products/all`,
+            providesTags: ['Product']
+        }),
         getAllBrands: builder.query({
             query: () => `/brands/all`,
             providesTags: ['Brands']
@@ -105,6 +131,10 @@ export const emporiumApi = createApi({
         getCategoryById: builder.query({
             query: (id) => `/categories/get/${id}`,
             providesTags: (id) => [{ type: 'Category', id }]
+        }),
+        getProductById: builder.query({
+            query: (id) => `/products/get/${id}`,
+            providesTags: (id) => [{ type: 'Product', id }]
         }),
         addSubCategory: builder.mutation({
             query: ({ name, slug, categoryId }) => ({
@@ -116,7 +146,7 @@ export const emporiumApi = createApi({
                 },
                 body: { name, slug, categoryId }
             }),
-            invalidatesTags: ['SubCategory'],
+            providesTags: ['SubCategory'],
         }),
         updateSubCategory: builder.mutation({
             query: ({ name, slug, Id, categoryId }) => ({
@@ -129,6 +159,18 @@ export const emporiumApi = createApi({
                 body: { name, slug, categoryId }
             }),
             invalidatesTags: ['SubCategory']
+        }),
+        updateProducts: builder.mutation({
+            query: ({ name, description, discount, price, images, categoryId, subcategoryId, brandsId, colors, size, id }) => ({
+                url: `/products/update/${id}`,
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: { name, description, discount, price, images, categoryId, subcategoryId, brandsId, colors, size }
+            }),
+            invalidatesTags: ['Product']
         }),
         updateBrands: builder.mutation({
             query: ({ name, slug, Id }) => ({
@@ -146,6 +188,30 @@ export const emporiumApi = createApi({
             query: (id) => `/brands/get/${id}`,
             providesTags: (id) => [{ type: 'Brands', id }]
         }),
+        uploadImage: builder.mutation({
+            query: (formData) => ({
+                url: '/img/upload',
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                },
+                body: formData
+            }),
+            invalidatesTags: ['Image']
+
+        }),
+        addProduct: builder.mutation({
+            query: ({ name, description, discount, price, images, categoryId, subcategoryId, brandsId, colors, size }) => ({
+                url: `/products/create`,
+                method: 'POST',
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                 },
+                body: { name, description, discount, price, images, categoryId, subcategoryId, brandsId, colors, size }
+            }),
+            invalidatesTags: ['Product']
+        })
     }),
 });
 
@@ -164,5 +230,12 @@ export const {
     useUpdateSubCategoryMutation,
     useUpdateBrandsMutation,
     useGetBrandsByIdQuery,
-    useDelSubCategoryMutation
+    useDelSubCategoryMutation,
+    useUploadImageMutation,
+    useAddProductMutation,
+    useDelProductMutation,
+    useGetAllProductQuery,
+    useGetProductByIdQuery,
+    useUpdateProductsMutation,
+    useDelImageMutation
 } = emporiumApi;

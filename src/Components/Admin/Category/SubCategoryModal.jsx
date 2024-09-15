@@ -61,7 +61,7 @@ const SubcategoryModal = ({ id }) => {
 
     return (
         <div>
-            <button onClick={toggleModal} className="flex items-center gap-2 text-white bg-[#5C67F7] font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="button">
+            <button onClick={toggleModal} className="flex items-center gap-2  border-2 text-[#5C67F7] hover:text-white bg-transparent border-[#5C67F7] hover:bg-[#5C67F7] font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="button">
                 <FaPlus />  Add Sub Category
             </button>
 

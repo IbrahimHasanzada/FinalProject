@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import Slider from "react-slick";
+import { useGetAllProductQuery } from "../../../Store/EmporiumApi";
 
 const DetailsSlider = () => {
+
+    const {data:getAllProduct} = useGetAllProductQuery()
+
     const imageSlider = ['basketexample1.jpeg', 'basketexample2.jpeg', 'basketexample3.jpeg', 'basketexample4.jpeg'];
     const [activeSlide, setActiveSlide] = useState(0);
 

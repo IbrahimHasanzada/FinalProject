@@ -10,9 +10,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { setBasket } from "../../../Store/BasketSlice";
 import UserLogin from "./UserLogin";
 import { setUser } from "../../../Store/UserLoginSlice";
+import { useGetAllCategoryQuery } from "../../../Store/EmporiumApi";
 
 const Header = () => {
-
+    const {data:getAllCategories} = useGetAllCategoryQuery()
     const [flag, setFlag] = useState(false)
     const { basket } = useSelector(state => state.basket)
     const { user } = useSelector(state => state.user)
@@ -32,8 +33,8 @@ const Header = () => {
                         </button>
                     </div>
                     <ul className='hidden lg:flex w-full overflow-scroll'>
-                        {categories.map((item, i) => (
-                            <li key={i} className="py-1 px-2 ml-[2px] text-nowrap mb-1 cursor-pointer rounded-[3px] hover:bg-[#e4e4e4]">{item}</li>
+                        {getAllCategories?.map((item, i) => (
+                            <li key={i} className="py-1 px-2 ml-[2px] text-nowrap mb-1 cursor-pointer rounded-[3px] hover:bg-[#e4e4e4]">{item.name}</li>
                         ))}
                     </ul>
 

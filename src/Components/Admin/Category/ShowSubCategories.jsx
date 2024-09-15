@@ -23,7 +23,7 @@ const ShowSubCategories = ({id}) => {
     }, [isSuccess, isError])
     return (
         <div>
-            <button onClick={toggleModal} className="flex items-center gap-2 text-white bg-yellow-500 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="button">
+            <button onClick={toggleModal} className="flex items-center gap-2 border-2 text-yellow-400 hover:text-white bg-transparent border-yellow-400 hover:bg-yellow-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="button">
                 <FaPlus /> Subcategories
             </button>
             <Modal subcategories={subcategories} isOpen={isModalOpen} toggleModal={toggleModal} title='Subcategories'>

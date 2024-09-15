@@ -31,9 +31,9 @@ const ProductBrands = () => {
                 <BrandsModal />
             </div>
             <div className='w-full flex justify-start items-center text-start bg-[#374151] text-[#9CA3AF]'>
+                <h2 className='p-4 w-[20%] font-bold'>ID</h2>
                 <h2 className='p-4 w-[20%] font-bold'>Name</h2>
                 <h2 className='p-4 w-[20%] font-bold'>Slug Name</h2>
-                <h2 className='p-4 w-[20%] font-bold'>ID</h2>
                 <h2 className='p-4 w-[20%] font-bold'>Edit</h2>
             </div>
             {getAllBrands?.map((item, i) => (
