@@ -34,7 +34,10 @@ const UserLogin = ({ userLogin }) => {
                     login({ username: values.username, password: values.login_password })
                         .then(response => {
                             if (response.data) {
-                                    localStorage.setItem('user', JSON.stringify(response.data));
+                                console.log(response);
+                                
+                                    localStorage.setItem('user', JSON.stringify(response.data.user));
+                                    localStorage.setItem('token', response.data.token);
                                     dispatch(setUser())
                                     navigate('/')
                             }else{

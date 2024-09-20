@@ -29,14 +29,14 @@ const UserInformation = () => {
                 <section className='my-5 flex items-center md:items-start flex-col md:flex-row gap-20'>
                     <section className="relative  items-center">
                         <div className='w-52 h-52'>
-                            <img className="rounded-full h-full w-full object-cover" src={userData?.user.user_img} alt={userData?.user.id} />
+                            <img className="rounded-full h-full w-full object-cover" src={userData?.user_img} alt={userData?.id} />
                         </div>
                         
                     </section>
                     <section className="w-full">
                         <section className="w-full">
                             <div className='w-full flex justify-between  mb-10'>
-                                <h2 className='text-[2em] font-["Cormorant_Garamond",_serif] font-medium'>Hello,{userData?.user.name} </h2>
+                                <h2 className='text-[2em] font-["Cormorant_Garamond",_serif] font-medium'>Hello,{userData?.name} </h2>
                                 <button onClick={() => SignOut()} className="flex items-center text-xl">
                                     <PiSignOutBold />
                                     <span className="ml-2.5">Sign out</span>

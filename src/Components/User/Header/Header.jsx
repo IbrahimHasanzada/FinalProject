@@ -37,14 +37,14 @@ const Header = () => {
     // navigate( {pathname: '/products/all', search: `?subcategoryId=${id}`})
         
     };
-
+    
     const filterBySubCategory = (id) => {
         navigate( {pathname: '/products/all', search: `?subcategoryId=${id}`} )
     }
     const userData = JSON.parse(localStorage.getItem('user'))
     const changeToUser = () => {
         if (userData) { navigate('/UserInformation') } else dispatch(setUser())
-    }
+        }
     return (
         <header className='py-5 md:p-5 sticky z-30 lg:z-40 right-0 left-0 top-0 font-["Montserrat",_sans-serif] bg-white  '>
             <section className="wrapper flex justify-between py-4">
@@ -83,7 +83,7 @@ const Header = () => {
                     <div className="relative hidden lg:flex  items-start">
                         <button onClick={() => changeToUser()} className="flex justify-center items-center">
                             <CiUser className="text-2xl " />
-                            {userData && <span className="text-md pl-2.5">{userData.user.name}</span>}
+                            {userData && <span className="text-md pl-2.5">{userData?.name}</span>}
                         </button>
                         {!userData &&
                             <div className={`absolute top-10 right-0  hidden lg:block`}>

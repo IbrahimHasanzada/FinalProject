@@ -1,6 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-const userData = JSON.parse(localStorage.getItem('user'))
-const token = userData ? userData?.token : ''
+const token = localStorage.getItem('token')
 export const emporiumApi = createApi({
     reducerPath: "emporiumApi",
     baseQuery: fetchBaseQuery({ baseUrl: 'https://ecommerse.davidhtml.xyz/' }),

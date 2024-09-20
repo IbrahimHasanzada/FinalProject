@@ -33,6 +33,12 @@ const UpdateUser = () => {
             }
         }
     }
+    useEffect(() => {
+        if (isSuccess) {
+            localStorage.setItem('user', JSON.stringify(getUserData.user));
+            window.location.reload()
+        }
+    }, [getUserData])
     const validationSchema = Yup.object({
         first_name: Yup.string().required('First name is required'),
         mobile_number: Yup.string()
@@ -45,6 +51,8 @@ const UpdateUser = () => {
         .oneOf([Yup.ref('password'), null], 'Passwords must match')
         .required('Please confirm your password')
     })
+    console.log(userData);
+    
     return (
         <section className='wrapper flex flex-col items-center '>
             <div className='my-10 md:mb-10 md:mt-0 text-center w-full'>
@@ -52,8 +60,8 @@ const UpdateUser = () => {
             </div>
             <Formik
                 initialValues={{
-                    first_name: userData?.user.name || '',
-                    mobile_number: userData?.user.phone || '',
+                    first_name: userData?.name || '',
+                    mobile_number: userData?.phone || '',
                     password: '',
                     repeat_password: ''
                 }}
@@ -67,13 +75,6 @@ const UpdateUser = () => {
                         phone: values.mobile_number,
                         gender: values.gender,
                         password: values.password
-                    }).unwrap().then(response => {
-                        if (response.data) {
-                            localStorage.setItem('user', JSON.stringify(response.data));
-                            navigate('/')
-                        }else{
-                            toast.error('Invalid username or password!')
-                        }
                     })
                     
                 }}>
@@ -82,7 +83,7 @@ const UpdateUser = () => {
                         <div className='w-full md:flex-row flex-col flex gap-10 md:gap-20'>
                             <div className='flex items-start justify-center'>
                                 <div className='relative  w-52 h-52'>
-                                    <img className="rounded-full w-full h-full object-cover" src={userData?.user.user_img} alt={userData?.user.id} />
+                                    <img className="rounded-full w-full h-full object-cover" src={userData?.user_img} alt={userData?.id} />
                                     <button onClick={showFileInput} className="absolute right-3 bg-black text-white bottom-5 rounded-full p-2 border-4 border-white"><FaPen />
                                         <input ref={input} type="file" onChange={handleFileChange} className='hidden' />
                                     </button>
