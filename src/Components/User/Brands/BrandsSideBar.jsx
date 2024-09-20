@@ -1,23 +1,34 @@
 import { useState } from "react";
 import { FaXmark } from "react-icons/fa6";
 import BrandsAccordion from "./BrandsAccordion";
+import { useGetAllBrandsQuery } from "../../../Store/EmporiumApi";
+import { eColors, eSize } from "../../../Store/enum";
 const BrandsSideBar = ({ filter, setFilter }) => {
+    const {data: getAllBrands} = useGetAllBrandsQuery()
+    const getBrands = getAllBrands?.map(item => item.name)
+    const brandId = getAllBrands?.map(item => item.id)
+    
     const filterProducts = [
         {
             title: 'Color',
-            element: ['green', 'white', 'black', 'red']
+            element: eColors,
+            end: 'color'
         },
         {
             title: 'Brands',
-            element: ['AMIRI', 'Balenciaga', 'Moncler', 'Givenchy']
+            element: getBrands,
+            end: 'brandId',
+            id: brandId
         },
         {
             title: 'Discount',
-            element: ['Discount', 'without discount']
+            element: ['Discount', 'without discount'],
+            end: 'discount'
         },
         {
             title: 'Size',
-            element: ['XS', 'S', 'M', 'L', 'Xl', 'XXlL']
+            element: eSize,
+            end: 'size'
         },
     ]
     return (

@@ -1,18 +1,30 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-const token = localStorage.getItem('token');
+const userData = JSON.parse(localStorage.getItem('user'))
+const token = userData ? userData?.token : ''
 export const emporiumApi = createApi({
     reducerPath: "emporiumApi",
     baseQuery: fetchBaseQuery({ baseUrl: 'https://ecommerse.davidhtml.xyz/' }),
-    tagTypes: ['Category', 'SubCategory', 'Brands', 'Product', "Image"],
+    tagTypes: ['Category', 'SubCategory', 'Brands', 'Product', "Image", "AddToCard"],
     endpoints: (builder) => ({
         registerUser: builder.mutation({
-            query: ({ name, username, phone, address, password, dob, gender, email }) => ({
+            query: ({ name, username, email, phone, gender, password }) => ({
                 url: `/register`,
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ name, username, phone, address, dob, gender, email, password })
+                body: JSON.stringify({ name, username, email, phone, gender, password })
+            })
+        }),
+        userUpdate: builder.mutation({
+            query: ({ name, user_img, phone, password, }) => ({
+                url: `/user/update`,
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify({ name, user_img, phone, password,})
             })
         }),
         login: builder.mutation({
@@ -104,6 +116,17 @@ export const emporiumApi = createApi({
             }),
             invalidatesTags: ['Brands']
         }),
+        delCards: builder.mutation({
+            query: ( itemId ) => ({
+                url: `/cart/delete/${itemId}`,
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+            }),
+            invalidatesTags: ['AddToCard']
+        }),
         updateCategory: builder.mutation({
             query: ({ name, slug, categoryId }) => ({
                 url: `/categories/update/${categoryId}`,
@@ -120,9 +143,23 @@ export const emporiumApi = createApi({
             query: () => `/categories/all`,
             providesTags: ['Category']
         }),
+        getAllCart: builder.query({
+            query: () => ({
+            url : `/cart/all`,
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }}),
+            providesTags: ['AddToCard']
+        }),
         getAllProduct: builder.query({
             query: () => `/products/all`,
             providesTags: ['Product']
+        }),
+        searchProducts: builder.query({
+            query: ( params ) => ({
+                url: `/products/all?${params}`,
+            }),
         }),
         getAllBrands: builder.query({
             query: () => `/brands/all`,
@@ -204,13 +241,25 @@ export const emporiumApi = createApi({
             query: ({ name, description, discount, price, images, categoryId, subcategoryId, brandsId, colors, size }) => ({
                 url: `/products/create`,
                 method: 'POST',
-                headers: { 
+                headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`
-                 },
+                },
                 body: { name, description, discount, price, images, categoryId, subcategoryId, brandsId, colors, size }
             }),
             invalidatesTags: ['Product']
+        }),
+        addToCard: builder.mutation({
+            query: ({ productId, count }) => ({
+                url: `/cart/add`,
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: { productId, count }
+            }),
+            invalidatesTags: ['AddToCard']
         })
     }),
 });
@@ -237,5 +286,10 @@ export const {
     useGetAllProductQuery,
     useGetProductByIdQuery,
     useUpdateProductsMutation,
-    useDelImageMutation
+    useDelImageMutation,
+    useSearchProductsQuery,
+    useAddToCardMutation,
+    useGetAllCartQuery,
+    useDelCardsMutation,
+    useUserUpdateMutation
 } = emporiumApi;

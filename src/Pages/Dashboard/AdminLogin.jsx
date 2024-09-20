@@ -22,8 +22,8 @@ const AdminLogin = () => {
             onSubmit={(values) => {
                 login({ username: values.username, password: values.login_password })
                 .then(response => {
-                    localStorage.setItem('token', response.data.token)
-                    response.data ? window.location.reload() : toast.error('Invalid username or password!')
+                    localStorage.setItem('user', JSON.stringify(response.data))
+                    response.data.user.role === "ADMIN" ? window.location.reload() : toast.error('Invalid username or password!')
                 })
             }}>
             {() => (

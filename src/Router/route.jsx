@@ -15,6 +15,8 @@ import Auth from './Auth'
 import ProductCategory from '../Pages/Dashboard/ProductCategory'
 import Products from '../Pages/Dashboard/Products'
 import ProductBrands from '../Pages/Dashboard/ProductBrands'
+import UserInformation from '../Pages/MainPages/UserInformation'
+import UpdateUser from '../Components/User/Cabinet/UpdateUser'
 export const route = createBrowserRouter(
     createRoutesFromElements(
         <>
@@ -32,9 +34,11 @@ export const route = createBrowserRouter(
                 <Route index element={<Home />} />
                 <Route path='SignUp' element={<SignUp />} />
                 <Route path='Login' element={<Login />} />
+                <Route path='UserInformation' element={<UserInformation />} />
+                <Route path='UserInformation/cabinet' element={<UpdateUser />} />
                 <Route path="CategoryPage" element={<CategoryPage />} />
-                <Route path="CategoryPage/Brands" element={<Brands />} />
-                <Route path="CategoryPage/Brands/Details" element={<Details />} />
+                <Route path="/products/all" element={<Brands />} />
+                <Route path="Details/:productsId" element={<Details />} />
                 <Route path="AboutUs" element={<AboutUs />} />
                 <Route path="Basket" element={<Basket />} />
                 <Route path="Basket/Checkout" element={<CheckOut />} />

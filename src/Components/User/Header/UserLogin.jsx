@@ -2,7 +2,7 @@ import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import { TbEye, TbEyeOff } from "react-icons/tb";
 import FormInput from '../Checkout/FormInput';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { setUser } from '../../../Store/UserLoginSlice';
@@ -10,17 +10,18 @@ import { useLoginMutation } from '../../../Store/EmporiumApi';
 import { Bounce, toast, ToastContainer } from 'react-toastify';
 
 const UserLogin = ({ userLogin }) => {
+    const userData = JSON.parse(localStorage.getItem('user'))
     const [showPassword, setShowPassword] = useState(false);
     const togglePasswordVisibility = () => { setShowPassword(!showPassword) }
     const { user } = useSelector(state => state.user)
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const [login] = useLoginMutation()
+    const [login, { data: userInformation, isSuccess, isError }] = useLoginMutation()
     const validationSchema = Yup.object().shape({
         username: Yup.string().required('First name is required'),
         login_password: Yup.string()
             .required('Password is required')
-            .min(6, 'Password must be at least 6 characters')
+            .min(5, 'Password must be at least 6 characters')
     })
     return (
         <div className={`bg-white p-6 ${userLogin ? 'w-full' : 'w-[330px] shadow-2xl'}`}>
@@ -33,9 +34,12 @@ const UserLogin = ({ userLogin }) => {
                     login({ username: values.username, password: values.login_password })
                         .then(response => {
                             if (response.data) {
-                                navigate('/')
-                                dispatch(setUser())
-                            } else toast.error('Invalid username or password!')
+                                    localStorage.setItem('user', JSON.stringify(response.data));
+                                    dispatch(setUser())
+                                    navigate('/')
+                            }else{
+                                toast.error('Invalid username or password!')
+                            }
                         })
                 }}>
                 {() => (

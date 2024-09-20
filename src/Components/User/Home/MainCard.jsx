@@ -7,7 +7,7 @@ const MainCard = ({item}) => {
             <div>
                 <section className='w-full h-full  flex justify-center font-["Montserrat",_sans-serif] items-center absolute inset-0 z-[2] py-4 px-2 bg-[rgba(0,_0,_0,_0.2)] '>
                     <div>
-                        <span className='text-[2.5em] text-[#F6F7F9]'>{title}</span>
+                        <span className='text-3xl md:text-[2.5em] text-[#F6F7F9]'>{title}</span>
                     </div>
                 </section>
                 <section className='w-full h-full overflow-hidden'>

@@ -75,11 +75,12 @@ const ProductModal = () => {
         toggleModal()
     }
     const deleteSelectedImage = async (name) => {
-            const fileName = name.split('/')[3]
-            await delImage({ fileName }).unwrap();
-            setFormDataInput(prev => ({...prev, image: prev.image.filter(img => img !== name)
-            }));
-            toast.success('Image deleted successfully');
+        const fileName = name.split('/')[3]
+        await delImage({ fileName }).unwrap();
+        setFormDataInput(prev => ({
+            ...prev, image: prev.image.filter(img => img !== name)
+        }));
+        toast.success('Image deleted successfully');
     };
 
     useEffect(() => {
@@ -131,7 +132,15 @@ const ProductModal = () => {
                                 <FaXmark />
                             </button>
                         </div>
-                        <FormAdmin deleletImage={deleteSelectedImage} image={formDataInput.image} product={product} formFields={formFields} onSubmit={handleSubmit} formTitle="Product Information" submitButtonLabel={<><FaPlus /> Add new products</>} handleFileChange={handleFileChange} />
+                        <FormAdmin
+                            deleletImage={deleteSelectedImage}
+                            image={formDataInput.image}
+                            product={product}
+                            formFields={formFields}
+                            onSubmit={handleSubmit}
+                            formTitle="Product Information"
+                            submitButtonLabel={<><FaPlus /> Add new products</>}
+                            handleFileChange={handleFileChange} />
                     </div>
                 </div>
             )}

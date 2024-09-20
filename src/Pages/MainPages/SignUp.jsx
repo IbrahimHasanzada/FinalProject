@@ -1,17 +1,35 @@
 import React, { useState } from 'react';
-import { Formik, Form, Field} from 'formik';
+import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import FormInput from '../../Components/User/Checkout/FormInput';
 import { TbEye, TbEyeOff } from 'react-icons/tb';
 import BlackButton from '../../Components/BlackButton';
-import { useRegisterUserMutation } from '../../Store/EmporiumApi';
+import { useRegisterUserMutation, useUploadImageMutation } from '../../Store/EmporiumApi';
+import { eGender } from '../../Store/enum';
+import { toast } from 'react-toastify';
 
 const SignUp = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [registerUser, { data: getUserData }] = useRegisterUserMutation()
+    const [sendImage, { data: getImages }] = useUploadImageMutation()
+    // const [image, setImage] = useState('')
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
-    };
+    }
+    // const handleFileChange = async (e) => {
+    //     const file = e.target.files[0];
+    //     if (file) {
+    //         const formData = new FormData();
+    //         formData.append('image', file);
+    //         setImage(file);
+    //         const response = await sendImage(formData).unwrap();
+    //         if (response.file && response.file.location) {
+    //             // setFormDataInput(prev => ({ ...prev, image: response.file.location }));
+    //             toast.success('File uploaded successfully');
+    //         }
+    //     }
+    // }
+
     const validationSchema = Yup.object({
         first_name: Yup.string().required('First name is required'),
         last_name: Yup.string().required('Last name is required'),
@@ -19,59 +37,51 @@ const SignUp = () => {
         mobile_number: Yup.string()
             .required('Mobile number is required')
             .matches(/^[0-9]{10,12}$/, 'Enter a valid mobile number'),
-        date: Yup.date().required('Birthday is required'),
         gender: Yup.string().required('Gender is required'),
-        address: Yup.string().required('Address is required'),
         password: Yup.string()
             .required('Password is required')
             .min(6, 'Password must be at least 6 characters'),
         repeat_password: Yup.string()
             .oneOf([Yup.ref('password'), null], 'Passwords must match')
             .required('Please confirm your password')
-    });
-
+    })
     return (
         <section className='wrapper flex flex-col items-center'>
             <div className='mb-10 text-center w-full'>
                 <h4 className='text-4xl font-["Cormorant_Garamond",_serif]'>Signup</h4>
             </div>
-
             <Formik
                 initialValues={{
                     first_name: '',
                     last_name: '',
                     email: '',
                     mobile_number: '',
-                    date: '',
                     gender: '',
-                    address: '',
                     password: '',
                     repeat_password: ''
                 }}
                 validationSchema={validationSchema}
                 onSubmit={(values) => {
-                    console.log(values);
                     registerUser({
                         name: values.first_name,
                         username: values.last_name,
                         email: values.email,
                         phone: values.mobile_number,
-                        address: values.address,
-                        dob: values.date.toISOString(),
                         gender: values.gender,
                         password: values.password
-                    })
-                    console.log(getUserData);
-                    
-                }}
-            >
+                    }).unwrap().then((data) => {
+                        console.log('User registered successfully:', data);
+                    }).catch((error) => {
+                        console.error('Error:', error);
+                    });
+                }}>
                 {() => (
                     <Form className='w-full md:w-[480px] '>
                         <div className='pt-5'>
-                            <FormInput type='text' name='first_name' label='First name' placeholder='First name' />
+                            <FormInput type='text' name='first_name' label='Name' placeholder='Name' />
                         </div>
                         <div className='pt-5'>
-                            <FormInput type='text' name='last_name' label='Last name' placeholder='Last name' />
+                            <FormInput type='text' name='last_name' label='Username' placeholder='Username' />
                         </div>
                         <div className='pt-5'>
                             <FormInput type='email' name='email' label='Email' placeholder='Email' />
@@ -79,21 +89,16 @@ const SignUp = () => {
                         <div className='pt-5'>
                             <FormInput type='text' name='mobile_number' label='Mobile number' placeholder='Mobile number' />
                         </div>
-                        <div className='pt-5'>
-                            <FormInput type='date' name='date' label='Birthday' placeholder='Birthday' />
-                        </div>
                         <div className='pt-5 w-full bg-white'>
                             <label htmlFor="gender">Gender</label>
                             <div className="w-full border  border-gray-300 rounded px-5">
                                 <Field as="select" name="gender" className="h-11 w-full" >
                                     <option value="">Select Gender</option>
-                                    <option value="male">MALE</option>
-                                    <option value="female">Female</option>
+                                    {eGender.map((item, i) => (
+                                        <option key={i} value={item}>{item}</option>
+                                    ))}
                                 </Field>
                             </div>
-                        </div>
-                        <div className='pt-5'>
-                            <FormInput type='text' name='address' label='Address' placeholder='Address' />
                         </div>
                         <div className=' pt-5'>
                             <div className='relative'>

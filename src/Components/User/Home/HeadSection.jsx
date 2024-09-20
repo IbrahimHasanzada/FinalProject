@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const HeadSection = () => {
     return (
         <section className='relative'>
-            <div className='w-full h-[60vh] overflow-hidden group'>
+            <div className='w-full h-[60vh] md:h-[80vh] overflow-hidden group'>
                 <img
                     className=' object-cover md:object-left-top md:w-full h-full transform  transition-transform duration-500 group-hover:scale-110'
                     src="/img/qadin.jpg" alt="kisi" />

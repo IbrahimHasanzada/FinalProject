@@ -1,11 +1,10 @@
 import React from 'react'
 import AdminLogin from '../Pages/Dashboard/AdminLogin'
-
 const Auth = ({children}) => {
-    const token = localStorage.getItem('token')
+    const userData = JSON.parse(localStorage.getItem('user'))
   return (
     <>
-         {token ? children : <AdminLogin />}
+         {userData?.user.role == "ADMIN" ? children : <AdminLogin />}
     </>
   )
 }

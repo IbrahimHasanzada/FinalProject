@@ -3,10 +3,12 @@ import BasketProducts from "../Basket/BasketProducts";
 import OrderSummary from "../Basket/OrderSummary";
 import { useDispatch, useSelector } from "react-redux";
 import { setBasket } from "../../../Store/BasketSlice";
+import { useGetAllCartQuery } from "../../../Store/EmporiumApi";
 
 const BasketSideBar = () => {
     const handleCloseBasket = () => { dispatch(setBasket(false)) }
-    const {basket} = useSelector(state => state.basket)
+    const { data: getAllBasketData } = useGetAllCartQuery()
+    const { basket } = useSelector(state => state.basket)
     const dispatch = useDispatch()
     return (
         <div className={`fixed top-0 left-0 right-0  w-[100%] h-[100vh] duration-200 ${basket ? 'bg-[#0000006e]' : 'pointer-events-none'}`}>
@@ -20,7 +22,9 @@ const BasketSideBar = () => {
                     </button>
                 </section>
                 <section className="h-full overflow-y-scroll">
-                    <BasketProducts />
+                    {getAllBasketData?.map((product, productIndex) => (
+                        <BasketProducts key={productIndex} product={product} />
+                    ))}
                 </section>
                 <section>
                     <OrderSummary />

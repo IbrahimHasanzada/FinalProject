@@ -3,7 +3,7 @@ import MainSection from '../../Components/User/Home/MainSection'
 import HeadSection from '../../Components/User/Home/HeadSection'
 const Home = () => {
   return (
-    <main className='wrapper  font-["Montserrat",_sans-serif]'>
+    <main className='wrapper font-["Montserrat",_sans-serif]'>
       <section>
         <HeadSection />
       </section>
