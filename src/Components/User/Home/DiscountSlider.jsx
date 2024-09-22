@@ -38,7 +38,7 @@ export default function DiscountSlider() {
     return (
         <Slider {...settings}>
             {getDiscountedData?.data.slice(0,15).map((item, i) => (
-                item.discount > 0 &&
+                item.discount >= 5 &&
                 <Card key={i} item={item} />
             ))}
         </Slider>

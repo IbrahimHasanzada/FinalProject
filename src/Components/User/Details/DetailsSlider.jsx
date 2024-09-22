@@ -12,7 +12,7 @@ const DetailsSlider = ({ images = [] }) => {
                     <img
                         src={images[i]}
                         alt={`Slide thumbnail ${i + 1}`}
-                        className={i === selectSlide ? 'scale-90 rounded-lg border border-black' : ''}
+                        className={i === selectSlide ? 'scale-90 rounded-md border border-black' : ''}
                     />
                 </a>
             );

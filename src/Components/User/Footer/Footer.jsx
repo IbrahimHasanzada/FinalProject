@@ -9,7 +9,7 @@ const Footer = () => {
 
 
   return (
-    <footer className=' font-["Montserrat",_sans-serif]'>
+    <footer className='wrapper   font-["Montserrat",_sans-serif]'>
       <section className='mb-8'>
         <h2 className='uppercase mb-4 text-sm inline-block pl-2'>@emoporiumbaku</h2>
         <SliderSocial />

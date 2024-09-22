@@ -17,13 +17,13 @@ const ProductModal = () => {
     const [product, setProduct] = useState(true)
     const [formDataInput, setFormDataInput] = useState({
         name: '',
-        price: Number,
-        discount: Number,
+        price: '',
+        discount: '',
         category: '',
-        subcategory: Number,
+        subcategory: '',
         size: [],
         color: [],
-        brand: Number,
+        brand: '',
         description: '',
         image: [],
     })

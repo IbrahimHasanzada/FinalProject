@@ -1,8 +1,9 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-const token = localStorage.getItem('token')
+const data = JSON.parse(localStorage.getItem('user')) 
+const token = data?.token
 export const emporiumApi = createApi({
     reducerPath: "emporiumApi",
-    baseQuery: fetchBaseQuery({ baseUrl: 'https://ecommerse.davidhtml.xyz/' }),
+    baseQuery: fetchBaseQuery({ baseUrl: 'https://ecommerce.ibradev.me/' }),
     tagTypes: ['Category', 'SubCategory', 'Brands', 'Product', "Image", "AddToCard"],
     endpoints: (builder) => ({
         registerUser: builder.mutation({
@@ -26,7 +27,7 @@ export const emporiumApi = createApi({
                 body: JSON.stringify({ name, user_img, phone, password,})
             })
         }),
-        login: builder.mutation({
+        login: builder.mutation({ 
             query: ({ username, password }) => ({
                 url: `/login`,
                 method: 'POST',
@@ -155,9 +156,14 @@ export const emporiumApi = createApi({
             query: () => `/products/all`,
             providesTags: ['Product']
         }),
-        searchProducts: builder.query({
+        filterProducts: builder.query({
             query: ( params ) => ({
                 url: `/products/all?${params}`,
+            }),
+        }),
+        searchProducts: builder.query({
+            query: ( value ) => ({
+                url: `/products/search?q=${value}`,
             }),
         }),
         getAllBrands: builder.query({
@@ -249,14 +255,14 @@ export const emporiumApi = createApi({
             invalidatesTags: ['Product']
         }),
         addToCard: builder.mutation({
-            query: ({ productId, count }) => ({
+            query: ({ productId, count, color, size }) => ({
                 url: `/cart/add`,
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`
                 },
-                body: { productId, count }
+                body: { productId, count,color, size  }
             }),
             invalidatesTags: ['AddToCard']
         })
@@ -286,9 +292,10 @@ export const {
     useGetProductByIdQuery,
     useUpdateProductsMutation,
     useDelImageMutation,
-    useSearchProductsQuery,
+    useFilterProductsQuery,
     useAddToCardMutation,
     useGetAllCartQuery,
     useDelCardsMutation,
-    useUserUpdateMutation
+    useUserUpdateMutation,
+    useSearchProductsQuery
 } = emporiumApi;

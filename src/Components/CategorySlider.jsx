@@ -4,13 +4,13 @@ import "slick-carousel/slick/slick-theme.css";
 import { CiHeart } from "react-icons/ci";
 import { Link } from "react-router-dom";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import { useSearchProductsQuery } from "../Store/EmporiumApi";
+import { useFilterProductsQuery } from "../Store/EmporiumApi";
 import { useSelector } from "react-redux";
 import Card from "./Card";
 
 export default function SimpleSlider() {
     const filters = useSelector((state) => state.filterProduct)
-    const { data: filteredData } = useSearchProductsQuery(filters)
+    const { data: filteredData } = useFilterProductsQuery(filters)
     console.log(filteredData);
     const settings = {
         nextArrow: <IoIosArrowForward />,

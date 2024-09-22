@@ -117,7 +117,7 @@ const UpdateProduct = ({ id }) => {
     const formFields = [
         { name: 'name', label: 'Name', type: 'text', placeholder: 'Type product name', value: formDataInput.name, onChange: handleChange, colSpan: 'col-span-2' },
         { name: 'price', label: 'Price', type: 'number', placeholder: '999$', value: formDataInput.price, onChange: handleChange, colSpan: 'sm:col-span-1' },
-        { name: 'discount', label: 'Discount', type: 'number', placeholder: '15%', value: formDataInput.discount, onChange: handleChange, colSpan: 'sm:col-span-1' },
+        { name: 'discount', label: 'Discount', type: 'text', placeholder: '15%', value: formDataInput.discount, onChange: handleChange, colSpan: 'sm:col-span-1' },
         {
             name: 'category', label: 'Category', type: 'select', placeholder: 'Select category', value: formDataInput.category, onChange: handleChange,
             options: getCategoryData?.map((category) => ({ value: category.id, label: category.name })), colSpan: 'sm:col-span-1'

@@ -42,6 +42,7 @@ const Header = () => {
         navigate( {pathname: '/products/all', search: `?subcategoryId=${id}`} )
     }
     const userData = JSON.parse(localStorage.getItem('user'))
+    
     const changeToUser = () => {
         if (userData) { navigate('/UserInformation') } else dispatch(setUser())
         }

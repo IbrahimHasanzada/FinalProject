@@ -23,7 +23,9 @@ const BrandsAccordion = ({ item }) => {
             newColors = [...newColors, item.element[index]];
             setColors(newColors);
         }
-        if (end === 'size' && !sizes.includes(item.element[index])) {
+        if (end === 'size' && sizes.includes(item.element[index])) {
+            newSizes = newSizes.filter((size) => size !== item.element[index]);
+        }else{
             newSizes = [...newSizes, item.element[index]];
             setSizes(newSizes);
         }

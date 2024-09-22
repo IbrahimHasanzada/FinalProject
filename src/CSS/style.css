@@ -10,9 +10,9 @@
 }
 
 /* S L I D E R   S E C T I O N  */
-.slick-slide img {
+/* .slick-slide img {
     width: 100% !important;
-}
+} */
 
 #detailsSlider .slick-slider {
     display: flex !important;
@@ -47,6 +47,9 @@ input[type=number]::-webkit-outer-spin-button,
 input[type=number]::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
+}
+#detailsSlider .slick-list {
+    width: 100% !important;
 }
 @media only screen and (max-width: 1024px) {
     .wrapper {padding: 0 25px}

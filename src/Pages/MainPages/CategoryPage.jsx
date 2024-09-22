@@ -3,10 +3,10 @@ import CategorySlider from '../../Components/CategorySlider'
 import UnderlineButton from '../../Components/UnderlineButton'
 import Breadcrumb from '../../Components/BreadCrumbs'
 import { useSelector } from 'react-redux'
-import { useSearchProductsQuery } from '../../Store/EmporiumApi'
+import { useFilterProductsQuery } from '../../Store/EmporiumApi'
 const CategoryPage = () => {
     const filters = useSelector((state) => state.filterProduct)
-    const { data: filteredData } = useSearchProductsQuery(filters)
+    const { data: filteredData } = useFilterProductsQuery(filters)
     console.log(filteredData);
     
     

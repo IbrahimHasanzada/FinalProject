@@ -4,11 +4,9 @@ import * as Yup from 'yup';
 import { TbEye, TbEyeOff } from 'react-icons/tb';
 import { toast } from 'react-toastify';
 import FormInput from '../Checkout/FormInput';
-import { eGender } from '../../../Store/enum';
 import { useUploadImageMutation, useUserUpdateMutation } from '../../../Store/EmporiumApi';
-import { FaPen } from 'react-icons/fa6';
+import { FaRegPenToSquare } from 'react-icons/fa6';
 import { useNavigate } from 'react-router-dom';
-
 const UpdateUser = () => {
     const userData = JSON.parse(localStorage.getItem('user'))
     const navigate = useNavigate()
@@ -76,7 +74,6 @@ const UpdateUser = () => {
                         gender: values.gender,
                         password: values.password
                     })
-                    
                 }}>
                 {() => (
                     <Form className='w-full   md:max-w-4xl '>
@@ -84,7 +81,7 @@ const UpdateUser = () => {
                             <div className='flex items-start justify-center'>
                                 <div className='relative  w-52 h-52'>
                                     <img className="rounded-full w-full h-full object-cover" src={userData?.user_img} alt={userData?.id} />
-                                    <button onClick={showFileInput} className="absolute right-3 bg-black text-white bottom-5 rounded-full p-2 border-4 border-white"><FaPen />
+                                    <button onClick={showFileInput} className="absolute right-1 bg-black text-white bottom-5 rounded-full p-2 border-4 border-white"><FaRegPenToSquare  />
                                         <input ref={input} type="file" onChange={handleFileChange} className='hidden' />
                                     </button>
                                 </div>
