@@ -81,7 +81,7 @@ const ProductInformation = ({ toggleModal, ModalId }) => {
                             <FaWhatsapp className="mr-4 text-3xl" />
                             <span>Send us a message</span>
                         </button>}
-                        <button className={`my-2  uppercase flex items-center justify-center     ${ModalId ? 'border border-black rounded-full px-2 h-10' : 'rounded-sm w-full px-5 h-12'}`}>
+                        <button className={`my-2  uppercase flex items-center justify-center ${ModalId ? 'border border-black rounded-full px-2 h-8' : 'rounded-sm w-full px-5 h-12'}`}>
                             <FaRegHeart className={`${ModalId ? ' text-base' : 'mr-4 text-xl'} `} />
                             {!ModalId && <span>add to wishlist</span>}
                         </button>

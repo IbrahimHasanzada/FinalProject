@@ -23,7 +23,8 @@ const AdminLogin = () => {
                 login({ username: values.username, password: values.login_password })
                 .then(response => {
                     console.log(response)
-                    localStorage.setItem('user', JSON.stringify(response.data))
+                    localStorage.setItem('user', JSON.stringify(response.data.user));
+                    localStorage.setItem('token', response.data.token);
                     response.data.user.role == "ADMIN" ? window.location.reload() : toast.error('Invalid username or password!')
                 })
             }}>

@@ -31,14 +31,14 @@ const Card = ({ item, wish, handleDeleteLike }) => {
 
     return (
         <div className='relative h-[311px] md:h-[476px] w-full rounded-lg'>
-            <div className={`absolute top-2.5 w-full flex ${discount >= 5 ? 'justify-between' : 'justify-end'}`}>
+            <div className={`absolute z-10 top-2.5 w-full flex ${discount >= 5 ? 'justify-between' : 'justify-end'}`}>
                 {discount >= 5 ? <span className='bg-[#B5314A] px-4 ml-2.5 text-white rounded-md'>{discount}%</span> : ''}
                 {wish ? (
                     <button onClick={() => handleDeleteLike(id)} className="text-xl mr-2.5">
                         <FaXmark />
                     </button>
                 ) : (
-                    <button className='mr-2.5 text-xl' onClick={() => handleLikeButton(id)}>
+                    <button className='mr-2.5 text-xl ' onClick={() => handleLikeButton(id)}>
                         {like ? <FaHeart /> : <FaRegHeart />}
                     </button>
                 )}

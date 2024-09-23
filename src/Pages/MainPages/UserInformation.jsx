@@ -13,6 +13,8 @@ const informations = [
 ]
 const UserInformation = () => {
     const userData = JSON.parse(localStorage.getItem('user'))
+    console.log(userData);
+    
     const navigate = useNavigate()
     const [change, setChange] = useState('')
     const SignOut = () => {

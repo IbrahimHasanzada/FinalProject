@@ -10,6 +10,7 @@ import { CgWebsite } from 'react-icons/cg';
 const AdminSidebar = () => {
   const navigate = useNavigate()
   const logOut = () => {
+    localStorage.removeItem('user')
     localStorage.removeItem('token')
     window.location.reload()
   }
