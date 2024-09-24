@@ -40,7 +40,7 @@ const Brands = () => {
                     </button>
                 </section>
                 <section className='flex w-full gap-5 mt-5'>
-                    <div className={`pl-5 fixed lg:sticky duration-300 bg-white z-40 lg:z-30  top-0 lg:top-32 w-full  h-full lg:w-96 ${filter ? 'right-0' : '-right-full'}`}>
+                    <div className={`lg:pl-5 fixed lg:sticky duration-300 bg-white z-40 lg:z-30  top-0 lg:top-32 w-full  h-full lg:w-96 ${filter ? 'right-0' : '-right-full'}`}>
                         <BrandsSideBar filter={filter} setFilter={setFilter} />
                     </div>
                     <div className=' pt-4'>

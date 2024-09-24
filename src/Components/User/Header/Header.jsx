@@ -34,21 +34,21 @@ const Header = () => {
     function handleOpenBasket() { dispatch(setBasket(true)) }
     const filters = useSelector((state) => state.filterProduct);
     const filterByCategory = (id) => {
-        //     dispatch(resetFilters()); 
-        //     dispatch(setFilters({ categoryId: id }));
-        //     dispatch(setCatId(id));
-        // navigate( {pathname: '/products/all', search: `?subcategoryId=${id}`})
+        dispatch(setCatId(id))
+        navigate({ pathname: 'CategoryPage/products/all', search: `?categoryId=${id}` })
 
     };
 
     const filterBySubCategory = (id) => {
         navigate({ pathname: '/products/all', search: `?subcategoryId=${id}` })
+
     }
     const userData = JSON.parse(localStorage.getItem('user'))
 
     const changeToUser = () => {
         if (userData) { navigate('/UserInformation') } else dispatch(setUser())
     }
+    const navBarImages = ['women-clothing.jpg', 'men-clothing.jpg', 'boys-clothing.jpg', 'necklaces.jpg', 'fragrance.jpg', '2-235-bedroom.jpg']
     return (
         <header className='py-5 md:p-5 sticky z-30 lg:z-40 right-0 left-0 top-0 font-["Montserrat",_sans-serif] bg-white  '>
             <section className="wrapper flex justify-between py-4">
@@ -66,11 +66,16 @@ const Header = () => {
                             return (
                                 <div key={i} className='group'>
                                     <li onClick={() => filterByCategory(item.id)} key={i} className='py-1 px-2 ml-[2px] text-nowrap mb-1 cursor-pointer rounded-[3px] hover:bg-[#e4e4e4]'>{item.name}</li>
-                                    <div className='absolute w-screen left-0 h-auto z-40 bg-white hidden group-hover:block px-12 shadow-2xl'>
-                                        <p className='cursor-pointer hover:underline text-xs font-semibold my-4'>View all</p>
-                                        {item.Subcategory.length > 0 && item.Subcategory.map((sub, i) => {
-                                            return <p key={i} onClick={() => filterBySubCategory(sub.id)} className='my-2 cursor-pointer hover:underline'>{sub.name}</p>
-                                        })}
+                                    <div className='absolute w-screen left-0 h-auto z-40  justify-between  py-10 bg-white hidden group-hover:flex px-12 shadow-[rgba(0,0,15,0.5)_5px_5px_4px_0px]'>
+                                        <div>
+                                            <p className='cursor-pointer hover:underline text-xs font-semibold '>View all</p>
+                                            {item.Subcategory.length > 0 && item.Subcategory.map((sub, i) => {
+                                                return <p key={i} onClick={() => filterBySubCategory(sub.id)} className='my-2 cursor-pointer hover:underline'>{sub.name}</p>
+                                            })}
+                                        </div>
+                                        <div>
+                                            <img  src={`/img/${navBarImages[i]}`} alt="" />
+                                        </div>
                                     </div>
                                 </div>
                             )
@@ -114,7 +119,7 @@ const Header = () => {
             </section>
             <section className="wrapper hidden lg:flex justify-end pb-4">
                 <form className=" h-11 w-60 pl-5 pr-2 flex items-center justify-between border">
-                    <input onClick={handleOpenSearch} className="outline-none" type="text" placeholder="Axtar..." />
+                    <input onClick={handleOpenSearch} className="outline-none" type="text" placeholder="Search..." />
                     <IoIosSearch className="text-2xl" />
                 </form>
             </section>

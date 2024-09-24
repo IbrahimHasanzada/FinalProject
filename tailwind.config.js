@@ -9,7 +9,8 @@ module.exports = {
         '4/3': '4 / 3',
       },
       screens: {
-        'xs': '480px', 
+        'xs': '480px',
+        'lm': '980px', 
       },
     },
   },

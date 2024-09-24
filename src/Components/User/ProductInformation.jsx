@@ -6,9 +6,12 @@ import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io'
 import { useAddToCardMutation, useGetProductByIdQuery } from '../../Store/EmporiumApi'
 import { useParams } from 'react-router-dom'
 import UnderlineButton from '../UnderlineButton'
+import { toast, ToastContainer } from 'react-toastify'
 
 const ProductInformation = ({ toggleModal, ModalId }) => {
     console.log(ModalId);
+    const userData = JSON.parse(localStorage.getItem('user'))
+console.log();
 
     const { productsId } = useParams()
     const [manageId, setManageId] = useState('')
@@ -22,11 +25,18 @@ const ProductInformation = ({ toggleModal, ModalId }) => {
     const products = productData || {};
     const [addToBasket, { data: getBasketData }] = useAddToCardMutation()
     const addBasket = () => {
-        addToBasket({ productId: id, count: 1, size: size, color: color })
+        if (!userData) {
+            toast.error('Please login to add to cart')
+        }else{
+            addToBasket({ productId: id, count: 1, size: size, color: color })
+
+        }
     }
     const { name, id, description, discount, price, images, categoryId, subcategoryId, brandsId, Colors, Size } = products
     return (
         <div>
+            <ToastContainer 
+            autoClose={2000} />
             <section className='flex flex-col w-full gap-5 md:gap-0  md:flex-row'>
                 <section className="w-full md:w-[416px] lg:w-[516px] xl:w-[566px]">
                     <DetailsSlider images={images} />

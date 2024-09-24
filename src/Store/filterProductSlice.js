@@ -23,8 +23,8 @@ export const filterProductSlice = createSlice({
             const filters = action.payload;
 
             Object.keys(filters).forEach((key) => {
-                state[key] = filters[key];
-            });
+                state[key] = filters[key]
+            })
         },
         resetFilters: (state) => {
             Object.assign(state, initialState);

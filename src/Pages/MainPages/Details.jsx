@@ -8,11 +8,7 @@ import { useParams, useSearchParams } from "react-router-dom"
 import { useAddToCardMutation, useGetAllProductQuery, useGetProductByIdQuery } from "../../Store/EmporiumApi"
 import ProductInformation from "../../Components/User/ProductInformation"
 const Details = () => {
-    
     const { data: getAllProduct } = useGetAllProductQuery()
-    
-    
-    
     return (
         <div className='wrapper mx-auto font-["Montserrat",_sans-serif]'>
             <ProductInformation />

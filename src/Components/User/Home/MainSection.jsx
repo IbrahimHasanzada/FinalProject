@@ -1,13 +1,12 @@
 import React from 'react'
 import MainCard from './MainCard'
+import { useGetAllCategoryQuery } from '../../../Store/EmporiumApi';
 
 const MainSection = () => {
-    const categorySection = [
-        {img: 'kidsCategory.jpg', title: 'Kids'},
-        {img: 'beautyCategory.jpg', title: 'Beauty'},
-        {img: 'jewelleryCategory.jpg', title: 'Jewellery'},
-        {img: 'homeCategory.jpg', title: 'Home'}
-    ]
+    const {data: getAllCategories} = useGetAllCategoryQuery()
+    console.log(getAllCategories);
+    
+    
     return (
         <div>
             <div className='mt-10'>
@@ -18,7 +17,7 @@ const MainSection = () => {
                 </div>
             </div>
             <div className='grid grid-cols-1 md:grid-cols-2 gap-5  py-4 md:pt-10 '>
-                {categorySection.map((item, i) => (
+                {getAllCategories?.slice(2).map((item, i) => (
                     <MainCard key={i} item={item} />
                 ))}
             </div>

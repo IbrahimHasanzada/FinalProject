@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import QuickModal from './User/QuickModal';
 import ProductInformation from './User/ProductInformation';
 
-const Card = ({ item, wish, handleDeleteLike }) => {
+const Card = ({ item, wish, handleDeleteLike, slider }) => {
     const [like, setLike] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const toggleModal = () => setIsModalOpen(!isModalOpen);
@@ -47,14 +47,18 @@ const Card = ({ item, wish, handleDeleteLike }) => {
                 <Link to={`/Details/${id}`}>
                     <img className='rounded-t-lg w-full object-cover xl:h-[370px] sm:h-[270px] h-[208px]' src={images[0]} alt="p" />
                 </Link>
-                <button onClick={toggleModal} className="w-full bg-[#00000082] absolute flex justify-center items-center h-9 duration-300 left-0 right-0 -bottom-full group-hover:bottom-0 text-white">
-                    Quick view
-                </button>
-                <QuickModal id={id} isOpen={isModalOpen} toggleModal={toggleModal}>
-                    <div className='w-full'>
-                        <ProductInformation toggleModal={toggleModal} ModalId={id} />
-                    </div>
-                </QuickModal>
+                {!slider && (
+                    <>
+                        <button onClick={toggleModal} className="w-full bg-[#00000082] absolute flex justify-center items-center h-9 duration-300 left-0 right-0 -bottom-full group-hover:bottom-0 text-white">
+                            Quick view
+                        </button>
+                        <QuickModal id={id} isOpen={isModalOpen} toggleModal={toggleModal}>
+                            <div className='w-full'>
+                                <ProductInformation toggleModal={toggleModal} ModalId={id} />
+                            </div>
+                        </QuickModal>
+                    </>
+                )}
             </div>
             <div className='p-2.5 w-full'>
                 <div className='h-14 mb-3 w-full'>
