@@ -21,8 +21,6 @@ const Header = () => {
     const { data: getAllCategories } = useGetAllCategoryQuery()
     const { data: getAllBasketData } = useGetAllCartQuery()
     let likedItems = JSON.parse(localStorage.getItem('likedItems')) || [];
-
-
     // const { data: getFilteredProduct } = useGetProductByIdQuery(catId, { skip: !catId, })
     const [flag, setFlag] = useState(false)
     const [mobile, setMobile] = useState(false)
@@ -39,9 +37,10 @@ const Header = () => {
 
     };
 
-    const filterBySubCategory = (id) => {
+    const filterBySubCategory = (id, name) => {
         navigate({ pathname: '/products/all', search: `?subcategoryId=${id}` })
-
+        localStorage.setItem('subcategory', name)
+        
     }
     const userData = JSON.parse(localStorage.getItem('user'))
 
@@ -70,7 +69,7 @@ const Header = () => {
                                         <div>
                                             <p className='cursor-pointer hover:underline text-xs font-semibold '>View all</p>
                                             {item.Subcategory.length > 0 && item.Subcategory.map((sub, i) => {
-                                                return <p key={i} onClick={() => filterBySubCategory(sub.id)} className='my-2 cursor-pointer hover:underline'>{sub.name}</p>
+                                                return <p key={i} onClick={() => filterBySubCategory(sub.id, sub.name)} className='my-2 cursor-pointer hover:underline'>{sub.name}</p>
                                             })}
                                         </div>
                                         <div>

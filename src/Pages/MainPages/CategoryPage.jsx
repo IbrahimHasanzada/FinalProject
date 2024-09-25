@@ -93,7 +93,7 @@ const CategoryPage = () => {
                 ))}
             </Link>
 
-            <section className='flex gap-5 justify-between flex-col md:flex-row items-center my-10 px-5'>
+            <section className='flex gap-9 md:gap-5 justify-between flex-col md:flex-row items-center my-10 px-5'>
                 <div className=' w-full md:w-[15%] text-center '>
                     <p className='uppercase text-[1.2em]'>New arrivals</p>
                     <h2 className='my-6 text-6xl font-["Cormorant_Garamond",_serif]'>{filteredData?.data.length}</h2>
@@ -104,7 +104,7 @@ const CategoryPage = () => {
                 <div className=' w-full md:w-[80%]'>
                     <CategorySlider />
                 </div>
-                <Link to={'/'} className='md:hidden block w-44'>
+                <Link to={'/'} className='md:hidden block w-44 '>
                     <span className='uppercase px-5 bg-black  text-white duration-300 hover:bg-white hover:text-black border border-black h-[50px] flex justify-center items-center'>Shop now</span>
                 </Link>
             </section>

@@ -18,8 +18,6 @@ const OpenSearchBar = ({ flag, setFlag }) => {
             setSearchData(getSearchedData)
         }
     }, [search])
-    console.log(searchData)
-
     return (
         <section className={`
             h-[100vh] lg:h-auto 

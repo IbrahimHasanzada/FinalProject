@@ -21,7 +21,7 @@ const BrandsSideBar = ({ filter, setFilter }) => {
         },
         {
             title: 'Discount',
-            element: ['Discount', 'without discount'],
+            element: ['Discounted'],
         },
         {
             title: 'Size',

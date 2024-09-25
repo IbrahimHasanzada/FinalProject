@@ -9,7 +9,7 @@ const BrandsAccordion = ({ item }) => {
     const [sizes, setSizes] = useState([]);
     const [brands, setBrands] = useState('')
     const [isOpen, setIsOpen] = useState(true);
-
+    const [discount, setDiscount] = useState(false)
     const toggleChecked = (i, item) => {
         if (title === 'Color') {
             if (colors.includes(item)) {
@@ -30,12 +30,14 @@ const BrandsAccordion = ({ item }) => {
                 } else {
                     setBrands(id[i]);
                 }
-            }
 
+            }
+        } else if (title === 'Discount') {
+            setDiscount(!discount)
         }
 
-    }
 
+    }
     useEffect(() => {
         const searchParams = new URLSearchParams(window.location.search);
         if (colors.length > 0) {
@@ -45,7 +47,15 @@ const BrandsAccordion = ({ item }) => {
         }
         navigate({ pathname: '/products/all', search: `?${searchParams.toString()}` });
     }, [colors]);
-
+    useEffect(() => {
+        const searchParams = new URLSearchParams(window.location.search);
+        if (discount) {
+            searchParams.set('discount', discount);
+        } else {
+            searchParams.delete('discount');
+        }
+        navigate({ pathname: '/products/all', search: `?${searchParams.toString()}` });
+    }, [discount]);
     useEffect(() => {
         const searchParams = new URLSearchParams(window.location.search);
         if (sizes.length > 0) {
@@ -55,7 +65,6 @@ const BrandsAccordion = ({ item }) => {
         }
         navigate({ pathname: '/products/all', search: `?${searchParams.toString()}` });
     }, [sizes]);
-
     useEffect(() => {
         const searchParams = new URLSearchParams(window.location.search);
         if (brands) {
@@ -65,11 +74,6 @@ const BrandsAccordion = ({ item }) => {
         }
         navigate({ pathname: '/products/all', search: `?${searchParams.toString()}` });
     }, [brands]);
-
-
-
-
-
     return (
         <section className="border-y flex flex-col">
             <h2 onClick={() => setIsOpen(!isOpen)} className="py-4 flex justify-between items-center text-sm font-bold cursor-pointer">
@@ -82,7 +86,7 @@ const BrandsAccordion = ({ item }) => {
                         {title === 'Color' ? (
                             <div style={{ background: item }} className={`rounded-full h-5 w-5 ${item === 'WHITE' ? 'border border-black' : ''}`}></div>
                         ) : (
-                            title === 'Brands' && brands === id?.[i] || title === 'Size' && sizes.includes(item) ? (
+                            title === 'Brands' && brands === id?.[i] || title === 'Size' && sizes.includes(item) || discount ? (
                                 <IoIosCheckbox className="text-lg" />
                             ) : (
                                 <RiCheckboxBlankLine className="text-lg" />
@@ -92,7 +96,7 @@ const BrandsAccordion = ({ item }) => {
                     </li>
                 ))}
             </ul>
-            
+
         </section>
     );
 };

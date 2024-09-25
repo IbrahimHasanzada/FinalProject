@@ -37,11 +37,11 @@ const UserInformation = () => {
                     </section>
                     <section className="w-full">
                         <section className="w-full">
-                            <div className='w-full flex justify-between  mb-10'>
-                                <h2 className='text-[2em] font-["Cormorant_Garamond",_serif] font-medium'>Hello,{userData?.name} </h2>
+                            <div className='w-full flex justify-between flex-col xs:flex-row gap-4  mb-10'>
+                                <h2 className='text-[2em] font-["Cormorant_Garamond",_serif] font-medium'>Hello, {userData?.name} </h2>
                                 <button onClick={() => SignOut()} className="flex items-center text-xl">
                                     <PiSignOutBold />
-                                    <span className="ml-2.5">Sign out</span>
+                                    <span className="ml-2.5">Logout</span>
                                 </button>
                             </div>
                         </section>
