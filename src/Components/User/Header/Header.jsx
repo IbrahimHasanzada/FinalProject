@@ -10,43 +10,43 @@ import { useDispatch, useSelector } from "react-redux";
 import { setBasket } from "../../../Store/BasketSlice";
 import UserLogin from "./UserLogin";
 import { setUser } from "../../../Store/UserLoginSlice";
-import { useGetAllCartQuery, useGetAllCategoryQuery, useGetProductByIdQuery } from "../../../Store/EmporiumApi";
-import filterProduct, { resetFilters, setFilters } from "../../../Store/filterProductSlice";
+import { useGetAllCartQuery, useGetAllCategoryQuery } from "../../../Store/EmporiumApi";
 import MobileHeader from "./MobileHeader";
 import { FaXmark } from "react-icons/fa6";
 import { setCatId } from "../../../Store/CategoryIdSlice";
 
 const Header = () => {
-    // const [catId, setCatId] = useState('')
     const { data: getAllCategories } = useGetAllCategoryQuery()
     const { data: getAllBasketData } = useGetAllCartQuery()
-    let likedItems = JSON.parse(localStorage.getItem('likedItems')) || [];
-    // const { data: getFilteredProduct } = useGetProductByIdQuery(catId, { skip: !catId, })
+    const [like, setLike] = useState('')
+    // const liked = localStorage.getItem('liked')
+    const { liked } = useSelector(state => state.liked)
+    // useState(() => {
+    //     setLike(liked)
+    // },[liked])
+    // console.log(like);
+    
+    // useEffect(() => {
+    //     let storedLikedqItems = JSON.parse(localStorage.getItem('likedItems')) || []
+    //     setLiked(storedLikedItems)
+    // }, [storedLikedItems])
     const [flag, setFlag] = useState(false)
     const [mobile, setMobile] = useState(false)
-    const { basket } = useSelector(state => state.basket)
     const { user } = useSelector(state => state.user)
     const dispatch = useDispatch()
     const navigate = useNavigate()
     function handleOpenSearch() { setFlag(true) }
     function handleOpenBasket() { dispatch(setBasket(true)) }
-    const filters = useSelector((state) => state.filterProduct);
     const filterByCategory = (id) => {
         dispatch(setCatId(id))
         navigate({ pathname: 'CategoryPage/products/all', search: `?categoryId=${id}` })
-
-    };
-
+    }
     const filterBySubCategory = (id, name) => {
         navigate({ pathname: '/products/all', search: `?subcategoryId=${id}` })
         localStorage.setItem('subcategory', name)
-        
     }
     const userData = JSON.parse(localStorage.getItem('user'))
-
-    const changeToUser = () => {
-        if (userData) { navigate('/UserInformation') } else dispatch(setUser())
-    }
+    const changeToUser = () => { if (userData) { navigate('/UserInformation') } else dispatch(setUser()) }
     const navBarImages = ['women-clothing.jpg', 'men-clothing.jpg', 'boys-clothing.jpg', 'necklaces.jpg', 'fragrance.jpg', '2-235-bedroom.jpg']
     return (
         <header className='py-5 md:p-5 sticky z-30 lg:z-40 right-0 left-0 top-0 font-["Montserrat",_sans-serif] bg-white  '>
@@ -73,7 +73,7 @@ const Header = () => {
                                             })}
                                         </div>
                                         <div>
-                                            <img  src={`/img/${navBarImages[i]}`} alt="" />
+                                            <img src={`/img/${navBarImages[i]}`} alt="" />
                                         </div>
                                     </div>
                                 </div>
@@ -100,8 +100,8 @@ const Header = () => {
                         }
                     </div>
                     <button className="relative flex justify-center items-start">
-                        {likedItems?.length > 0 &&
-                            <span className="absolute bottom-3 -right-1 rounded-full px-1 bg-[#000] text-xs text-white">{likedItems.length}</span>
+                        {liked > 0 &&
+                            <span className="absolute bottom-3 -right-1 rounded-full px-1 bg-[#000] text-xs text-white">{liked}</span>
                         }
                         <Link to='WishList'>
                             <CiHeart className="text-2xl" />
@@ -122,7 +122,6 @@ const Header = () => {
                     <IoIosSearch className="text-2xl" />
                 </form>
             </section>
-
             <OpenSearchBar flag={flag} setFlag={setFlag} />
             <BasketSideBar />
             <MobileHeader mobile={mobile} setMobile={setMobile} />

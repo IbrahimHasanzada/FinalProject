@@ -8,8 +8,9 @@ import Swal from 'sweetalert2';
 import BrandsModal from "../../Components/Admin/Brands/BrandsModal";
 import TableAdmin from "../../Components/Admin/TableAdmin";
 import UpdateBrands from "../../Components/Admin/Brands/UpdateBrands";
+import Loading from "../../Components/Loading";
 const ProductBrands = () => {
-    const { data: getAllBrands } = useGetAllBrandsQuery()
+    const { data: getAllBrands, isLoading } = useGetAllBrandsQuery()
     const [delBrands, { isError, isSuccess }] = useDelBrandsMutation()
     const deleteBrandsById = (id) => { delBrands({ id }) }
     useEffect(() => {
@@ -30,20 +31,26 @@ const ProductBrands = () => {
                 </form>
                 <BrandsModal />
             </div>
-            <div className='w-full flex justify-start items-center text-start bg-[#374151] text-[#9CA3AF]'>
-                <h2 className='p-4 w-[20%] font-bold'>ID</h2>
-                <h2 className='p-4 w-[20%] font-bold'>Name</h2>
-                <h2 className='p-4 w-[20%] font-bold'>Slug Name</h2>
-                <h2 className='p-4 w-[20%] font-bold'>Edit</h2>
-            </div>
-            {getAllBrands?.map((item, i) => (
-                <TableAdmin
-                    key={i}
-                    item={item}
-                    actions={deleteBrandsById}
-                    update={UpdateBrands}
-                />
-            ))}
+            {isLoading ?
+                <Loading />
+                :
+                <>
+                    <div className='w-full flex justify-start items-center text-start bg-[#374151] text-[#9CA3AF]'>
+                        <h2 className='p-4 w-[20%] font-bold'>ID</h2>
+                        <h2 className='p-4 w-[20%] font-bold'>Name</h2>
+                        <h2 className='p-4 w-[20%] font-bold'>Slug Name</h2>
+                        <h2 className='p-4 w-[20%] font-bold'>Edit</h2>
+                    </div>
+                    {getAllBrands?.map((item, i) => (
+                        <TableAdmin
+                            key={i}
+                            item={item}
+                            actions={deleteBrandsById}
+                            update={UpdateBrands}
+                        />
+                    ))}
+                </>
+            }
         </div>
     );
 };

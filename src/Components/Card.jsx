@@ -4,9 +4,12 @@ import { FaXmark } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
 import QuickModal from './User/QuickModal';
 import ProductInformation from './User/ProductInformation';
+import { useDispatch} from 'react-redux';
+import { decrementLike, incrementLike, setLiked } from '../Store/LikeSlice';
 
 const Card = ({ item, wish, handleDeleteLike, slider }) => {
     const [like, setLike] = useState(false);
+    const dispatch = useDispatch()
     const [isModalOpen, setIsModalOpen] = useState(false);
     const toggleModal = () => setIsModalOpen(!isModalOpen);
     const { name, description, price, images, id, discount, Brands } = item;
@@ -22,8 +25,10 @@ const Card = ({ item, wish, handleDeleteLike, slider }) => {
         let likedItems = JSON.parse(localStorage.getItem('likedItems')) || [];
         if (like) {
             likedItems = likedItems.filter(likedItem => likedItem.id !== itemId);
+            dispatch(decrementLike())
         } else {
             likedItems.push(item);
+            dispatch(incrementLike())
         }
         localStorage.setItem('likedItems', JSON.stringify(likedItems));
         setLike(!like);

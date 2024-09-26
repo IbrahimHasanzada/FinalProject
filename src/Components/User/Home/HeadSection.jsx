@@ -1,17 +1,14 @@
 import React from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import { useGetAllCategoryQuery } from '../../../Store/EmporiumApi';
+import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
 import { setCatId } from '../../../Store/CategoryIdSlice';
 
-const HeadSection = () => {
+const HeadSection = ({getAllCategories}) => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    const { data: getAllCategories } = useGetAllCategoryQuery()
     const filterByCategory = (id) => {
         dispatch(setCatId(id))
         navigate({ pathname: 'CategoryPage/products/all', search: `?categoryId=${id}` })
-
     };
     return (
         <section className='relative'>

@@ -5,9 +5,10 @@ import UpdateCategory from "../../Components/Admin/Category/UpdateCategory";
 import ShowSubCategories from "../../Components/Admin/Category/ShowSubCategories";
 import { toast, ToastContainer } from "react-toastify";
 import TableAdmin from "../../Components/Admin/TableAdmin";
+import Loading from "../../Components/Loading";
 const ProductCategory = () => {
     const [openSub, setOpenSub] = useState(false)
-    const { data: getAllCategory } = useGetAllCategoryQuery()
+    const { data: getAllCategory, isLoading } = useGetAllCategoryQuery()
     const [delCategory, { isError, isSuccess }] = useDelCategoryMutation()
     const deleteCategoryByID = (id) => { delCategory({ id }) }
     useEffect(() => {
@@ -28,21 +29,27 @@ const ProductCategory = () => {
                 </form>
                 <AddCategory />
             </div>
-            <div className='w-full flex justify-start items-center text-start bg-[#374151] text-[#9CA3AF]'>
-                <h2 className='p-4 w-[20%] font-bold'>ID</h2>
-                <h2 className='p-4 w-[20%] font-bold'>Name</h2>
-                <h2 className='p-4 w-[20%] font-bold'>Slug Name</h2>
-                <h2 className='p-4 w-[20%] font-bold'>Edit</h2>
-            </div>
-            {getAllCategory?.map((item, i) => (
-                <TableAdmin
-                    key={i}
-                    item={item}
-                    actions={deleteCategoryByID}
-                    update={UpdateCategory}
-                    ShowSubCategories={ShowSubCategories}
-                />
-            ))}
+            {isLoading ?
+                <Loading />
+                :
+                <>
+                    <div className='w-full flex justify-start items-center text-start bg-[#374151] text-[#9CA3AF]'>
+                        <h2 className='p-4 w-[20%] font-bold'>ID</h2>
+                        <h2 className='p-4 w-[20%] font-bold'>Name</h2>
+                        <h2 className='p-4 w-[20%] font-bold'>Slug Name</h2>
+                        <h2 className='p-4 w-[20%] font-bold'>Edit</h2>
+                    </div>
+                    {getAllCategory?.map((item, i) => (
+                        <TableAdmin
+                            key={i}
+                            item={item}
+                            actions={deleteCategoryByID}
+                            update={UpdateCategory}
+                            ShowSubCategories={ShowSubCategories}
+                        />
+                    ))}
+                </>
+            }
         </div>
     );
 };

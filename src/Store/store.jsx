@@ -8,6 +8,7 @@ import UserLoginSlice from '../Store/UserLoginSlice'
 import { emporiumApi } from './EmporiumApi'
 import filterProductSlice from './filterProductSlice'
 import CategoryIdSlice from './CategoryIdSlice'
+import LikeSlice from './LikeSlice'
 export default configureStore({
   reducer: {
     counter: counterReducer,
@@ -18,6 +19,7 @@ export default configureStore({
     user: UserLoginSlice,
     catId: CategoryIdSlice,
     filterProduct: filterProductSlice, 
+    liked: LikeSlice,
     [emporiumApi.reducerPath]: emporiumApi.reducer,
     
   },

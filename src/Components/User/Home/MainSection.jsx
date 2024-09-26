@@ -1,12 +1,5 @@
-import React from 'react'
 import MainCard from './MainCard'
-import { useGetAllCategoryQuery } from '../../../Store/EmporiumApi';
-
-const MainSection = () => {
-    const {data: getAllCategories} = useGetAllCategoryQuery()
-    console.log(getAllCategories);
-    
-    
+const MainSection = ({ getAllCategories }) => {
     return (
         <div>
             <div className='mt-10'>
