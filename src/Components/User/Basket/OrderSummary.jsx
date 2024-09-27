@@ -11,8 +11,7 @@ const OrderSummary = ({ addToCard, checkout }) => {
   const {delivery} = useSelector(state => state.delivery)
   const dispatch = useDispatch()
   const { data: getAllBasketData } = useGetAllCartQuery()
-  const totalPrice = getAllBasketData?.reduce((acc, item) => acc + item.product_id.price, 0);
-  
+  const totalPrice = getAllBasketData?.reduce((acc, item) => acc + item.product_id.price*item.count, 0);
   return (
     <section className={`flex flex-col items-center justify-center py-5 mt-1 font-["Montserrat",_sans-serif] ${addToCard ? 'm-0' : 'm-5 border-t'}`}>
       <h2 className={`w-full border-b text-xl pb-2 font-["Cormorant_Garamond",_serif] ${addToCard ? 'inline-block' : 'hidden'}`}>Order summary</h2>
@@ -41,7 +40,7 @@ const OrderSummary = ({ addToCard, checkout }) => {
         <button onClick={() => dispatch(setBasket(false))} className="h-11 w-full my-4">
           <BlackButton
             title={`${addToCard ? 'Continue to checkout' : 'Go To Cart'}`}
-            path={`${addToCard ? 'Checkout' : 'Basket'}`} />
+            path={`${addToCard ? 'checkout' : 'basket'}`} />
         </button>
         <div className={`w-[50%] ${addToCard ? 'hidden' : 'block'}`}>
           <button onClick={() => dispatch(setBasket(false))}>

@@ -31,16 +31,16 @@ export const route = createBrowserRouter(
             </Route>
             <Route path="/" element={<MainLayout />}>
                 <Route index element={<Home />} />
-                <Route path='SignUp' element={<SignUp />} />
-                <Route path='Login' element={<Login />} />
-                <Route path='UserInformation' element={<UserInformation />} />
-                <Route path='UserInformation/cabinet' element={<UpdateUser />} />
-                <Route path="CategoryPage/products/all" element={<CategoryPage />} />
+                <Route path='register' element={<SignUp />} />
+                <Route path='login' element={<Login />} />
+                <Route path='userinformation' element={<UserInformation />} />
+                <Route path='userinformation/cabinet' element={<UpdateUser />} />
+                <Route path="categorypage/products/all" element={<CategoryPage />} />
                 <Route path="products/all" element={<Brands />} />
-                <Route path="Details/:productsId" element={<Details />} />
-                <Route path="AboutUs" element={<AboutUs />} />
-                <Route path="Basket" element={<Basket />} />
-                <Route path="Basket/Checkout" element={<CheckOut />} />
+                <Route path="details/:productsId" element={<Details />} />
+                <Route path="aboutus" element={<AboutUs />} />
+                <Route path="basket" element={<Basket />} />
+                <Route path="basket/checkout" element={<CheckOut />} />
                 <Route path="WishList" element={<WishList />} />
             </Route>
         </>

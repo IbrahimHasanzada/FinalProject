@@ -8,7 +8,7 @@ const MainCard = ({ item }) => {
     const navigate = useNavigate()
     const filterByCategory = () => {
         dispatch(setCatId(id))
-        navigate({ pathname: 'CategoryPage/products/all', search: `?categoryId=${id}` })
+        navigate({ pathname: 'categorypage/products/all', search: `?categoryId=${id}` })
 
     };
     const categorySection = [

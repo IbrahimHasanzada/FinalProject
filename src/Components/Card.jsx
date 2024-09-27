@@ -46,7 +46,7 @@ const Card = ({ item, wish, handleDeleteLike, slider }) => {
                 )}
             </div>
             <div className='overflow-hidden relative group'>
-                <Link to={`/Details/${id}`}>
+                <Link to={`/details/${id}`}>
                     <img className='rounded-t-lg w-full object-cover xl:h-[370px] sm:h-[270px] h-[208px]' src={images[0]} alt="p" />
                 </Link>
                 {!slider && (

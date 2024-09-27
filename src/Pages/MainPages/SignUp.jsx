@@ -139,7 +139,7 @@ const SignUp = () => {
                         </div>
                         <div className='mt-16 pt-4 border-t w-full'>
                             <h2 className='text-xl pb-5 font-["Cormorant_Garamond",_serif]'>Already have an account?</h2>
-                            <BlackButton path='/Login' title='Sign in' className="w-full text-2xl" />
+                            <BlackButton path='/login' title='Sign in' className="w-full text-2xl" />
                         </div>
                     </Form>
                 )}

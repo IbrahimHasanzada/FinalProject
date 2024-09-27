@@ -39,14 +39,14 @@ const Header = () => {
     function handleOpenBasket() { dispatch(setBasket(true)) }
     const filterByCategory = (id) => {
         dispatch(setCatId(id))
-        navigate({ pathname: 'CategoryPage/products/all', search: `?categoryId=${id}` })
+        navigate({ pathname: 'categorypage/products/all', search: `?categoryId=${id}` })
     }
     const filterBySubCategory = (id, name) => {
         navigate({ pathname: '/products/all', search: `?subcategoryId=${id}` })
         localStorage.setItem('subcategory', name)
     }
     const userData = JSON.parse(localStorage.getItem('user'))
-    const changeToUser = () => { if (userData) { navigate('/UserInformation') } else dispatch(setUser()) }
+    const changeToUser = () => { if (userData) { navigate('/userinformation') } else dispatch(setUser()) }
     const navBarImages = ['women-clothing.jpg', 'men-clothing.jpg', 'boys-clothing.jpg', 'necklaces.jpg', 'fragrance.jpg', '2-235-bedroom.jpg']
     return (
         <header className='py-5 md:p-5 sticky z-30 lg:z-40 right-0 left-0 top-0 font-["Montserrat",_sans-serif] bg-white  '>

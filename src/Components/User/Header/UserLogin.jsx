@@ -83,10 +83,10 @@ const UserLogin = ({ userLogin }) => {
                                 <span className={`inline-block font-["Cormorant_Garamond",_serif] ${userLogin ? 'pb-5' : ''}`}>Don't have an account?</span>
                                 <div className={`${userLogin ? 'w-full' : ''}`}>
                                     {userLogin ?
-                                        <button onClick={() => navigate('/SignUp')} className='uppercase text-sm text-white bg-black h-11 w-full  flex justify-center items-center 
+                                        <button onClick={() => navigate('/register')} className='uppercase text-sm text-white bg-black h-11 w-full  flex justify-center items-center 
                                             rounded-md hover:bg-transparent hover:text-black hover:border border-black duration-200'>Create new account</button>
                                         : <button onClick={() => dispatch(setUser())}>
-                                            <Link to='SignUp' className='underline ml-2 pt-3 font-["Cormorant_Garamond",_serif]'>Register</Link>
+                                            <Link to='register' className='underline ml-2 pt-3 font-["Cormorant_Garamond",_serif]'>Register</Link>
                                         </button>}
                                 </div>
                             </div>

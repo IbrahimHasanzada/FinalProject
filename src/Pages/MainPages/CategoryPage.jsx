@@ -78,7 +78,7 @@ const CategoryPage = () => {
     return (
         <div className='wrapper font-["Montserrat",_sans-serif]'>
             <Helmet>
-                <title>Emporium | {`${getCategoriesById?.name}`}</title>
+                <title>Emporium | {`${getCategoriesById ?  getCategoriesById?.name : ''}`}</title>
                 <meta name="description" content="Category Page" />
             </Helmet>
             {isLoading ?

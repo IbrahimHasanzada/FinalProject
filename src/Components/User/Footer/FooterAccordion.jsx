@@ -9,7 +9,7 @@ const FooterAccordion = () => {
       id: 1,
     title: 'Emporium',
       content: [
-        { contentDesc: 'About Us', path: 'AboutUs'},
+        { contentDesc: 'About Us', path: 'aboutus'},
         { contentDesc: 'Store Information', path: '#' },
       ]
     },

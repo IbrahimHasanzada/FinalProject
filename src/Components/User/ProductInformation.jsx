@@ -55,7 +55,7 @@ const ProductInformation = ({ toggleModal, ModalId }) => {
                 autoClose={2000} />
 
             <Helmet>
-                <title>Emporium | {`${name}`}</title>
+                <title>Emporium | {`${name ? name : ''}`}</title>
                 <meta name="description" content="Category Page" />
             </Helmet>
 

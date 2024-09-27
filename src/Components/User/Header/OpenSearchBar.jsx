@@ -3,6 +3,7 @@ import { IoIosSearch } from "react-icons/io";
 import { useGetAllCategoryQuery, useSearchProductsQuery } from "../../../Store/EmporiumApi";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import Loading from "../../Loading";
 const OpenSearchBar = ({ flag, setFlag }) => {
 
     function handleCloseSearch() { setFlag(false) }
@@ -10,7 +11,7 @@ const OpenSearchBar = ({ flag, setFlag }) => {
     const [search, setSearch] = useState('')
     const [searchData, setSearchData] = useState([])
     const [catName, setCatName] = useState('')
-    const { data: getSearchedData } = useSearchProductsQuery(search, { skip: !search })
+    const { data: getSearchedData, isLoading } = useSearchProductsQuery(search, { skip: !search })
     useEffect(() => {
         if (search === '') {
             setSearchData([])
@@ -54,29 +55,35 @@ const OpenSearchBar = ({ flag, setFlag }) => {
                     </div>
                 </div>
                 <div className={`w-full mt-5 flex gap-5 flex-col overflow-y-auto px-5 ${searchData?.length > 0 ? 'h-auto max-h-[70vh] lg:max-h-[50vh]' : 'lg:h-auto'}`}>
-                    {searchData?.map((item, i) => (
-                        item.category.name === catName ? (
-                            <div onClick={() => setFlag(false)} key={i}>
-                                <Link to={`/Details/${item.id}`} className="flex justify-between items-center gap-4">
-                                    <div className="flex gap-5 items-center">
-                                        <img className="w-12 h-16 object-cover" src={item.images[0]} alt={item.name} />
-                                        <h2>{item.name}</h2>
+                    {isLoading ?
+                        <Loading />
+                        :
+                        <>
+                            {searchData?.map((item, i) => (
+                                item.category.name === catName ? (
+                                    <div onClick={() => setFlag(false)} key={i}>
+                                        <Link to={`/Details/${item.id}`} className="flex justify-between items-center gap-4">
+                                            <div className="flex gap-5 items-center">
+                                                <img className="w-12 h-16 object-cover" src={item.images[0]} alt={item.name} />
+                                                <h2>{item.name}</h2>
+                                            </div>
+                                            <p>{item.price} $</p>
+                                        </Link>
                                     </div>
-                                    <p>{item.price} $</p>
-                                </Link>
-                            </div>
-                        ) : !catName ? (
-                            <div onClick={() => setFlag(false)} key={i}>
-                                <Link to={`/Details/${item.id}`} className="flex justify-between items-center gap-4">
-                                    <div className="flex gap-5 items-center">
-                                        <img className="w-12 h-16 object-cover" src={item.images[0]} alt={item.name} />
-                                        <h2>{item.name}</h2>
+                                ) : !catName ? (
+                                    <div onClick={() => setFlag(false)} key={i}>
+                                        <Link to={`/Details/${item.id}`} className="flex justify-between items-center gap-4">
+                                            <div className="flex gap-5 items-center">
+                                                <img className="w-12 h-16 object-cover" src={item.images[0]} alt={item.name} />
+                                                <h2>{item.name}</h2>
+                                            </div>
+                                            <p>{item.price} $</p>
+                                        </Link>
                                     </div>
-                                    <p>{item.price} $</p>
-                                </Link>
-                            </div>
-                        ) : ''
-                    ))}
+                                ) : ''
+                            ))}
+                        </>
+                    }
                 </div>
             </div>
         </section>

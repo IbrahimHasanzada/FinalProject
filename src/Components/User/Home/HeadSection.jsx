@@ -8,7 +8,7 @@ const HeadSection = ({getAllCategories}) => {
     const dispatch = useDispatch()
     const filterByCategory = (id) => {
         dispatch(setCatId(id))
-        navigate({ pathname: 'CategoryPage/products/all', search: `?categoryId=${id}` })
+        navigate({ pathname: 'categorypage/products/all', search: `?categoryId=${id}` })
     };
     return (
         <section className='relative'>
