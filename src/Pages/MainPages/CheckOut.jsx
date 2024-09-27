@@ -1,21 +1,24 @@
 import React, { useEffect, useState } from 'react'
 import SecureCheckout from '../../Components/User/Checkout/SecureCheckout'
 import Delivery from '../../Components/User/Checkout/Delivery'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import DeliveryDetails from '../../Components/User/Checkout/DeliveryDetails'
 import OrderSummary from '../../Components/User/Basket/OrderSummary'
 import BasketProducts from '../../Components/User/Basket/BasketProducts'
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io'
+import { useGetAllCartQuery } from '../../Store/EmporiumApi'
+import Loading from '../../Components/Loading'
+import { Helmet } from 'react-helmet-async'
 
 const CheckOut = () => {
     const [showSummary, setShowSummary] = useState(false)
     const { checkout } = useSelector(state => state.checkout)
-    const dispatch = useDispatch()
+    const { data: getAllBasketData, isLoading } = useGetAllCartQuery();
+    const totalPrice = getAllBasketData?.reduce((acc, item) => acc + item.product_id.price, 0);
+    const check = true
     useEffect(() => {
         localStorage.setItem('payment', checkout);
     }, [checkout])
-    const imgExample = ['basketexample1.jpeg', 'basketexample1.jpeg']
-
     useEffect(() => {
         const handleResize = () => {
             if (window.innerWidth >= 1024) {
@@ -30,8 +33,14 @@ const CheckOut = () => {
             window.removeEventListener('resize', handleResize)
         }
     }, [])
+    console.log(totalPrice);
+
     return (
         <div className='wrapper font-["Montserrat",_sans-serif]'>
+            <Helmet>
+                <title>Emporium | Checkout</title>
+                <meta name="description" content="Checkout Page" />
+            </Helmet>
             <section className='py-6 flex flex-col lg:flex-row'>
                 <div className='w-full lg:w-[70%]'>
                     <div>
@@ -49,8 +58,15 @@ const CheckOut = () => {
                                 <button onClick={() => setShowSummary(false)}><IoIosArrowDown /></button>
                             </div>
                         </div>
-                        <div className='h-full w-full xl:px-5 overflow-y-auto my-4'>
-                            <BasketProducts />
+                        <div className='h-full w-full overflow-y-auto my-4'>
+                            {isLoading ?
+                                <Loading /> :
+                                <>
+                                    {getAllBasketData?.map((product, productIndex) => (
+                                        <BasketProducts key={productIndex} check={check} product={product} />
+                                    ))}
+                                </>
+                            }
                         </div>
                         <div className='w-full py-1'>
                             <OrderSummary checkout={checkout} />
@@ -59,25 +75,25 @@ const CheckOut = () => {
                     <div className={`lg:hidden bg-[#F7F7F2] px-4 ${showSummary ? 'hidden' : 'flex '}`}>
                         <div className='py-4 w-full flex justify-between items-center'>
                             <div className='flex flex-row items-center justify-start'>
-                                {imgExample.map((img, i) => (
-                                    <img key={i} src={`/img/${img}`} alt={`img-${i}`} className='w-16 h-20 mr-3' />
+                                {getAllBasketData?.slice(0, 2).map((item, i) => (
+                                    <img key={i} src={item.product_id.images[0]} alt={`img-${i}`} className='w-16 h-20 mr-3' />
                                 ))}
                                 <div>
-                                    <span className='rounded-sm bg-black text-white py-[1px] px-2'>+ {imgExample.length + 5}</span>
+                                    <span className='rounded-sm bg-black text-white py-[1px] px-2'>+ {getAllBasketData?.slice(2).length}</span>
                                 </div>
                             </div>
                             <div className='flex flex-col items-end'>
                                 <button className='mb-6' onClick={() => setShowSummary(true)}><IoIosArrowUp className='text-lg' /></button>
                                 <div className='uppercase text-sm leading-4'>
-                                    <h2>subtotal</h2>
-                                    <span className='font-medium mt-1 inline-block'>1207 azn</span>
+                                    <h2>Subtotal</h2>
+                                    <span className='text-[#777]'>{totalPrice} $</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
-        </div>
+            </section >
+        </div >
     )
 }
 

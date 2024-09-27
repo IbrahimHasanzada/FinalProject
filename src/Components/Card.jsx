@@ -13,14 +13,11 @@ const Card = ({ item, wish, handleDeleteLike, slider }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const toggleModal = () => setIsModalOpen(!isModalOpen);
     const { name, description, price, images, id, discount, Brands } = item;
-
     useEffect(() => {
         const likedItems = JSON.parse(localStorage.getItem('likedItems')) || [];
-        if (likedItems.some(likedItem => likedItem.id === id)) {
-            setLike(true);
-        }
+        (likedItems.some(likedItem => likedItem.id === id)) &&  setLike(true);
+        
     }, [id]);
-
     const handleLikeButton = (itemId) => {
         let likedItems = JSON.parse(localStorage.getItem('likedItems')) || [];
         if (like) {

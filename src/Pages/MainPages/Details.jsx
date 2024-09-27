@@ -1,11 +1,5 @@
-import { FaWhatsapp, FaRegHeart } from "react-icons/fa"
 import Card from "../../Components/Card"
-import BlackButton from "../../Components/BlackButton"
-import DetailsSlider from "../../Components/User/Details/DetailsSlider"
-import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io'
-import { useState } from "react"
-import { useParams, useSearchParams } from "react-router-dom"
-import { useAddToCardMutation, useGetAllProductQuery, useGetProductByIdQuery } from "../../Store/EmporiumApi"
+import {  useGetAllProductQuery } from "../../Store/EmporiumApi"
 import ProductInformation from "../../Components/User/ProductInformation"
 const Details = () => {
     const { data: getAllProduct, isLoading } = useGetAllProductQuery()
@@ -17,11 +11,11 @@ const Details = () => {
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6  gap-4 py-6">
                 </div>
             </section>
-            {/* <section>
-                {getAllProduct?.data.map((item,i) => (
-                    <Card key={i} product={item} />
+            <section className="w-full grid grid-cols-2 xs:grid-cols-3 md:grid-cols-4 lg:grid-cols-6  gap-10">
+                {getAllProduct?.data.map((item, i) => (
+                    <Card key={i} item={item} />
                 ))}
-            </section> */}
+            </section>
         </div>
     )
 }

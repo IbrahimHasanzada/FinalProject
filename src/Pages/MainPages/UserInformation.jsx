@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { FaPen } from "react-icons/fa6";
 import { PiSignOutBold } from "react-icons/pi";
 import { useNavigate } from "react-router-dom";
@@ -14,7 +15,7 @@ const informations = [
 const UserInformation = () => {
     const userData = JSON.parse(localStorage.getItem('user'))
     console.log(userData);
-    
+
     const navigate = useNavigate()
     const [change, setChange] = useState('')
     const SignOut = () => {
@@ -27,13 +28,17 @@ const UserInformation = () => {
     }
     return (
         <div className='max-w-[1440px] wrapper mx-auto '>
+            <Helmet>
+                <title>Emporium | Cabinet</title>
+                <meta name="description" content="Cabinet Page" />
+            </Helmet>
             {userData ? (
                 <section className='my-5 flex items-center md:items-start flex-col md:flex-row gap-20'>
                     <section className="relative  items-center">
                         <div className='w-52 h-52'>
                             <img className="rounded-full h-full w-full object-cover" src={userData?.user_img} alt={userData?.id} />
                         </div>
-                        
+
                     </section>
                     <section className="w-full">
                         <section className="w-full">

@@ -7,6 +7,7 @@ import BlackButton from '../../Components/BlackButton';
 import { useRegisterUserMutation, useUploadImageMutation } from '../../Store/EmporiumApi';
 import { eGender } from '../../Store/enum';
 import { toast } from 'react-toastify';
+import { Helmet } from 'react-helmet-async';
 
 const SignUp = () => {
     const [showPassword, setShowPassword] = useState(false);
@@ -47,6 +48,10 @@ const SignUp = () => {
     })
     return (
         <section className='wrapper flex flex-col items-center'>
+            <Helmet>
+                <title>Emporium | Register</title>
+                <meta name="description" content="Register Page" />
+            </Helmet>
             <div className='mb-10 text-center w-full'>
                 <h4 className='text-4xl font-["Cormorant_Garamond",_serif]'>Signup</h4>
             </div>

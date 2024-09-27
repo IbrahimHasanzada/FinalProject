@@ -6,10 +6,9 @@ import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Box, CircularProgress } from '@mui/material'
 import Loading from '../../Components/Loading'
+import { Helmet } from 'react-helmet-async'
 const CategoryPage = () => {
     const { catId } = useSelector(state => state.catId);
-    console.log(catId);
-
     const location = useLocation()
     const navigate = useNavigate()
     const [params, setParams] = useState(null);
@@ -78,6 +77,10 @@ const CategoryPage = () => {
 
     return (
         <div className='wrapper font-["Montserrat",_sans-serif]'>
+            <Helmet>
+                <title>Emporium | {`${getCategoriesById?.name}`}</title>
+                <meta name="description" content="Category Page" />
+            </Helmet>
             {isLoading ?
                 <Loading />
                 :

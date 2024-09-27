@@ -11,36 +11,30 @@ import Loading from '../Loading'
 import { FaHeart } from 'react-icons/fa6'
 import { useDispatch } from 'react-redux'
 import { decrementLike, incrementLike } from '../../Store/LikeSlice'
+import { Helmet } from 'react-helmet-async'
 const ProductInformation = ({ toggleModal, ModalId }) => {
     const dispatch = useDispatch()
     const [manageId, setManageId] = useState('')
-    const { data: productData, isLoading, error } = useGetProductByIdQuery(manageId, { skip: !manageId });
+    const { data: productData, isLoading } = useGetProductByIdQuery(manageId, { skip: !manageId });
     const products = productData || {};
-    const { name, id, description, discount, price, images, categoryId, subcategoryId, brandsId, Colors, Size } = products
+    const { name, id, description, discount, price, images, categoryId, subcategoryId, brandsId, Colors, Size, Brands } = products
     const likedItems = JSON.parse(localStorage.getItem('likedItems')) || [];
     const userData = JSON.parse(localStorage.getItem('user'))
     const { productsId } = useParams()
     useEffect(() => {
         productsId ? setManageId(productsId) : setManageId(ModalId)
-    }, [manageId])
+    }, [productsId])
     const [showDescription, setShowDescription] = useState(true)
     const [color, setColor] = useState('')
     const [size, setSize] = useState('')
     const [like, setLike] = useState(false)
     const [addToBasket, { data: getBasketData }] = useAddToCardMutation()
     const addBasket = () => {
-        if (!userData) {
-            toast.error('Please login to add to cart')
-        } else {
-            addToBasket({ productId: id, count: 1, size: size, color: color })
-
-        }
+        (!userData) ? toast.error('Please login to add to cart') : addToBasket({ productId: id, count: 1, size: size, color: color })
     }
     useEffect(() => {
         const likedItems = JSON.parse(localStorage.getItem('likedItems')) || [];
-        if (likedItems.some(likedItem => likedItem.id === id)) {
-            setLike(true);
-        }
+        (likedItems.some(likedItem => likedItem.id === id)) && setLike(true)
     }, [id]);
     const handleLikeButton = () => {
         let likedItems = JSON.parse(localStorage.getItem('likedItems')) || [];
@@ -60,6 +54,11 @@ const ProductInformation = ({ toggleModal, ModalId }) => {
             <ToastContainer
                 autoClose={2000} />
 
+            <Helmet>
+                <title>Emporium | {`${name}`}</title>
+                <meta name="description" content="Category Page" />
+            </Helmet>
+
             {isLoading ?
                 <Loading />
                 :
@@ -78,8 +77,8 @@ const ProductInformation = ({ toggleModal, ModalId }) => {
                             )}
                         </div>
                         <div className="py-2">
-                            <h1 className='text-3xl md:text-4xl md:mb-4'>{name}</h1>
-                            {/* <p>{description}</p> */}
+                            <h1 className='text-3xl md:text-4xl md:mb-4'>{Brands?.name}</h1>
+                            <h2 className='text-base '>{name}</h2>
                         </div>
                         <div className='py-2'>
                             <p>{price} USD</p>

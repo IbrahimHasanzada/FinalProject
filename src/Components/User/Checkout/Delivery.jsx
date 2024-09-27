@@ -40,7 +40,7 @@ const Delivery = () => {
                         <div className='w-full'>
                             <div className='w-full flex justify-between items-center mb-4 text-sm uppercase'>
                                 <p>Urgent delivery</p>
-                                <p>15 azn</p>
+                                <p>15 $</p>
                             </div>
                             <span className='text-[#777] text-sm md:text-base'>Order will now be prepared and sent you</span>
                         </div>

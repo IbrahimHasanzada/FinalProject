@@ -7,6 +7,7 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { useSelector } from 'react-redux';
 import Card from '../../Components/Card';
 import Loading from '../../Components/Loading';
+import { Helmet } from 'react-helmet-async';
 const Brands = () => {
     const location = useLocation()
     const navigate = useNavigate()
@@ -38,6 +39,10 @@ const Brands = () => {
     return (
         <div>
             <div className='wrapper font-["Montserrat",_sans-serif]'>
+                <Helmet>
+                    <title>Emporium | {`${subName}`}</title>
+                    <meta name="description" content="Brands Page" />
+                </Helmet>
                 {isLoading ?
                     <Loading />
 

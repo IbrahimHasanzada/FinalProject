@@ -1,6 +1,12 @@
+import { Helmet } from "react-helmet-async"
+
 const AboutUs = () => {
     return (
         <div className='wrapper flex flex-col items-center font-["Montserrat_Alternates",_sans-serif]'>
+            <Helmet>
+                <title>Emporium | About</title>
+                <meta name="description" content="About Page" />
+            </Helmet>
             <section className='my-10 max-w-[740px] text-center'>
                 <h2 className='mb-12 text-3xl md:text-5xl font-["Cormorant_Garamond",_serif]'>About Emporium</h2>
                 <p className=' text-center leading-5 '>Emporium is a multi-brand luxury concept store established in 2005.

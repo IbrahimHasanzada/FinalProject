@@ -33,7 +33,7 @@ const DeliveryDetails = () => {
                     <div className={`text-sm w-full ${delivery ? 'hidden' : 'block'}`}>
                         <h2 className="mb-5 font-medium">Delivery options</h2>
                         <div className="mb-6">
-                            <span>{deliveryOrder ? 'Urgent - 15 AZN' : 'Standart - Free'} </span>
+                            <span>{deliveryOrder ? 'Urgent - 15 $' : 'Standart - Free'} </span>
                         </div>
                         <button className="text-sm px-1 border rounded-sm h-9 hover:border-black border-white duration-300 w-auto flex justify-center items-center" onClick={() => dispatch(setCheckout(1))}>
                             <SlPencil />
