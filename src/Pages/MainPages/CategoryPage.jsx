@@ -51,11 +51,11 @@ const CategoryPage = () => {
     const SubCategorySection = [
         {
             name: 'Women',
-            img: ['0609triple-banner-1-.gif', '0609triple-banner-2.jpg', '0609triple-banner-3-.gif']
+            img: ['0609triple-banner-1-.gif', '0609triple-banner-2.jpg', '0609Triple-banner-3-.gif']
         },
         {
             name: 'Men',
-            img: ['24triple-man-1_.jpg', '24triple-man-2.gif', '24triple-man-3.jpg']
+            img: ['24Triple-man-1_.jpeg', '24triple-man-2.gif', '24triple-man-3.jpg']
         },
         {
             name: 'Kids',

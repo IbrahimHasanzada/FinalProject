@@ -72,7 +72,7 @@ const Header = () => {
                 </div>
                 <div className="w-[130px] h-[30px] lg:w-[155px] lg:h-[30px]">
                     <Link to="/">
-                        <img src="/img/tradium.png" alt="emporiumLogo" />
+                        <img src="/img/tradium.png" alt="Tradium Logo" />
                     </Link>
                 </div>
                 <div className=" flex gap-4 lg:w-[45%] justify-end">
