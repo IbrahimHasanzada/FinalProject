@@ -4,6 +4,7 @@ import { setCatId } from '../../../Store/CategoryIdSlice';
 
 const MainCard = ({ item }) => {
     const { id, name } = item
+    const path = process.env.PUBLIC_URL + '/img/'
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const filterByCategory = () => {
@@ -17,8 +18,6 @@ const MainCard = ({ item }) => {
         { img: 'jewelleryCategory.jpg', title: 'Jewellery' },
         { img: 'homeCategory.jpg', title: 'Home' }
     ]
-    console.log(item.name);
-
     return (
         <div onClick={filterByCategory} className=' w-full relative group'>
             <div>
@@ -33,7 +32,7 @@ const MainCard = ({ item }) => {
                         <div key={index}>
                             <img
                                 className='w-full h-full transform transition-transform duration-500 group-hover:scale-110'
-                                src={`/img/${item.img}`} alt={`Image-${item.title}`} />
+                                src={path  + item.img} alt={`Image-${item.title}`} />
                         </div>
                     ))}
                 </section>

@@ -1,11 +1,7 @@
-import { useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { FaPen } from "react-icons/fa6";
 import { PiSignOutBold } from "react-icons/pi";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-
-
 const informations = [
     { title: 'My Orders', desc: 'View the progress of your order, or arrange an exchange or return', path: 'orders' },
     { title: 'Account details', desc: 'View or change your sign-in information', path: 'cabinet' },
@@ -14,10 +10,7 @@ const informations = [
 ]
 const UserInformation = () => {
     const userData = JSON.parse(localStorage.getItem('user'))
-    console.log(userData);
-
     const navigate = useNavigate()
-    const [change, setChange] = useState('')
     const SignOut = () => {
         localStorage.removeItem('user')
         navigate('/')

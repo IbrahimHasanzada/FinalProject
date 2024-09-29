@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux'
 import Loading from '../../Components/Loading'
 import { Helmet } from 'react-helmet-async'
 const CategoryPage = () => {
+    const path = process.env.PUBLIC_URL + '/img/'
     const { catId } = useSelector(state => state.catId);
     const location = useLocation()
     const navigate = useNavigate()
@@ -72,7 +73,6 @@ const CategoryPage = () => {
             img: ['24triple-home-11.jpg', '24triple-home-2.jpg', '24triple-home-12.jpg']
         }
     ]
-    const path = process.env.PUBLIC_URL + '/img/'
     return (
         <div className='wrapper font-["Montserrat",_sans-serif]'>
             <Helmet>

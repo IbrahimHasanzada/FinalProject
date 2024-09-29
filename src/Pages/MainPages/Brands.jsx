@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import BrandsSideBar from '../../Components/User/Brands/BrandsSideBar'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { IoFilterSharp } from "react-icons/io5";
+import { BsBoxSeam } from "react-icons/bs";
 import { useGetCategoryByIdQuery, useFilterProductsQuery, useGetAllCategoryQuery } from '../../Store/EmporiumApi';
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { useSelector } from 'react-redux';
@@ -71,33 +72,37 @@ const Brands = () => {
                             <div className={`lg:pl-5 fixed lg:sticky duration-300 bg-white z-40 lg:z-30  top-0 lg:top-32 w-full  h-full lg:w-96 ${filter ? 'right-0' : '-right-full'}`}>
                                 <BrandsSideBar filter={filter} setFilter={setFilter} />
                             </div>
-                            <div className='w-full'>
-                                <div className=' pt-4'>
-                                    <div className='w-full  grid grid-cols-2 xs:grid-cols-3 xl:grid-cols-4  gap-10'>
-                                        {filteredData?.data.map((item, i) => (
-                                            <Card item={item} key={i} />
-                                        ))}
+                            {filteredData?.data.length === 0 ?
+                                <div className='w-full flex flex-col justify-start items-center gap-4 my-10'>
+                                    <BsBoxSeam className='text-6xl' />
+                                    <p className='font-["Cormorant_Garamond",_serif] text-3xl font-medium'>No products found!</p>
+                                </div>
+                                :
+                                <div className='w-full'>
+                                    <div className=' pt-4'>
+                                        <div className='w-full  grid grid-cols-2 xs:grid-cols-3 xl:grid-cols-4  gap-10'>
+                                            {filteredData?.data.map((item, i) => (
+                                                <Card item={item} key={i} />
+                                            ))}
+                                        </div>
+                                    </div>
+                                    <div className='mt-6 w-full flex justify-center items-center'>
+                                        <ul className='flex'>
+                                            <li onClick={() => filterProducts(page - 1)} className={`min-w-10 px-2.5 py-2 m-1 flex justify-center items-center cursor-pointer ${page <= 1 ? 'opacity-50 pointer-events-none' : ''}`} >
+                                                <IoIosArrowBack /> Previous
+                                            </li>
+                                            {[...Array(filteredData?.meta.totalPages)].map((_, i) => (
+                                                <li key={i} onClick={() => filterProducts(i + 1)} className={`min-w-10 text-black leading-5 flex justify-center items-center px-2.5 py-2 m-1 border border-[#F1F1F1] cursor-pointer ${i + 1 === page ? 'bg-black text-white' : 'bg-white text-black'}`}>
+                                                    {i + 1}
+                                                </li>
+                                            ))}
+                                            <li className={`min-w-10 px-2.5 py-2 m-1 flex justify-center items-center cursor-pointer ${page >= filteredData?.meta.totalPages ? 'opacity-50 pointer-events-none' : ''}`} onClick={() => filterProducts(page + 1)} >
+                                                Next <IoIosArrowForward />
+                                            </li>
+                                        </ul>
                                     </div>
                                 </div>
-                                <div className='mt-6 w-full flex justify-center items-center'>
-                                    <ul className='flex'>
-                                        <li onClick={() => filterProducts(page - 1)} className={`min-w-10 px-2.5 py-2 m-1 flex justify-center items-center cursor-pointer ${page <= 1 ? 'opacity-50 pointer-events-none' : ''}`} >
-                                            <IoIosArrowBack /> Previous
-                                        </li>
-                                        {[...Array(filteredData?.meta.totalPages)].map((_, i) => (
-                                            <li key={i} onClick={() => filterProducts(i + 1)} className={`min-w-10 text-black leading-5 flex justify-center items-center px-2.5 py-2 m-1 border border-[#F1F1F1] cursor-pointer ${i + 1 === page ? 'bg-black text-white' : 'bg-white text-black'}`}>
-                                                {i + 1}
-                                            </li>
-                                        ))}
-                                        <li className={`min-w-10 px-2.5 py-2 m-1 flex justify-center items-center cursor-pointer ${page >= filteredData?.meta.totalPages ? 'opacity-50 pointer-events-none' : ''}`} onClick={() => filterProducts(page + 1)} >
-                                            Next <IoIosArrowForward />
-                                        </li>
-                                    </ul>
-                                </div>
-
-
-
-                            </div>
+                            }
                         </section></>
 
                 }
