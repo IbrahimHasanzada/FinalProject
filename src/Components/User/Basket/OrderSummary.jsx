@@ -6,7 +6,6 @@ import { setBasket } from '../../../Store/BasketSlice'
 import { useGetAllCartQuery } from '../../../Store/EmporiumApi'
 
 const OrderSummary = ({ addToCard, checkout }) => {
-  const {basket} = useSelector(state => state.basket)
   const {deliveryOrder} = useSelector(state => state.deliveryOrder)
   const {delivery} = useSelector(state => state.delivery)
   const dispatch = useDispatch()

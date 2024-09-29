@@ -14,22 +14,10 @@ import { useGetAllCartQuery, useGetAllCategoryQuery } from "../../../Store/Empor
 import MobileHeader from "./MobileHeader";
 import { FaXmark } from "react-icons/fa6";
 import { setCatId } from "../../../Store/CategoryIdSlice";
-
 const Header = () => {
     const { data: getAllCategories } = useGetAllCategoryQuery()
     const { data: getAllBasketData } = useGetAllCartQuery()
-    const [like, setLike] = useState('')
-    // const liked = localStorage.getItem('liked')
     const { liked } = useSelector(state => state.liked)
-    // useState(() => {
-    //     setLike(liked)
-    // },[liked])
-    // console.log(like);
-    
-    // useEffect(() => {
-    //     let storedLikedqItems = JSON.parse(localStorage.getItem('likedItems')) || []
-    //     setLiked(storedLikedItems)
-    // }, [storedLikedItems])
     const [flag, setFlag] = useState(false)
     const [mobile, setMobile] = useState(false)
     const { user } = useSelector(state => state.user)
@@ -82,9 +70,9 @@ const Header = () => {
                     </ul>
 
                 </div>
-                <div className="w-[140px] h-[30px] lg:w-[165px] lg:h-[40px]">
+                <div className="w-[130px] h-[30px] lg:w-[155px] lg:h-[30px]">
                     <Link to="/">
-                        <img src="/img/emporium-logo.png" alt="emporiumLogo" />
+                        <img src="/img/tradium (1).png" alt="emporiumLogo" />
                     </Link>
                 </div>
                 <div className=" flex gap-4 lg:w-[45%] justify-end">

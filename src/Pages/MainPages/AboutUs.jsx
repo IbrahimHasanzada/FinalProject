@@ -4,11 +4,11 @@ const AboutUs = () => {
     return (
         <div className='wrapper flex flex-col items-center font-["Montserrat_Alternates",_sans-serif]'>
             <Helmet>
-                <title>Emporium | About</title>
+                <title>Tradium | About</title>
                 <meta name="description" content="About Page" />
             </Helmet>
             <section className='my-10 max-w-[740px] text-center'>
-                <h2 className='mb-12 text-3xl md:text-5xl font-["Cormorant_Garamond",_serif]'>About Emporium</h2>
+                <h2 className='mb-12 text-3xl md:text-5xl font-["Cormorant_Garamond",_serif]'>About Tradium</h2>
                 <p className=' text-center leading-5 '>Emporium is a multi-brand luxury concept store established in 2005.
                     This main fashion destination situated in the very center of Baku City in the luxury
                     shopping venue Port Baku Mall presents niche and high-class men and women’s fashion

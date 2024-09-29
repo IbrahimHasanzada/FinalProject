@@ -38,7 +38,7 @@ const CheckOut = () => {
     return (
         <div className='wrapper font-["Montserrat",_sans-serif]'>
             <Helmet>
-                <title>Emporium | Checkout</title>
+                <title>Tradium | Checkout</title>
                 <meta name="description" content="Checkout Page" />
             </Helmet>
             <section className='py-6 flex flex-col lg:flex-row'>

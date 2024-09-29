@@ -7,7 +7,7 @@ const FooterAccordion = () => {
   const accordionData = [
     {
       id: 1,
-    title: 'Emporium',
+    title: 'Tradium',
       content: [
         { contentDesc: 'About Us', path: 'aboutus'},
         { contentDesc: 'Store Information', path: '#' },

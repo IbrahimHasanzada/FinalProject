@@ -40,7 +40,7 @@ const Brands = () => {
         <div>
             <div className='wrapper font-["Montserrat",_sans-serif]'>
                 <Helmet>
-                    <title>Emporium | {`${subName ? subName : ''}`}</title>
+                    <title>Tradium | {`${subName ? subName : ''}`}</title>
                     <meta name="description" content="Brands Page" />
                 </Helmet>
                 {isLoading ?

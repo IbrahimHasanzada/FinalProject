@@ -19,7 +19,7 @@ const WishList = () => {
     return (
         <div className="wrapper">
             <Helmet>
-                <title>Emporium | Wishlist</title>
+                <title>Tradium | Wishlist</title>
                 <meta name="description" content="Wishlist Page" />
             </Helmet>
             <div className="w-full">

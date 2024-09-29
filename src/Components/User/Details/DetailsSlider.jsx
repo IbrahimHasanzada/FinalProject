@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import Slider from "react-slick";
-import { useGetAllProductQuery } from "../../../Store/EmporiumApi";
-
 const DetailsSlider = ({ images = [] }) => {
-    const { data: getAllProduct } = useGetAllProductQuery();
     const [selectSlide, setSelectSlide] = useState(0);
     const settings = {
         customPaging: function (i) {

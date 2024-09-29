@@ -49,7 +49,7 @@ const SignUp = () => {
     return (
         <section className='wrapper flex flex-col items-center'>
             <Helmet>
-                <title>Emporium | Register</title>
+                <title>Tradium | Register</title>
                 <meta name="description" content="Register Page" />
             </Helmet>
             <div className='mb-10 text-center w-full'>

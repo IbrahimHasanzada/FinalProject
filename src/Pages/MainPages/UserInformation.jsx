@@ -29,7 +29,7 @@ const UserInformation = () => {
     return (
         <div className='max-w-[1440px] wrapper mx-auto '>
             <Helmet>
-                <title>Emporium | Cabinet</title>
+                <title>Tradium | Cabinet</title>
                 <meta name="description" content="Cabinet Page" />
             </Helmet>
             {userData ? (

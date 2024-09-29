@@ -8,7 +8,6 @@ import { Provider } from 'react-redux';
 import route from './Router/route';
 import 'react-toastify/dist/ReactToastify.css';
 import { HelmetProvider } from 'react-helmet-async';
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <HelmetProvider>

@@ -10,7 +10,7 @@ const Basket = () => {
     return (
         <div className='wrapper'>
             <Helmet>
-                <title>Emporium | Basket</title>
+                <title>Tradium | Basket</title>
                 <meta name="description" content="Basket Page" />
             </Helmet>
             <div className='mb-4 '>

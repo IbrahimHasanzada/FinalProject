@@ -9,7 +9,7 @@ const Home = () => {
   return (
     <main className='wrapper font-["Montserrat",_sans-serif]'>
       <Helmet>
-        <title>Emporium | Home</title>
+        <title>Tradium | Home</title>
         <meta name="description" content="Home Page" />
       </Helmet>
       {isLoading ?
