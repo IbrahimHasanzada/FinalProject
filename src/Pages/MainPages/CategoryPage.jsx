@@ -1,10 +1,8 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import CategorySlider from '../../Components/CategorySlider'
-import UnderlineButton from '../../Components/UnderlineButton'
 import { useFilterProductsQuery, useGetCategoryByIdQuery } from '../../Store/EmporiumApi'
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { Box, CircularProgress } from '@mui/material'
 import Loading from '../../Components/Loading'
 import { Helmet } from 'react-helmet-async'
 const CategoryPage = () => {
@@ -74,7 +72,7 @@ const CategoryPage = () => {
             img: ['24triple-home-11.jpg', '24triple-home-2.jpg', '24triple-home-12.jpg']
         }
     ]
-
+    const path = process.env.PUBLIC_URL + '/img/'
     return (
         <div className='wrapper font-["Montserrat",_sans-serif]'>
             <Helmet>
@@ -136,7 +134,7 @@ const CategoryPage = () => {
                                             <div key={i}>
                                                 <img
                                                     className="w-full h-full transform transition-transform duration-500 group-hover:scale-110"
-                                                    src={`/img/${item.img[index]}`} alt={`Image ${i}`} />
+                                                    src={path + item.img[index]} alt={`Image ${i}`} />
                                             </div>
 
                                         ))}
