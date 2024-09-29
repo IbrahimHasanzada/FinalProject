@@ -8,7 +8,7 @@ import { toast, ToastContainer } from 'react-toastify';
 const AdminLogin = () => {
     const [showPassword, setShowPassword] = useState(false);
     const togglePasswordVisibility = () => { setShowPassword(!showPassword) }
-    const [login, {isError}] = useLoginMutation()
+    const [login, { isError }] = useLoginMutation()
     const validationSchema = Yup.object().shape({
         username: Yup.string().required('First name is required'),
         login_password: Yup.string()
@@ -21,12 +21,20 @@ const AdminLogin = () => {
             validationSchema={validationSchema}
             onSubmit={(values) => {
                 login({ username: values.username, password: values.login_password })
-                .then(response => {
-                    console.log(response)
-                    localStorage.setItem('user', JSON.stringify(response.data.user));
-                    localStorage.setItem('token', response.data.token);
-                    response.data.user.role == "ADMIN" ? window.location.reload() : toast.error('Invalid username or password!')
-                })
+                    .then(response => {
+                        response.data && localStorage.setItem('user', JSON.stringify(response.data.user));
+                        response.data && localStorage.setItem('token', response.data.token);
+                        if (response) {
+                            if (response.data && response.data.user.role === "ADMIN") {
+                                window.location.reload();
+                            } else if (response.error && response.error.status === 401) {
+                                console.log(response.error);
+                                toast.error('Invalid username or password!');
+                            } else {
+                                toast.error('An unexpected error occurred.');
+                            }
+                        }
+                    })
             }}>
             {() => (
                 <Form>

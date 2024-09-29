@@ -3,6 +3,7 @@ import DetailsSlider from './Details/DetailsSlider'
 import { FaRegHeart, FaWhatsapp } from 'react-icons/fa'
 import BlackButton from '../BlackButton'
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io'
+import { FaCheck } from "react-icons/fa";
 import { useAddToCardMutation, useGetProductByIdQuery } from '../../Store/EmporiumApi'
 import { useParams } from 'react-router-dom'
 import UnderlineButton from '../UnderlineButton'
@@ -87,16 +88,23 @@ const ProductInformation = ({ toggleModal, ModalId }) => {
                             <p className="pb-4">Color:</p>
                             <div className="flex gap-2">
                                 {Colors?.map((item, i) => (
-                                    <div
-                                        key={i}
-                                        onClick={() => setColor(item)}
-                                        style={{ background: item }}
-                                        className={`rounded-full cursor-pointer h-6 w-6 ${color === item ? 'border border-black' : 'border-0'} ${item === 'white' ? 'border border-black' : ''}`}></div>
+                                    <div className='relative h-6 w-6'>
+                                        <div
+                                            key={i}
+                                            onClick={() => setColor(item)}
+                                            style={{ background: item }}
+                                            className={`rounded-full cursor-pointer h-full w-full ${item === 'white' ? 'border border-black' : ''}`}></div>
+                                        {color === item  &&
+                                            <div className='absolute top-1 left-1'>
+                                                <FaCheck className={`${color === 'BLACK' ? 'text-white' : 'text-black'}`} />
+                                            </div>
+                                        }
+                                    </div>
                                 ))}
                             </div>
                         </div>
                         <div className='py-2'>
-                            <p className="py-2">Ölçü:</p>
+                            <p className="py-2">Size:</p>
                             <ul className="grid grid-cols-4 gap-5 w-full">
                                 {Size?.map((item, i) => (
                                     <li
@@ -116,19 +124,28 @@ const ProductInformation = ({ toggleModal, ModalId }) => {
                                 <FaWhatsapp className="mr-4 text-3xl" />
                                 <span>Send us a message</span>
                             </button>}
-                            <button onClick={handleLikeButton} className={`my-2  uppercase flex items-center justify-center ${ModalId ? 'border border-black rounded-full px-2 h-8' : 'rounded-sm w-full px-5 h-12 gap-6'}`}>
-                                {likedItems?.map((item) => item.id).includes(id) ? <FaHeart className='text-xl' /> : <FaRegHeart className='text-xl' />}
-                                {!ModalId && <span>add to wishlist</span>}
+                            <button onClick={handleLikeButton} className={`my-2  uppercase flex items-center justify-center ${ModalId ? 'border border-black rounded-full px-2 h-8' : 'rounded-sm w-full px-5 h-12 gap-4'}`}>
+                                {likedItems?.map((item) => item.id).includes(id) ?
+                                    <>
+                                        <FaHeart className='text-xl' />
+                                        {!ModalId && <span>Remove from wishlist</span>}
+                                    </>
+                                    :
+                                    <>
+                                        <FaRegHeart className='text-xl' />
+                                        {!ModalId && <span>add to wishlist</span>}
+                                    </>
+                                }
                             </button>
                         </div>
                         {!ModalId &&
-                            <section className="w-full border-y">
+                            <section className="w-full py-2 border-y">
                                 <div onClick={() => setShowDescription(!showDescription)} className="w-full flex justify-between items-center cursor-pointer">
                                     <span className='text-2xl font-["Cormorant_Garamond",_serif] py-5'>Description</span>
                                     <button >{showDescription ? <IoIosArrowUp /> : <IoIosArrowDown />}</button>
                                 </div>
 
-                                <div className={`${showDescription ? 'block' : 'hidden'}`}>
+                                <div className={`${showDescription ? 'block py-2' : 'hidden py-0'}`}>
                                     <p>{description}</p>
                                 </div>
                             </section>
