@@ -12,7 +12,7 @@ const DeliveryDetails = () => {
         <div>
             <section className='font-["Montserrat",_sans-serif]'>
                 <h2 className='text-xl font-["Cormorant_Garamond",_serif]'>Delivery Details</h2>
-                <section className="py-8 flex">
+                <section className="py-8 flex flex-col xs:flex-row gap-5 ">
                     <div className='text-sm w-full'>
                         <h2 className="mb-5 font-medium">Customer information</h2>
                         {formReceiver ? (

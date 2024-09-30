@@ -33,8 +33,6 @@ const CheckOut = () => {
             window.removeEventListener('resize', handleResize)
         }
     }, [])
-    console.log(totalPrice);
-
     return (
         <div className='wrapper font-["Montserrat",_sans-serif]'>
             <Helmet>
@@ -78,9 +76,10 @@ const CheckOut = () => {
                                 {getAllBasketData?.slice(0, 2).map((item, i) => (
                                     <img key={i} src={item.product_id.images[0]} alt={`img-${i}`} className='w-16 h-20 mr-3' />
                                 ))}
-                                <div>
+                                {getAllBasketData?.length > 3 ?
                                     <span className='rounded-sm bg-black text-white py-[1px] px-2'>+ {getAllBasketData?.slice(2).length}</span>
-                                </div>
+                                    : <span></span>}
+
                             </div>
                             <div className='flex flex-col items-end'>
                                 <button className='mb-6' onClick={() => setShowSummary(true)}><IoIosArrowUp className='text-lg' /></button>

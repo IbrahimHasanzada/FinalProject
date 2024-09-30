@@ -7,7 +7,7 @@ import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { setUser } from '../../../Store/UserLoginSlice';
 import { useLoginMutation } from '../../../Store/EmporiumApi';
-import { Bounce, toast, ToastContainer } from 'react-toastify';
+import { toast} from 'react-toastify';
 
 const UserLogin = ({ userLogin }) => {
     const userData = JSON.parse(localStorage.getItem('user'))
@@ -25,7 +25,6 @@ const UserLogin = ({ userLogin }) => {
     })
     return (
         <div className={`bg-white p-6 ${userLogin ? 'w-full' : 'w-[330px] shadow-2xl'}`}>
-            <ToastContainer />
             {!userLogin && <h2 className='pb-2 border-b text-2xl font-["Cormorant_Garamond",_serif]'>My profile</h2>}
             <Formik
                 initialValues={{ username: '', login_password: '' }}
@@ -74,9 +73,6 @@ const UserLogin = ({ userLogin }) => {
                             Sign in
                         </button>
                         <div>
-                            <button className='pt-3 font-["Cormorant_Garamond",_serif]'>
-                                <Link className='underline text-base '>Forgot password?</Link>
-                            </button>
                             <div className={`mt-5 pt-3 border-t w-full text-center flex ${userLogin ? 'flex-col text-2xl' : 'flex-row text-base'}`}>
                                 <span className={`inline-block font-["Cormorant_Garamond",_serif] ${userLogin ? 'pb-5' : ''}`}>Don't have an account?</span>
                                 <div className={`${userLogin ? 'w-full' : ''}`}>

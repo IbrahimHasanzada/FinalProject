@@ -49,6 +49,9 @@ input[type=number]::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
+.slick-list{
+    padding: 10px 0 !important;
+}
 #detailsSlider .slick-list {
     width: 100% !important;
 }
@@ -70,4 +73,5 @@ input[type=number]::-webkit-inner-spin-button {
     #detailsSlider .slick-slider .slick-dots li:not(:first-child){margin: 10px 0 0 0 !important;}
     #detailsSlider .slick-slider{flex-direction: row !important;}
     #detailsSlider .slick-list{width: 500px !important;}
+    .slick-list{padding:  0 !important;}
 }

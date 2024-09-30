@@ -38,7 +38,6 @@ const AdminLogin = () => {
             }}>
             {() => (
                 <Form>
-                    <ToastContainer />
                     <div className='wrapper h-[100vh] flex justify-center items-center flex-col'>
                         <h1 className='text-4xl font-medium'>Sign in</h1>
                         <div className='w-[480px] '>

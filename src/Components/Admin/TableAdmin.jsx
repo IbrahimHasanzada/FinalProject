@@ -1,6 +1,5 @@
 import React from 'react';
 import { FaRegTrashAlt } from 'react-icons/fa';
-
 const TableAdmin = ({ item, actions, product, update: UpdateComponent, ShowSubCategories }) => {
     return (
         <div className="w-full">
@@ -19,9 +18,7 @@ const TableAdmin = ({ item, actions, product, update: UpdateComponent, ShowSubCa
                         </div>
                     </>
                 ) : <span className='p-4 w-[20%]'>{item.slug}</span>
-
                 }
-
                 <div className='p-4 w-[33%] flex gap-2'>
                     <UpdateComponent id={item.id} />
                     <button onClick={() => actions(item.id)} className="flex items-center gap-2 border-2 text-red-700 bg-transparent border-red-700 hover:text-white hover:bg-red-700  bg-red-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="button">

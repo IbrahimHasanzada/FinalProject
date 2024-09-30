@@ -1,10 +1,6 @@
-import { FaRegEdit, FaRegTrashAlt } from "react-icons/fa";
-import { useDelBrandsMutation, useDelCategoryMutation, useGetAllBrandsQuery, useGetAllCategoryQuery } from "../../Store/EmporiumApi";
-import { RxDoubleArrowDown } from "react-icons/rx";
-import { useEffect, useState } from "react";
-import UpdateCategory from "../../Components/Admin/Category/UpdateCategory";
-import { toast, ToastContainer } from "react-toastify";
-import Swal from 'sweetalert2';
+import { useDelBrandsMutation, useGetAllBrandsQuery, } from "../../Store/EmporiumApi";
+import { useEffect } from "react";
+import { toast } from "react-toastify";
 import BrandsModal from "../../Components/Admin/Brands/BrandsModal";
 import TableAdmin from "../../Components/Admin/TableAdmin";
 import UpdateBrands from "../../Components/Admin/Brands/UpdateBrands";
@@ -20,7 +16,6 @@ const ProductBrands = () => {
     }, [isSuccess, isError]);
     return (
         <div className="p-5 w-full bg-[#1F2937]">
-            <ToastContainer />
             <div className="mb-4 text-white">
                 <h1 className="text-3xl">All Brands</h1>
             </div>

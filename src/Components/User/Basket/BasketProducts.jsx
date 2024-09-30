@@ -45,15 +45,18 @@ const BasketProducts = ({ addToCard, product, check }) => {
                     </div>
                     {/* <CiHeart className="mr-4 text-lg" />
                         <p className='uppercase text-xs'>add to wishlist</p> */}
-                    <div className="flex items-center gap-2 mt-4">
-                        <button onClick={() => remCount(-1)} className="h-8 w-8 flex justify-center items-center border border-black hover:bg-black hover:text-white"><FiMinus /></button>
-                        <span>{product.count}</span>
-                        <button onClick={() => addCount(1)} className="h-8 w-8 flex justify-center items-center border border-black hover:bg-black hover:text-white"><FiPlus /></button>
-                    </div>
                     {!check &&
-                        <button onClick={() => handleDeleteCard(product.id)} className='absolute right-0 top-0'>
-                            <FaXmark className="text-lg" />
-                        </button>
+                        <>
+                            <div className="flex items-center gap-2 mt-4">
+                                <button onClick={() => remCount(-1)} className="h-8 w-8 flex justify-center items-center border border-black hover:bg-black hover:text-white"><FiMinus /></button>
+                                <span>{product.count}</span>
+                                <button onClick={() => addCount(1)} className="h-8 w-8 flex justify-center items-center border border-black hover:bg-black hover:text-white"><FiPlus /></button>
+                            </div>
+
+                            <button onClick={() => handleDeleteCard(product.id)} className='absolute right-0 top-0'>
+                                <FaXmark className="text-lg" />
+                            </button>
+                        </>
                     }
                 </section>
             </div >

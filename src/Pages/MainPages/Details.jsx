@@ -20,7 +20,6 @@ const Details = () => {
                 <h2 className='text-2xl font-["Cormorant_Garamond",_serif] font-medium'>You might also like</h2>
                 <section className="w-full my-6 grid grid-cols-2 xs:grid-cols-3 md:grid-cols-4 lg:grid-cols-6  gap-10">
                     {getAllProduct?.data.map((item, i) => (
-                        
                         item.id != manageId && item.subcategory.name == productData?.subcategory.name && <Card key={i} item={item} />
                     ))}
                 </section>

@@ -1,4 +1,4 @@
-import {  Field, Form, Formik } from 'formik';
+import { Field, Form, Formik } from 'formik';
 import React, { useState } from 'react';
 import * as Yup from 'yup';
 import UnderlineButton from '../../UnderlineButton';
@@ -8,6 +8,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setCheckout } from '../../../Store/CheckOutSlice';
 
 const DeliveryForm = () => {
+    const formReceiver = JSON.parse(localStorage.getItem('receiver'))
+    console.log(formReceiver);
+
     const navigate = useNavigate();
     const [isGift, setIsGift] = useState(false);
     const handleCheckboxChange = () => setIsGift(!isGift);
@@ -34,11 +37,11 @@ const DeliveryForm = () => {
     return (
         <Formik
             initialValues={{
-                first_name: '',
-                last_name: '',
-                mobile_number: '',
-                email: '',
-                address: '',
+                first_name: formReceiver?.first_name || '',
+                last_name: formReceiver?.last_name || '',
+                mobile_number: formReceiver?.mobile_number || '',
+                email: formReceiver?.email || '',
+                address: formReceiver?.address || '',
                 firstName: '',
                 lastName: '',
                 mobile: '',

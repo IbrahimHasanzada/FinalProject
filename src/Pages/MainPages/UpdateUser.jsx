@@ -3,8 +3,8 @@ import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import { TbEye, TbEyeOff } from 'react-icons/tb';
 import { toast } from 'react-toastify';
-import FormInput from '../Checkout/FormInput';
-import { useUploadImageMutation, useUserUpdateMutation } from '../../../Store/EmporiumApi';
+import FormInput from '../../Components/User/Checkout/FormInput';
+import { useUploadImageMutation, useUserUpdateMutation } from '../../Store/EmporiumApi';
 import { FaRegPenToSquare } from 'react-icons/fa6';
 import { useNavigate } from 'react-router-dom';
 const UpdateUser = () => {
@@ -46,7 +46,7 @@ const UpdateUser = () => {
         .required('Password is required')
         .min(6, 'Password must be at least 6 characters'),
         repeat_password: Yup.string()
-        .oneOf([Yup.ref('password'), null], 'Passwords must match')
+        .min(6, 'Password must be at least 6 characters')
         .required('Please confirm your password')
     })
     console.log(userData);
@@ -100,7 +100,7 @@ const UpdateUser = () => {
                                 <div className='flex md:flex-row flex-col md:gap-4 justify-between'>
                                     <div className='pt-5 w-full'>
                                         <div className='relative'>
-                                            <FormInput type={showPassword ? 'text' : 'password'} name='password' label='New password' placeholder='Password' />
+                                            <FormInput type={showPassword ? 'text' : 'password'} name='password' label='New Password' placeholder='New Password' />
                                             <button
                                                 type="button"
                                                 className='absolute right-4 top-10'
@@ -111,7 +111,7 @@ const UpdateUser = () => {
                                     </div>
                                     <div className='pt-5 w-full'>
                                         <div className='relative'>
-                                            <FormInput type={showPassword ? 'text' : 'password'} name='repeat_password' label='Repeat Password' placeholder='Repeat Password' />
+                                            <FormInput type={showPassword ? 'text' : 'password'} name='repeat_password' label='Old Password' placeholder='Old Password' />
                                             <button
                                                 type="button"
                                                 className='absolute right-4 top-10'

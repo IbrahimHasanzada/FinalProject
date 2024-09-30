@@ -88,9 +88,8 @@ const ProductInformation = ({ toggleModal, ModalId }) => {
                             <p className="pb-4">Color:</p>
                             <div className="flex gap-2">
                                 {Colors?.map((item, i) => (
-                                    <div className='relative h-6 w-6'>
+                                    <div key={i} className='relative h-6 w-6'>
                                         <div
-                                            key={i}
                                             onClick={() => setColor(item)}
                                             style={{ background: item }}
                                             className={`rounded-full cursor-pointer h-full w-full ${item === 'white' ? 'border border-black' : ''}`}></div>

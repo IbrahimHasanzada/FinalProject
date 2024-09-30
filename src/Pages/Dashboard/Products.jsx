@@ -4,7 +4,7 @@ import { FaRegEdit } from "react-icons/fa";
 import { useDelProductMutation, useGetAllProductQuery } from '../../Store/EmporiumApi';
 import TableAdmin from '../../Components/Admin/TableAdmin';
 import UpdateProduct from '../../Components/Admin/Product/UpdateProduct';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import Loading from '../../Components/Loading';
 const Products = () => {
     const { data: getProducts, isLoading } = useGetAllProductQuery()
@@ -18,7 +18,6 @@ const Products = () => {
     }, [isSuccess, isError])
     return (
         <div className="p-5 w-full bg-[#1F2937]">
-            <ToastContainer />
             <div className="mb-4 text-white font-medium">
                 <h1 className="text-3xl">All products</h1>
             </div>

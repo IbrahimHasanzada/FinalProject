@@ -16,7 +16,7 @@ import ProductCategory from '../Pages/Dashboard/ProductCategory'
 import Products from '../Pages/Dashboard/Products'
 import ProductBrands from '../Pages/Dashboard/ProductBrands'
 import UserInformation from '../Pages/MainPages/UserInformation'
-import UpdateUser from '../Components/User/Cabinet/UpdateUser'
+import UpdateUser from '../Pages/MainPages/UpdateUser'
 export const route = createBrowserRouter(
     createRoutesFromElements(
         <>

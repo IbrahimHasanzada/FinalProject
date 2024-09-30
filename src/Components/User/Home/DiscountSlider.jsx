@@ -1,8 +1,6 @@
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { CiHeart } from "react-icons/ci";
-import { Link } from "react-router-dom";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { useGetAllProductQuery } from "../../../Store/EmporiumApi";
 import Card from "../../Card";
@@ -10,6 +8,9 @@ import Card from "../../Card";
 
 export default function DiscountSlider() {
     const { data: getDiscountedData } = useGetAllProductQuery()
+    console.log(getDiscountedData);
+    
+    const slider = true;
     const settings = {
         nextArrow: <IoIosArrowForward />,
         prevArrow: <IoIosArrowBack />,
@@ -37,9 +38,9 @@ export default function DiscountSlider() {
 
     return (
         <Slider {...settings}>
-            {getDiscountedData?.data.slice(0,15).map((item, i) => (
-                item.discount >= 5 &&
-                <Card key={i} item={item} />
+            {getDiscountedData?.data.map((item, i) => (
+                item.discount >= 10 &&
+                <Card slider={slider} key={i} item={item} />
             ))}
         </Slider>
     );

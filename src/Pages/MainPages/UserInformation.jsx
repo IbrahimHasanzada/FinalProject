@@ -31,7 +31,6 @@ const UserInformation = () => {
                         <div className='w-52 h-52'>
                             <img className="rounded-full h-full w-full object-cover" src={userData?.user_img} alt={userData?.id} />
                         </div>
-
                     </section>
                     <section className="w-full">
                         <section className="w-full">

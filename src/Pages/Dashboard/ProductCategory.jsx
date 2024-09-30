@@ -3,7 +3,7 @@ import { useDelCategoryMutation, useGetAllCategoryQuery } from "../../Store/Empo
 import { useEffect, useState } from "react";
 import UpdateCategory from "../../Components/Admin/Category/UpdateCategory";
 import ShowSubCategories from "../../Components/Admin/Category/ShowSubCategories";
-import { toast, ToastContainer } from "react-toastify";
+import { toast} from "react-toastify";
 import TableAdmin from "../../Components/Admin/TableAdmin";
 import Loading from "../../Components/Loading";
 const ProductCategory = () => {
@@ -18,7 +18,6 @@ const ProductCategory = () => {
     }, [isSuccess, isError])
     return (
         <div className="p-5 w-full bg-[#1F2937]">
-            <ToastContainer />
             <div className="mb-4 text-white">
                 <h1 className="text-3xl">All Categories</h1>
             </div>
