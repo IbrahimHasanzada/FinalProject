@@ -75,7 +75,7 @@ const BrandsAccordion = ({ item }) => {
         navigate({ pathname: '/products/all', search: `?${searchParams.toString()}` });
     }, [brands]);
     return (
-        <section className="border-y flex flex-col">
+        <section className="md:border-y flex flex-col border-b">
             <h2 onClick={() => setIsOpen(!isOpen)} className="py-4 flex justify-between items-center text-sm font-bold cursor-pointer">
                 <span>{title}</span>
                 <IoIosArrowDown className={`transition-transform duration-300 ${isOpen ? 'rotate-180' : 'rotate-0'}`} />

@@ -94,7 +94,7 @@ const ProductInformation = ({ toggleModal, ModalId }) => {
                                             onClick={() => setColor(item)}
                                             style={{ background: item }}
                                             className={`rounded-full cursor-pointer h-full w-full ${item === 'white' ? 'border border-black' : ''}`}></div>
-                                        {color === item  &&
+                                        {color === item &&
                                             <div className='absolute top-1 left-1'>
                                                 <FaCheck className={`${color === 'BLACK' ? 'text-white' : 'text-black'}`} />
                                             </div>

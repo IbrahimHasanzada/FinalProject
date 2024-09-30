@@ -4,7 +4,7 @@ import { FaXmark } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
 import QuickModal from './User/QuickModal';
 import ProductInformation from './User/ProductInformation';
-import { useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { decrementLike, incrementLike, setLiked } from '../Store/LikeSlice';
 
 const Card = ({ item, wish, handleDeleteLike, slider }) => {
@@ -15,8 +15,8 @@ const Card = ({ item, wish, handleDeleteLike, slider }) => {
     const { name, description, price, images, id, discount, Brands } = item;
     useEffect(() => {
         const likedItems = JSON.parse(localStorage.getItem('likedItems')) || [];
-        (likedItems.some(likedItem => likedItem.id === id)) &&  setLike(true);
-        
+        (likedItems.some(likedItem => likedItem.id === id)) && setLike(true);
+
     }, [id]);
     const handleLikeButton = (itemId) => {
         let likedItems = JSON.parse(localStorage.getItem('likedItems')) || [];
@@ -30,7 +30,18 @@ const Card = ({ item, wish, handleDeleteLike, slider }) => {
         localStorage.setItem('likedItems', JSON.stringify(likedItems));
         setLike(!like);
     };
+    // const [currentImage, setCurrentImage] = useState(images[0]);
+    // useEffect(() => {
+    //     const img = new Image();
+    //     img.src = images[1]; // Preload the second image
+    // }, [images]);
+    // const handleMouseEnter = () => {
+    //     setCurrentImage(images[1])
+    // };
 
+    // const handleMouseLeave = () => {
+    //     setCurrentImage(images[0])
+    // };
     return (
         <div className='relative h-[311px] md:h-[476px] w-full rounded-lg'>
             <div className={`absolute z-10 top-2.5 w-full flex ${discount >= 5 ? 'justify-between' : 'justify-end'}`}>
@@ -47,7 +58,12 @@ const Card = ({ item, wish, handleDeleteLike, slider }) => {
             </div>
             <div className='overflow-hidden relative group'>
                 <Link to={`/details/${id}`}>
-                    <img className='rounded-t-lg w-full object-cover xl:h-[370px] sm:h-[270px] h-[208px]' src={images[0]} alt="p" />
+                    <img
+                        className='rounded-t-lg w-full object-cover xl:h-[370px] sm:h-[270px] h-[208px]'
+                        src={images[0]}
+                        // onMouseEnter={handleMouseEnter}
+                        // onMouseLeave={handleMouseLeave}
+                        alt={images[0]} />
                 </Link>
                 {!slider && (
                     <>
