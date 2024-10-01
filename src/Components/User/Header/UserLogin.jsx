@@ -37,6 +37,7 @@ const UserLogin = ({ userLogin }) => {
                                 localStorage.setItem('token', response.data.token);
                                 dispatch(setUser())
                                 navigate('/')
+                                toast.success('Login successful')
                             } else {
                                 toast.error('Invalid username or password!')
                             }

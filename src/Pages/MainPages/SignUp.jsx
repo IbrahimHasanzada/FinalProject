@@ -8,9 +8,11 @@ import { useRegisterUserMutation, useUploadImageMutation } from '../../Store/Emp
 import { eGender } from '../../Store/enum';
 import { toast } from 'react-toastify';
 import { Helmet } from 'react-helmet-async';
+import { useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
     const [showPassword, setShowPassword] = useState(false);
+    const navigate = useNavigate()
     const [registerUser, { data: getUserData }] = useRegisterUserMutation()
     const [sendImage, { data: getImages }] = useUploadImageMutation()
     // const [image, setImage] = useState('')
@@ -75,9 +77,10 @@ const SignUp = () => {
                         gender: values.gender,
                         password: values.password
                     }).unwrap().then((data) => {
-                        console.log('User registered successfully:', data);
+                        toast.success('User registered successfully')
+                        navigate('/login')
                     }).catch((error) => {
-                        console.error('Error:', error);
+                        console.error('Error:', error.status === 400 ? toast.error('Username already taken!') : toast.error('Failed to register user'));
                     });
                 }}>
                 {() => (
