@@ -19,11 +19,7 @@ const ProductBrands = () => {
             <div className="mb-4 text-white">
                 <h1 className="text-3xl">All Brands</h1>
             </div>
-            <div className="w-full flex justify-between items-center mb-4">
-                <form className="w-[30%]">
-                    <label htmlFor="default-search" className="text-white mb-2 text-lg font-medium">Search</label>
-                    <input type="search" id="default-search" className="block w-full p-3 text-sm text-[#9CA3AF] border border-gray-300 rounded-lg bg-[#374151]" placeholder="Search products..." required />
-                </form>
+            <div className="w-full flex justify-end items-center mb-4">
                 <BrandsModal />
             </div>
             {isLoading ?

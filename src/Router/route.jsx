@@ -26,7 +26,7 @@ export const route = createBrowserRouter(
                 </Auth>}>
                 <Route index element={<ProductCategory />} />
                 <Route path='category' element={<ProductCategory />} />
-                <Route path='products' element={<Products />} />
+                <Route path='products/all' element={<Products />} />
                 <Route path='brands' element={<ProductBrands />} />
             </Route>
             <Route path="/" element={<MainLayout />}>

@@ -8,8 +8,6 @@ import Card from "../../Card";
 
 export default function DiscountSlider() {
     const { data: getDiscountedData } = useGetAllProductQuery()
-    console.log(getDiscountedData);
-    
     const slider = true;
     const settings = {
         nextArrow: <IoIosArrowForward />,

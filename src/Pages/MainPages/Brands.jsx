@@ -3,7 +3,7 @@ import BrandsSideBar from '../../Components/User/Brands/BrandsSideBar'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { IoFilterSharp } from "react-icons/io5";
 import { BsBoxSeam } from "react-icons/bs";
-import { useGetCategoryByIdQuery, useFilterProductsQuery, useGetAllCategoryQuery } from '../../Store/EmporiumApi';
+import { useGetCategoryByIdQuery, useFilterProductsQuery } from '../../Store/EmporiumApi';
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { useSelector } from 'react-redux';
 import Card from '../../Components/Card';
@@ -15,9 +15,7 @@ const Brands = () => {
     const { catId } = useSelector(state => state.catId)
     const [filter, setFilter] = useState(false)
     const [page, setPage] = useState(1)
-    const [limit, setLimit] = useState('')
     const { data: getCategoriesSub } = useGetCategoryByIdQuery(catId, { skip: !catId })
-    const { data: getAllcategory } = useGetAllCategoryQuery()
     const [params, setParams] = useState(null);
     const subName = localStorage.getItem('subcategory')
     useEffect(() => {

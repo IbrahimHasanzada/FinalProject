@@ -3,7 +3,7 @@ import { useDelCategoryMutation, useGetAllCategoryQuery } from "../../Store/Empo
 import { useEffect, useState } from "react";
 import UpdateCategory from "../../Components/Admin/Category/UpdateCategory";
 import ShowSubCategories from "../../Components/Admin/Category/ShowSubCategories";
-import { toast} from "react-toastify";
+import { toast } from "react-toastify";
 import TableAdmin from "../../Components/Admin/TableAdmin";
 import Loading from "../../Components/Loading";
 const ProductCategory = () => {
@@ -21,11 +21,7 @@ const ProductCategory = () => {
             <div className="mb-4 text-white">
                 <h1 className="text-3xl">All Categories</h1>
             </div>
-            <div className="w-full flex justify-between items-center mb-4">
-                <form className="w-[30%]">
-                    <label htmlFor="default-search" className="text-white mb-2 text-lg font-medium">Search</label>
-                    <input type="search" id="default-search" className="block w-full p-3 text-sm text-[#9CA3AF] border border-gray-300 rounded-lg bg-[#374151]" placeholder="Search products..." required />
-                </form>
+            <div className="w-full flex justify-end items-center mb-4">
                 <AddCategory />
             </div>
             {isLoading ?

@@ -1,15 +1,12 @@
-import {  useGetAllCategoryQuery, useGetCategoryByIdQuery } from "../../../Store/EmporiumApi";
+import { useGetCategoryByIdQuery } from "../../../Store/EmporiumApi";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { useDelSubCategoryMutation } from "../../../Store/EmporiumApi";
-import TableAdmin from "../TableAdmin";
 import Modal from "../Modal";
 import { FaPlus, FaRegTrashAlt } from "react-icons/fa";
 import SubcategoryModal from "./SubCategoryModal";
 import UpdateSubCategories from "./UpdateSubCategory";
 const ShowSubCategories = ({id}) => {
-    console.log(id);
-    
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [subcategories, setSubcategories] = useState(true)
     const toggleModal = () => setIsModalOpen(!isModalOpen)
