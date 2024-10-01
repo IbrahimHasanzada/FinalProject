@@ -14,7 +14,7 @@ const HeadSection = ({getAllCategories}) => {
         <section className='relative'>
             <div className='w-full h-[60vh] md:h-[80vh] overflow-hidden group'>
                 <img
-                    className=' object-cover md:object-left-top md:w-full h-full transform  transition-transform duration-500 group-hover:scale-110'
+                    className=' object-cover w-full md:object-left-top md:w-full h-full transform  transition-transform duration-500 group-hover:scale-110'
                     src="/img/qadin.jpg" alt="kisi" />
             </div>
             <div className='absolute bottom-[3%] left-0 right-0 max-w-[500px] mx-auto text-center font-["Cormorant_Garamond",_serif]'>
