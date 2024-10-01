@@ -13,6 +13,7 @@ const UserInformation = () => {
     const navigate = useNavigate()
     const SignOut = () => {
         localStorage.removeItem('user')
+        localStorage.removeItem('token')
         navigate('/')
         toast.success('You have successfully signed out')
     }

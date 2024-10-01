@@ -12,26 +12,9 @@ import { useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
     const [showPassword, setShowPassword] = useState(false);
+    const [showPasswordRepeat, setShowPasswordRepeat] = useState(false);
     const navigate = useNavigate()
     const [registerUser, { data: getUserData }] = useRegisterUserMutation()
-    const [sendImage, { data: getImages }] = useUploadImageMutation()
-    // const [image, setImage] = useState('')
-    const togglePasswordVisibility = () => {
-        setShowPassword(!showPassword);
-    }
-    // const handleFileChange = async (e) => {
-    //     const file = e.target.files[0];
-    //     if (file) {
-    //         const formData = new FormData();
-    //         formData.append('image', file);
-    //         setImage(file);
-    //         const response = await sendImage(formData).unwrap();
-    //         if (response.file && response.file.location) {
-    //             // setFormDataInput(prev => ({ ...prev, image: response.file.location }));
-    //             toast.success('File uploaded successfully');
-    //         }
-    //     }
-    // }
 
     const validationSchema = Yup.object({
         first_name: Yup.string().required('First name is required'),
@@ -114,7 +97,7 @@ const SignUp = () => {
                                 <button
                                     type="button"
                                     className='absolute right-4 top-10'
-                                    onClick={togglePasswordVisibility}>
+                                    onClick={() => setShowPassword(!showPassword)}>
                                     {showPassword ? <TbEyeOff className='text-xl' /> : <TbEye className='text-xl' />}
                                 </button>
                             </div>
@@ -125,8 +108,8 @@ const SignUp = () => {
                                 <button
                                     type="button"
                                     className='absolute right-4 top-10'
-                                    onClick={togglePasswordVisibility}>
-                                    {showPassword ? <TbEyeOff className='text-xl' /> : <TbEye className='text-xl' />}
+                                    onClick={() => setShowPasswordRepeat(!showPasswordRepeat)}>
+                                    {showPasswordRepeat ? <TbEyeOff className='text-xl' /> : <TbEye className='text-xl' />}
                                 </button>
                             </div>
                         </div>

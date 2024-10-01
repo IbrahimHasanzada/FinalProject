@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import BasketProducts from '../../Components/User/Basket/BasketProducts'
 import OrderSummary from '../../Components/User/Basket/OrderSummary'
 import { useGetAllCartQuery } from '../../Store/EmporiumApi'
@@ -6,7 +6,16 @@ import Loading from '../../Components/Loading'
 import { Helmet } from 'react-helmet-async'
 const Basket = () => {
     const [addToCard, setAddToCard] = useState(true)
+    const [basketData, setBasketData] = useState([])
     const { data: getAllBasketData, isLoading } = useGetAllCartQuery()
+    const userData = JSON.parse(localStorage.getItem('user'))
+    useEffect(() => {
+        if (userData) {
+            setBasketData(getAllBasketData)
+        } else {
+            setBasketData([])
+        }
+    }, [userData])
     return (
         <div className='wrapper'>
             <Helmet>
@@ -15,7 +24,7 @@ const Basket = () => {
             </Helmet>
             <div className='mb-4 '>
                 <h2 className='text-3xl md:text-5xl font-["Cormorant_Garamond",_serif]'>Shopping bag</h2>
-                <p className='mt-2 font-["Montserrat",_sans-serif]'>{getAllBasketData?.length} items</p>
+                <p className='mt-2 font-["Montserrat",_sans-serif]'>{basketData?.length} items</p>
             </div>
             <section className='w-full flex md:flex-row flex-col items-start justify-start'>
                 <section className='w-full mt-5'>
@@ -23,7 +32,7 @@ const Basket = () => {
                         <Loading />
                         :
                         <>
-                            {getAllBasketData?.map((product, productIndex) => (
+                            {basketData?.map((product, productIndex) => (
                                 <BasketProducts key={productIndex} product={product} addToCard={addToCard} />
                             ))}
                         </>

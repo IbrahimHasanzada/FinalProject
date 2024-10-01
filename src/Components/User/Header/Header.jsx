@@ -15,6 +15,7 @@ import MobileHeader from "./MobileHeader";
 import { FaXmark } from "react-icons/fa6";
 import { setCatId } from "../../../Store/CategoryIdSlice";
 const Header = () => {
+    const userData = JSON.parse(localStorage.getItem('user'))
     const { data: getAllCategories } = useGetAllCategoryQuery()
     const { data: getAllBasketData } = useGetAllCartQuery()
     const { liked } = useSelector(state => state.liked)
@@ -25,6 +26,10 @@ const Header = () => {
     const navigate = useNavigate()
     function handleOpenSearch() { setFlag(true) }
     function handleOpenBasket() { dispatch(setBasket(true)) }
+    const [basketData, setBasketData] = useState([])
+    useEffect(() => {
+        userData ? setBasketData(getAllBasketData) : setBasketData([])
+    }, [userData])
     const filterByCategory = (id) => {
         dispatch(setCatId(id))
         navigate({ pathname: 'categorypage/products/all', search: `?categoryId=${id}` })
@@ -33,7 +38,6 @@ const Header = () => {
         navigate({ pathname: '/products/all', search: `?subcategoryId=${id}` })
         localStorage.setItem('subcategory', name)
     }
-    const userData = JSON.parse(localStorage.getItem('user'))
     const changeToUser = () => { if (userData) { navigate('/userinformation') } else dispatch(setUser()) }
     const navBarImages = ['women-clothing.jpg', 'men-clothing.jpg', 'boys-clothing.jpg', 'necklaces.jpg', 'fragrance.jpg', '2-235-bedroom.jpg']
     return (
@@ -97,7 +101,7 @@ const Header = () => {
                     </button>
 
                     <button className="relative flex justify-center items-start" onClick={handleOpenBasket}>
-                        {getAllBasketData?.length > 0 &&
+                        {basketData?.length > 0 &&
                             <span className="absolute bottom-3 -right-1 rounded-full px-1 bg-[#000] text-xs text-white">{getAllBasketData.length}</span>
                         }
                         <PiBagSimple className="text-2xl" />
