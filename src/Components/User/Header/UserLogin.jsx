@@ -36,9 +36,8 @@ const UserLogin = ({ userLogin }) => {
                                 localStorage.setItem('user', JSON.stringify(response.data.user));
                                 localStorage.setItem('token', response.data.token);
                                 dispatch(setUser())
-                                navigate('/')
-                                // window.location.reload()
                                 toast.success('Login successful')
+                                navigate('/')
                             } else {
                                 toast.error('Invalid username or password!')
                             }
