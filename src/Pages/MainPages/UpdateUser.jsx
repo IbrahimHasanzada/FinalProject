@@ -49,8 +49,6 @@ const UpdateUser = () => {
         .min(6, 'Password must be at least 6 characters')
         .required('Please confirm your password')
     })
-    console.log(userData);
-    
     return (
         <section className='wrapper flex flex-col items-center '>
             <div className='my-10 md:mb-10 md:mt-0 text-center w-full'>

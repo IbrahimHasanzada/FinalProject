@@ -7,8 +7,6 @@ const Details = () => {
     const [manageId, setManageId] = useState('')
     const { data: getAllProduct, isLoading } = useGetAllProductQuery()
     const { data: productData, } = useGetProductByIdQuery(manageId, { skip: !manageId })
-    console.log();
-    
     const { productsId } = useParams()
     useEffect(() => {
         productsId && setManageId(productsId)

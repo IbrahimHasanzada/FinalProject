@@ -62,8 +62,6 @@ const SignUp = () => {
                     }).unwrap().then((data) => {
                         toast.success('User registered successfully')
                         navigate('/login')
-                        console.log(data);
-                        
                     }).catch((error) => {
                         console.error('Error:', error.status === 400 ? toast.error('Username or Email already taken!') : toast.error('Failed to register user'));
                     });

@@ -6,11 +6,8 @@ import { useNavigate } from 'react-router-dom';
 import FormInput from './FormInput';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCheckout } from '../../../Store/CheckOutSlice';
-
 const DeliveryForm = () => {
     const formReceiver = JSON.parse(localStorage.getItem('receiver'))
-    console.log(formReceiver);
-
     const navigate = useNavigate();
     const [isGift, setIsGift] = useState(false);
     const handleCheckboxChange = () => setIsGift(!isGift);
@@ -49,7 +46,6 @@ const DeliveryForm = () => {
             }}
             validationSchema={validationSchema}
             onSubmit={(values) => {
-                console.log('Form submitted:', values);
                 dispatch(setCheckout(2))
                 localStorage.setItem('receiver', JSON.stringify(values))
             }}

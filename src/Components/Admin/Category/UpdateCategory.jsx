@@ -21,8 +21,6 @@ const UpdateCategoryModal = ({ id }) => {
     }, [getData]);
 
     const handleSubmit = (e) => {
-        console.log(getData);
-        
         e.preventDefault();
         if (!updateCategoryName || !slug) {
             toast.error('Fill all the fields!');

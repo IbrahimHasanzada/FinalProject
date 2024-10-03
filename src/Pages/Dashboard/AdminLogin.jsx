@@ -28,7 +28,6 @@ const AdminLogin = () => {
                             if (response.data && response.data.user.role === "ADMIN") {
                                 window.location.reload();
                             } else if (response.error && response.error.status === 401) {
-                                console.log(response.error);
                                 toast.error('Invalid username or password!');
                             } else {
                                 toast.error('An unexpected error occurred.');

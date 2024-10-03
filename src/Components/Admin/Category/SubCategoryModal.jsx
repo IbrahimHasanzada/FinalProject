@@ -21,8 +21,6 @@ const SubcategoryModal = ({ id }) => {
             setId('')
             setSlug('')
             setIsModalOpen(false);
-            console.log(id, slug, subcategory);
-
         } else { toast.error('Fill all the fields!') }
     }
     useEffect(() => {
