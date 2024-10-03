@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { CiCreditCard1 } from "react-icons/ci";
 import { TbBus } from "react-icons/tb";
 import { BsBox2 } from "react-icons/bs";
@@ -6,8 +5,6 @@ import SliderSocial from './SliderSocial'
 import FooterAccordion from './FooterAccordion';
 import BlackButton from '../../BlackButton';
 const Footer = () => {
-
-
   return (
     <footer className='wrapper  font-["Montserrat",_sans-serif]'>
       <section className='my-8'>
