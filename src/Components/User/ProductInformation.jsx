@@ -7,7 +7,7 @@ import { FaCheck } from "react-icons/fa";
 import { useAddToCardMutation, useGetProductByIdQuery } from '../../Store/EmporiumApi'
 import { useParams } from 'react-router-dom'
 import UnderlineButton from '../UnderlineButton'
-import { toast, ToastContainer } from 'react-toastify'
+import { toast } from 'react-toastify'
 import Loading from '../Loading'
 import { FaHeart } from 'react-icons/fa6'
 import { useDispatch } from 'react-redux'
@@ -52,9 +52,6 @@ const ProductInformation = ({ toggleModal, ModalId }) => {
     };
     return (
         <div>
-            <ToastContainer
-                autoClose={2000} />
-
             <Helmet>
                 <title>Tradium | {`${name ? name : ''}`}</title>
                 <meta name="description" content="Category Page" />

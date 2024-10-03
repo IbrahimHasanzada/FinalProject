@@ -12,7 +12,7 @@ import { ToastContainer } from 'react-toastify';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <HelmetProvider>
-        <ToastContainer />
+        <ToastContainer autoClose={2000} />
         <Provider store={store}>
             <RouterProvider router={route} />
         </Provider>
