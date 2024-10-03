@@ -9,8 +9,8 @@ const Footer = () => {
 
 
   return (
-    <footer className='wrapper font-["Montserrat",_sans-serif]'>
-      <section className='mb-8'>
+    <footer className='wrapper  font-["Montserrat",_sans-serif]'>
+      <section className='my-8'>
         <h2 className='uppercase mb-4 text-sm inline-block pl-2'>@tradiumbaku</h2>
         <SliderSocial />
       </section>

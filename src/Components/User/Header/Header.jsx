@@ -46,10 +46,10 @@ const Header = () => {
                 <div className="flex lg:w-[45%]">
                     <div className="flex lg:hidden gap-4">
                         <button onClick={() => setMobile(!mobile)}>
-                            {mobile ? <FaXmark className="text-3xl cursor-pointer" /> : <RxHamburgerMenu className="text-3xl cursor-pointer" />}
+                            {mobile ? <FaXmark className="text-2xl cursor-pointer" /> : <RxHamburgerMenu className="text-2xl cursor-pointer" />}
                         </button>
                         <button onClick={handleOpenSearch}>
-                            <IoIosSearch className="text-3xl cursor-pointer" />
+                            <IoIosSearch className="text-2xl cursor-pointer" />
                         </button>
                     </div>
                     <ul className={`hidden lg:flex w-full overflow-scroll`}>
