@@ -28,7 +28,7 @@ const Card = ({ item, wish, handleDeleteLike, slider }) => {
             dispatch(incrementLike())
         }
         localStorage.setItem('likedItems', JSON.stringify(likedItems));
-        setLike(!like);
+        setLike(!like)
     }
     const [currentImage, setCurrentImage] = useState(images[0]);
     useEffect(() => { setCurrentImage(images[0]) }, [item]);
@@ -62,7 +62,7 @@ const Card = ({ item, wish, handleDeleteLike, slider }) => {
                         <button onClick={toggleModal} className="w-full bg-[#00000082] absolute flex justify-center items-center h-9 duration-300 left-0 right-0 -bottom-full group-hover:bottom-0 text-white">
                             Quick view
                         </button>
-                        <QuickModal id={id} isOpen={isModalOpen} toggleModal={toggleModal}>
+                        <QuickModal  isOpen={isModalOpen} toggleModal={toggleModal}>
                             <div className='w-full'>
                                 <ProductInformation toggleModal={toggleModal} ModalId={id} />
                             </div>

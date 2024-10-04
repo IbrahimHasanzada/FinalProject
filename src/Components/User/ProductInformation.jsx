@@ -23,8 +23,8 @@ const ProductInformation = ({ toggleModal, ModalId }) => {
     const userData = JSON.parse(localStorage.getItem('user'))
     const { productsId } = useParams()
     useEffect(() => {
-        productsId ? setManageId(productsId) : setManageId(ModalId)
-    }, [productsId])
+        ModalId ? setManageId(ModalId) : setManageId(productsId)
+    }, [productsId, ModalId])
     const [showDescription, setShowDescription] = useState(true)
     const [color, setColor] = useState('')
     const [size, setSize] = useState('')
