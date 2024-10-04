@@ -85,16 +85,15 @@ const ProductInformation = ({ toggleModal, ModalId }) => {
                             <p className="pb-4">Color:</p>
                             <div className="flex gap-2">
                                 {Colors?.map((item, i) => (
-                                    <div key={i} className='relative h-6 w-6'>
+                                    <div key={i} className='relative  '>
                                         <div
-                                            onClick={() => setColor(item)}
-                                            style={{ background: item }}
-                                            className={`rounded-full cursor-pointer h-full w-full ${item === 'white' ? 'border border-black' : ''}`}></div>
-                                        {color === item &&
-                                            <div className='absolute top-1 left-1'>
-                                                <FaCheck className={`${color === 'BLACK' ? 'text-white' : 'text-black'}`} />
-                                            </div>
-                                        }
+                                            style={color === item ? { border: `1px solid ${item}` } : {}}
+                                            className={`${color === item && `p-1 h-8 w-8 flex items-center justify-center rounded-full`}`}>
+                                            <div
+                                                onClick={() => setColor(item)}
+                                                style={{ background: item }}
+                                                className={`rounded-full cursor-pointer  ${color === item ? 'h-6 w-6' : 'h-8 w-8'}  relative  ${item === 'white' ? 'border border-black' : ''}`}></div>
+                                        </div>
                                     </div>
                                 ))}
                             </div>
