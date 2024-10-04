@@ -17,27 +17,27 @@ const FooterAccordion = () => {
       id: 2,
       title: 'Costumer Service',
       content: [
-        { contentDesc: 'Gift Cards', path: '#' },
-        { contentDesc: 'Loyalty Program', path: '#' },
-        { contentDesc: 'FAQ', path: '#' },
-        { contentDesc: 'Contact Us', path: '#' },
+        { contentDesc: 'Gift Cards', path: '/' },
+        { contentDesc: 'Loyalty Program', path: '/' },
+        { contentDesc: 'FAQ', path: '/' },
+        { contentDesc: 'Contact Us', path: '/' },
       ]
     },
     {
       id: 3,
       title: 'Online Shopping',
       content: [
-        { contentDesc: 'Delivery Terms', path: '#' },
-        { contentDesc: 'Return  And Exchange', path: '#' },
-        { contentDesc: 'Payment Methods', path: '#' },
+        { contentDesc: 'Delivery Terms', path: '/' },
+        { contentDesc: 'Return  And Exchange', path: '/' },
+        { contentDesc: 'Payment Methods', path: '/' },
       ]
     },
     {
       id: 4,
       title: 'Store Contact',
       content: [
-        { contentDesc: '+994 51 225 96 96' },
-        { contentDesc: '51, 153 Neftchiler Avenue' },
+        { contentDesc: '+994 51 225 96 96', path: '/' },
+        { contentDesc: '51, 153 Neftchiler Avenue', path: '/' },
       ]
     },
   ]

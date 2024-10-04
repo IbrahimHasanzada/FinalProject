@@ -3,7 +3,6 @@ import DetailsSlider from './Details/DetailsSlider'
 import { FaRegHeart, FaWhatsapp } from 'react-icons/fa'
 import BlackButton from '../BlackButton'
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io'
-import { FaCheck } from "react-icons/fa";
 import { useAddToCardMutation, useGetProductByIdQuery } from '../../Store/EmporiumApi'
 import { useParams } from 'react-router-dom'
 import UnderlineButton from '../UnderlineButton'
@@ -64,7 +63,7 @@ const ProductInformation = ({ toggleModal, ModalId }) => {
                     <section className="w-full md:w-[416px] lg:w-[516px] xl:w-[566px]">
                         <DetailsSlider images={images} />
                     </section>
-                    <section className={` w-full ${ModalId ? 'w-full md:ml-2' : 'md:w-[40%] md:mx-10'} `}>
+                    <section className={` w-full ${ModalId ? 'w-full md:ml-6' : 'md:w-[40%] md:mx-10'} `}>
                         <div className="mb-4">
                             {discount >= 5 ? (
                                 <span className='px-4 py-1 text-sm  bg-[#B5314A] rounded-md text-white'>

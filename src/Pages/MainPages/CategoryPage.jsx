@@ -50,7 +50,7 @@ const CategoryPage = () => {
     const SubCategorySection = [
         {
             name: 'Women',
-            img: ['0609triple-banner-1-.gif', '0609triple-banner-2.jpg', '0609Triple-banner-3-.gif']
+            img: ['0609triple-banner-1-.gif', '0609triple-banner-2.jpg',  '0609Triple-banner-3-.gif']
         },
         {
             name: 'Men',
@@ -83,27 +83,27 @@ const CategoryPage = () => {
                 <Loading />
                 :
                 <>
-                    <Link className='md:w-full  flex flex-col-reverse md:relative max-h-[654px] '>
+                    <div className='md:w-full  flex flex-col-reverse md:relative max-h-[654px] '>
                         <section className='w-full h-full block  md:absolute md:inset-0 md:z-[2]  px-2 md:bg-[rgba(0,_0,_0,_0.2)] '>
-                            <div className='md:absolute bottom-10 left-10 text-black md:md:text-[#F6F7F9] mt-2'>
+                            <div className='md:absolute bottom-10 left-10 text-black md:md:text-[#F6F7F9] my-4'>
                                 <h2 className='text-4xl md:text-6xl mb-4 md:mb-6 font-["Cormorant_Garamond",_serif]'>{getCategoriesById?.name}</h2>
                                 <p className='mb-4 md:mb-8 '>New Collection</p>
                             </div>
                         </section>
                         {category.map((item, index) => (
                             item.name === getCategoriesById?.name &&
-                            <section key={index} className=' h-full lg:h-[654px]'>
-                                <div id='categoryImg' className=' w-full h-full'>
-                                    <img className='w-full h-full object-cover' src={`/img/${item.img}`} alt={`Image${index}`} />
+                            <section key={index} className=' max-h-full lg:h-[654px]'>
+                                <div id='categoryImg' className=' w-[100%] h-full'>
+                                    <img className='w-full h-full object-top object-cover' src={`/img/${item.img}`} alt={`Image${index}`} />
                                 </div>
                             </section>
                         ))}
-                    </Link>
+                    </div>
 
-                    <section className='flex gap-9 md:gap-5 justify-between flex-col md:flex-row items-center my-10 px-5'>
+                    <section className='flex gap-9 md:gap-5 justify-between flex-col md:flex-row items-center my-10 md:px-5'>
                         <div className=' w-full md:w-[15%] text-center '>
                             <p className='uppercase text-[1.2em]'>New arrivals</p>
-                            <h2 className='my-6 text-6xl font-["Cormorant_Garamond",_serif]'>{filteredData?.data.length}</h2>
+                            <h2 className='my-6 text-6xl font-["Cormorant_Garamond",_serif]'>{filteredData?.meta.totalProducts}</h2>
                             <Link to={'/'} className='md:block hidden '>
                                 <span className='uppercase px-5 bg-black  text-white duration-300 hover:bg-white hover:text-black border border-black h-[50px] flex justify-center items-center'>Shop now</span>
                             </Link>

@@ -21,7 +21,7 @@ const Footer = () => {
           </div>
         </div>
         <div className='mt-4 mb-2 p-2 md:flex md:w-[472px] '>
-          <input type="text" className='px-5 h-11 border w-full md:w-[90%]' placeholder='Email ünvanınızı daxil edin' />
+          <input type="text" className='px-5 h-11 border w-full md:w-[90%]' placeholder='Enter your email address' />
           <button className='my-4 md:my-0 md:ml-2 h-11 w-full md:w-[50%] rounded-md'>
             <BlackButton title='Subcribe' path='#' />
           </button>
