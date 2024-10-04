@@ -3,6 +3,7 @@ import { FaXmark } from 'react-icons/fa6';
 import { useAddToCardMutation, useDelCardsMutation, useGetAllCartQuery } from "../../../Store/EmporiumApi";
 import { useState } from "react";
 import { FiMinus, FiPlus } from "react-icons/fi";
+import { isDisabled } from "@testing-library/user-event/dist/utils";
 
 const BasketProducts = ({ addToCard, product, check }) => {
     const [deleteCards, { data: getDeletedCard }] = useDelCardsMutation();
@@ -11,7 +12,6 @@ const BasketProducts = ({ addToCard, product, check }) => {
     const addCount = (count) => { addToBasket({ productId: product.product_id.id, count: count }) }
     const remCount = (count) => {
         addToBasket({ productId: product.product_id.id, count: count })
-        product.count <= 1 && deleteCards(product.id)
     }
     if (!product || !product.product_id) {
         return (
@@ -32,7 +32,7 @@ const BasketProducts = ({ addToCard, product, check }) => {
                     <div className='mb-4'>
                         <h3 className='mb-1 uppercase text-sm'>{name}</h3>
                         <p className='text-[#777] uppercase text-sm'>size: {product.Size}</p>
-                        <p className='text-[#777] uppercase text-sm'>qty: {product.count}</p>
+                        <p className='text-[#777] uppercase text-sm'>qty: {product.count > 0 ? product.count : 1}</p>
                     </div>
                     <div>
                         <p className='uppercase text-sm'>{price} USD</p>
@@ -48,8 +48,8 @@ const BasketProducts = ({ addToCard, product, check }) => {
                     {!check &&
                         <>
                             <div className="flex items-center gap-2 mt-4">
-                                <button onClick={() => remCount(-1)} className="h-8 w-8 flex justify-center items-center border border-black hover:bg-black hover:text-white"><FiMinus /></button>
-                                <span>{product.count}</span>
+                                <button disabled={product.count <= 1} onClick={() => remCount(-1)} className={`h-8 w-8 flex justify-center items-center border border-black hover:bg-black hover:text-white ${product.count <= 1 ? 'opacity-30 cursor-not-allowed' : 'opacity-100'}`}><FiMinus /></button>
+                                <span>{product.count > 0 ? product.count : 1}</span>
                                 <button onClick={() => addCount(1)} className="h-8 w-8 flex justify-center items-center border border-black hover:bg-black hover:text-white"><FiPlus /></button>
                             </div>
 

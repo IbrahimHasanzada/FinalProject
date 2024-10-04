@@ -10,7 +10,7 @@ const OrderSummary = ({ addToCard, checkout }) => {
   const {delivery} = useSelector(state => state.delivery)
   const dispatch = useDispatch()
   const { data: getAllBasketData } = useGetAllCartQuery()
-  const totalPrice = getAllBasketData?.reduce((acc, item) => acc + item.product_id.price*item.count, 0);
+  const totalPrice = getAllBasketData?.reduce((acc, item) => acc + item.count >= 1 ?  item.product_id.price*item.count : item.product_id.price, 0);
   return (
     <section className={`flex flex-col items-center justify-center py-5 mt-1 font-["Montserrat",_sans-serif] ${addToCard ? 'm-0' : 'm-5 border-t'}`}>
       <h2 className={`w-full border-b text-xl pb-2 font-["Cormorant_Garamond",_serif] ${addToCard ? 'inline-block' : 'hidden'}`}>Order summary</h2>
