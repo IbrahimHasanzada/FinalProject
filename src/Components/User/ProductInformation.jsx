@@ -146,7 +146,7 @@ const ProductInformation = ({ toggleModal, ModalId }) => {
                         }
                         {ModalId &&
                             <button onClick={toggleModal}>
-                                <UnderlineButton title='View product page' path='#' />
+                                <UnderlineButton title='View product page' path={`/details/${id}`} />
                             </button>
                         }
                     </section>
